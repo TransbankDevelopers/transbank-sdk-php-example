@@ -39,7 +39,7 @@
                                 un único cobro para todos los productos o servicios adquiridos por el tarjetahabiente
                                 (carro de compras). </p>
                         </div>
-                        <a href={{ route('webpay-plus') }} class="card-info-link">
+                        <a href={{ route('webpay.create') }} class="card-info-link">
                             Ver ejemplos y modalidades
                         </a>
                     </div>
@@ -85,9 +85,9 @@
                 </div>
 
                 <hr class="separed-home" />
-                <div class="contact-container">
-                    @include('partials.channels')
-                </div>
+
+                @include('partials.channels')
+
             </div>
         </div>
         @include('partials.footer')
