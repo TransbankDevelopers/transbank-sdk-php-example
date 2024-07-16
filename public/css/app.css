@@ -345,7 +345,7 @@ input {
 
 /* bottons */
 .tbk-button {
-    display: flex;
+    display: inline-flex;
     padding-left: 24px;
     padding-right: 24px;
     justify-content: center;
