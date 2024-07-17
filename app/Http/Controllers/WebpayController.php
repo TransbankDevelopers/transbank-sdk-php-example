@@ -29,7 +29,7 @@ class WebpayController extends Controller
             'returnUrl' => url('/') . '/webpay-plus/commit',
             'amount' => rand(1000, 2000)
         ];
-        // $transaction = Transaction::buildForIntegration($commerceCode, $apiKey);
+
 
         $resp = $this->transaction->create($createTx['buyOrder'], $createTx['sessionId'], $createTx['amount'], $createTx['returnUrl']);
         return view('webpay.create', ["request" => $createTx, "respond" => $resp]);
