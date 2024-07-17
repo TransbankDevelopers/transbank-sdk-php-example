@@ -17,7 +17,7 @@
             <div class="question-item">
                 <span class="title">Envíanos un mensaje</span>
                 <div class="inner-container">
-                    <a href="http://google.com" target="_blank">
+                    <a href="mailto:soporte@transbank.cl" target="_blank">
                         <Image unoptimized src={{ asset('images/outlook.png') }} alt="outlook" width="32"
                             height="32" />
                     </a>
