@@ -46,29 +46,36 @@
 body {
     color: rgb(var(--foreground-rgb));
     font-family: "Roboto", sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 h1 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    margin-top: 0px;
+    margin-bottom: 16px;
+    font-size: 1.25em;
+    line-height: 32px;
+    letter-spacing: 0.25px;
     font-weight: 700;
 }
 
 h2 {
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    line-height: 1.5rem;
-    font-size: 1.125rem;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    line-height: 24px;
+    font-size: 1em;
     font-weight: 700;
+    letter-spacing: 0.25px;
 }
 
 p {
-    margin: 0;
+    margin: 0px;
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.25px;
 }
 
 a {
@@ -76,7 +83,29 @@ a {
     text-decoration: none;
 }
 
+ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875em;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.25px;
+}
+
 /* utils */
+
+.aling-self-end {
+    align-self: flex-end;
+}
+
 .boder-t-gray3 {
     border-top: 1px solid var(--tbk-grey-3);
 }
@@ -99,13 +128,99 @@ a {
     align-self: center;
 }
 
+.mb-32 {
+    margin-bottom: 32px;
+}
+
+/* layout */
+
+.main-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.body-container {
+    display: grid;
+    grid-template-columns: 280px 1fr 264px;
+    padding: 24px 96px 0px 80px;
+}
+
+.body-content {
+    padding: 0px 48px 100px;
+}
+
+.helper-content {
+    margin-left: 16px;
+}
+
+/* cards */
+.tbk-card {
+    display: flex;
+    padding: 32px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+    color: var(--tbk-black);
+    flex-direction: column;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+    max-width: 607px;
+}
+
+.tbk-card-footer {
+    display: flex;
+    justify-content: end;
+    margin-top: 24px;
+}
+
+.tbk-card-title {
+    font-weight: 500;
+    font-size: 1em;
+    margin-bottom: 38px;
+}
+
+/* inputs */
+
+.tbk-label {
+    padding-left: 4px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: var(--tbk-grey);
+}
+
+.tbk-input-text {
+    padding-bottom: 4px;
+    padding-left: 4px;
+    outline-style: none;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    background-color: transparent;
+    border: 0px solid #e5e7eb;
+    border-color: var(--tbk-border-blue);
+    border-bottom-width: 1px;
+}
+
+.tbk-input-text:focus {
+    border-color: var(--tbk-red);
+    border-bottom-width: 2px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container:focus-within .tbk-label {
+    color: var(--tbk-red);
+}
+
 /* header */
 .tbk-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 10rem;
-    padding-right: 10rem;
+    padding-left: 160px;
+    padding-right: 160px;
     width: 100%;
     height: 80px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.08);
@@ -143,10 +258,10 @@ a {
 
 .questions-container .list {
     display: grid;
-    padding: 1.5rem;
-    margin-top: 1.5rem;
+    padding: 24px;
+    margin-top: 24px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2.5rem;
+    gap: 40px;
     border-radius: 0.25rem;
     color: #000000;
     border-color: var(--tbk-light-red);
@@ -156,7 +271,7 @@ a {
 .question-item {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
 }
 
 .question-item .title {
@@ -166,9 +281,9 @@ a {
 
 .question-item .inner-container {
     display: flex;
-    padding: 1.5rem;
+    padding: 24px;
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
     align-items: center;
     background-color: #ffffff;
 }
@@ -183,9 +298,54 @@ a {
     color: #000000;
 }
 
+/* navigation */
+.nav-container {
+    position: sticky;
+    width: 248px;
+    padding: 24px;
+    gap: 22px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0px 1px 2px 0px rgba(14, 21, 32, 0.18),
+        0px 0px 2px 0px rgba(14, 21, 32, 0.12),
+        0px 0px 2px 0px rgba(0, 0, 0, 0.04);
+    color: var(--tbk-black);
+    top: 20px;
+}
+
+.nav-title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    color: var(--tbk-black);
+    padding: 8px 0px;
+    border-bottom: 1px solid var(--tbk-red);
+}
+
+.nav-container .item {
+    color: var(--tbk-grey-2);
+    font-size: 14px;
+}
+
+.nav-container li:last-of-type {
+    margin-bottom: 8px;
+}
+
+.nav-container .item.active {
+    color: var(--tbk-red);
+    font-weight: 500;
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+}
+
 /* bottons */
 .tbk-button {
-    display: flex;
+    display: inline-flex;
     padding-left: 24px;
     padding-right: 24px;
     justify-content: center;
@@ -194,11 +354,12 @@ a {
     background-color: var(--tbk-red);
     color: white;
     cursor: pointer;
+    border: none;
 }
 
 .tbk-button.small-button {
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-right: 16px;
+    padding-left: 16px;
 }
 
 .tbk-button.primary {
@@ -217,6 +378,56 @@ a {
     line-height: 1.5rem;
     height: 46px;
     border-radius: 10px;
+}
+
+/* menu */
+.tbk-menu {
+    display: flex;
+    flex-direction: column;
+    row-gap: 56px;
+    padding: 32px 0px;
+    border-right: 1px solid var(--tbk-border);
+}
+
+.tbk-menu-item-container {
+    display: flex;
+    padding-left: 8px;
+    padding-right: 8px;
+    flex-direction: column;
+    row-gap: 24px;
+}
+
+.tbk-menu-item-text {
+    margin-bottom: 12px;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: var(--tbk-grey);
+}
+
+.tbk-menu-item {
+    padding-left: 12px;
+    padding-right: 12px;
+    color: var(--tbk-black);
+    cursor: pointer;
+}
+
+.tbk-menu-item:hover {
+    color: var(--tbk-red);
+}
+
+.tbk-menu-item.active {
+    color: var(--tbk-red);
+}
+
+/* pages content styles  */
+.step-title {
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.25px;
 }
 
 /* homepage */
@@ -242,7 +453,7 @@ a {
 
 .tbk-home-text {
     color: var(--tbk-black-3);
-    font-size: 20px;
+    font-size: 1.25em;
     line-height: 30px;
     letter-spacing: 0.25px;
     font-weight: 400;
