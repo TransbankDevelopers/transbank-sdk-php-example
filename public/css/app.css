@@ -512,7 +512,7 @@ h1.title {
     display: none;
 }
 
-.son-img {
+.sun-img {
     display: none;
     .dark & {
         display: block;

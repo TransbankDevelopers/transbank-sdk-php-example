@@ -1,5 +1,5 @@
 <button id="dark-mode" class="dark-mode-btn">
-    <img src={{ asset('images/son.svg') }} alt="son" class="son-img">
+    <img src={{ asset('images/sun.svg') }} alt="sun" class="sun-img">
     <img src={{ asset('images/moon.svg') }} alt="moon" class="moon-img">
 </button>
 
