@@ -12,7 +12,7 @@
     <h2>Paso 1 - Datos recibidos:</h2>
     <ul class="mb-32">
         <p class="m-32">
-            Después de completar el flujo en el formulario de pago, recibirás un POST con la siguiente
+            Después de completar el flujo en el formulario de pago, recibirás un GET con la siguiente
             información:
         </p>
     </ul>
