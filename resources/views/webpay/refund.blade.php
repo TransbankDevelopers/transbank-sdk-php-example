@@ -17,7 +17,7 @@
         una Anulación Parcial si el monto es menor al total.
     </p>
 
-    <span>Condiciones Importantes:</span>
+    <p>Condiciones Importantes:</p>
     <ul>
         <li>
             No es posible realizar Anulaciones ni Anulaciones Parciales en tarjetas que no sean de crédito.
@@ -35,6 +35,4 @@
     <div class="mb-32">
         @dump($resp)
     </div>
-
-
 </x-layout>

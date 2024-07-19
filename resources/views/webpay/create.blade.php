@@ -43,9 +43,11 @@
         tabla
     </div>
 
-    <div class="mb-32">Por último, con la respuesta del servicio que confirma la creación de la transacción, procedemos
+    <p class="mb-32">Por último, con la respuesta del servicio que confirma la creación de la transacción, procedemos
         a crear el formulario de pago. Para fines de este ejemplo, haremos visible el campo "token_ws", el cual es
-        esencial para completar el proceso de pago de manera exitosa.</div>
+        esencial para completar el proceso de pago de manera exitosa.
+    </p>
+
     <form action={{ $respond->url }} action="POST">
         <div class="tbk-card">
             <span class="tbk-card-title">Formulario de redirección</span>

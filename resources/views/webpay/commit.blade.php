@@ -11,8 +11,10 @@
 
     <h2>Paso 1 - Datos recibidos:</h2>
     <ul class="mb-32">
-        <div class="m-32">Después de completar el flujo en el formulario de pago, recibirás un POST con la siguiente
-            información:</div>
+        <p class="m-32">
+            Después de completar el flujo en el formulario de pago, recibirás un POST con la siguiente
+            información:
+        </p>
     </ul>
     <div class="mb-32"> @dump($resp)</div>
 
@@ -42,22 +44,18 @@
     </p>
     <p>
         Después de confirmar la transacción, podrás realizar otras operaciones útiles:
+    </p>
     <ul>
         <li>
-            <span>Reembolsar:</span> Puedes reversar o anular el pago según ciertas condiciones comerciales.
+            <span class="fw-700">Reembolsar:</span> Puedes reversar o anular el pago según ciertas condiciones
+            comerciales.
         </li>
         <li>
-            <span>Consultar Estado:</span> Hasta 7 días después de la transacción, podrás consultar el estado de la
+            <span class="fw-700">Consultar Estado:</span> Hasta 7 días después de la transacción, podrás consultar el
+            estado de la
             transacción.
         </li>
     </ul>
-    </p>
-
-    <div id="other" class="mb-32">
-        Por último, con la respuesta del servicio que confirma la creación de la transacción, procedemos
-        a crear el formulario de pago. Para fines de este ejemplo, haremos visible el campo "token_ws", el cual es
-        esencial para completar el proceso de pago de manera exitosa.
-    </div>
 
     <form action={{ route('webpay.refund') }} method="POST">
         @csrf
