@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" class="light">
 
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
         @include('partials.header')
         <div class="flex-col">
             <div class="tbk-home-container">
-                <h1>Proyectos de Ejemplo del SDK para PHP</h1>
+                <h1 class="title">Proyectos de Ejemplo del SDK para PHP</h1>
                 <div class="tbk-home-intro">
                     <Image src="{{ asset('images/php-img.svg') }}" alt="Node.js Logo" class="self-center" width="168"
                         height="120" class="aling-self-start" />
@@ -92,7 +92,7 @@
         </div>
         @include('partials.footer')
     </div>
-
+    @stack('scripts')
 </body>
 
 </html>
