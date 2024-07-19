@@ -6,19 +6,35 @@
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('dark-mode').addEventListener('click', function() {
+            const theme = localStorage.getItem("theme");
+            if (theme === "dark") {
                 const root = document.documentElement
-                const currentTheme = root.getAttribute('data-theme')
+                root.setAttribute('data-theme', 'dark')
+                root.classList.remove('light')
+                root.classList.add('dark')
+                localStorage.setItem("theme", "dark")
+            }
 
-                if (currentTheme === 'light') {
-                    root.setAttribute('data-theme', 'dark')
-                    root.classList.remove('light')
-                    root.classList.add('dark')
-                } else {
+            function setTheme() {
+                const theme = localStorage.getItem("theme");
+                const root = document.documentElement
+                if (theme === "dark") {
                     root.setAttribute('data-theme', 'light')
                     root.classList.remove('dark')
                     root.classList.add('light')
+                    localStorage.setItem("theme", "light")
+                } else {
+                    root.setAttribute('data-theme', 'dark')
+                    root.classList.remove('light')
+                    root.classList.add('dark')
+                    localStorage.setItem("theme", "dark")
                 }
+            }
+
+
+
+            document.getElementById('dark-mode').addEventListener('click', function() {
+                setTheme()
             })
         });
     </script>
