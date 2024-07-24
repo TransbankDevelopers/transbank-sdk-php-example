@@ -25,14 +25,12 @@
         <li>No se admiten reembolsos de compras en cuotas.</li>
     </ul>
 
-    <div class="mb-32"> snippet</div>
+    <x-snippet> $resp = $transaction->refund($token, $amount);</x-snippet>
 
     <h2>Paso 2: Respuesta</h2>
     <p class="mb-32">Transbank responderá con el resultado del proceso de reembolso, indicando si se ha realizado una
         Reversa, Anulación o Anulación Parcial.
     </p>
 
-    <div class="mb-32">
-        @dump($resp)
-    </div>
+    <x-snippet :content="$resp" />
 </x-layout>

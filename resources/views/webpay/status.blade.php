@@ -16,7 +16,8 @@
         este token para realizar una llamada a WebpayPlus.Transaction.
     </p>
 
-    <div class="mb-32"> snippet</div>
+    <x-snippet> $resp = $transaction->status($token);</x-snippet>
+
 
     <h2>Paso 2: Respuesta</h2>
     <p class="mb-32">
@@ -24,9 +25,6 @@
         necesaria es que el campo "response_code" sea igual a cero.
     </p>
 
-    <div class="mb-32">
-        @dump($resp)
-    </div>
-
+    <x-snippet :content="$resp" />
 
 </x-layout>
