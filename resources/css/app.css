@@ -159,9 +159,9 @@ h1.title {
 
 pre,
 code {
-    overflow-x: auto; /* Permite desplazamiento horizontal si el contenido es demasiado ancho */
-    white-space: pre-wrap; /* Mantiene los espacios en blanco y permite el envoltorio de líneas */
-    word-wrap: break-word; /* Permite que las palabras largas se rompan y continúen en la siguiente línea */
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
     max-width: 100%;
 }
 
@@ -519,7 +519,7 @@ code {
     padding: 0px;
 }
 
-/* bottons */
+/* buttons */
 .tbk-button {
     display: inline-flex;
     padding-left: 24px;
