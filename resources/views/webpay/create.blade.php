@@ -3,8 +3,7 @@
 @endphp
 
 <x-layout active-link="Wepbay Plus" :navigation="$navigation">
-
-    <h1 id="create" data-id="">Webpay Plus - Creación de transacción</h1>
+    <h1 id="create">Webpay Plus - Creación de transacción</h1>
     <p class="mb-32">En esta etapa, se procederá a la creación de una transacción con el fin de obtener un identificador
         único. Esto
         nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago en el siguiente paso.
@@ -15,32 +14,41 @@
         <li>Comienza por importar la librería WebpayPlus en tu proyecto.</li>
         <li>Luego, crea una transacción utilizando las funciones proporcionadas por WebpayPlus.</li>
     </ul>
-    <div class="mb-32"> @dump($request)</div>
+    <x-snippet>
+        use Transbank\Webpay\WebpayPlus\Transaction;
+        use Transbank\Webpay\Options;
+        //configuración de la transacción
+        $option = new Options(API_KEY, COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
+        $transaction = new Transaction($option);
+        $transaction->create($buyOrder, $sessionId, $amount, $returnUrl);
+    </x-snippet>
 
     <h2>Paso 2: Respuesta</h2>
     <p class="mb-32">Una vez que hayas creado la transacción, aquí encontrarás los datos de respuesta generados por el
         proceso.
     </p>
 
-    <div class="mb-32">
-        @dump($respond)
-    </div>
+    <x-snippet :content="$respond" />
 
     <h2>Paso 3: Creación del formulario</h2>
     <p class="mb-32">Utiliza estos datos de respuesta para generar y presentar un formulario de pago al Tarjetahabiente.
         Este formulario será la interfaz a través de la cual el usuario realizará su transacción.
     </p>
 
-    <div class="mb-32">
-        snippet
-    </div>
+    <x-snippet>
+        form action="https://webpay3gint.transbank.cl/webpayserver/initTransaction" method="POST">
+        input type="hidden" name="token_ws" value="01ab3dd2f9249e253ec4ebd0f835de8f0bd59177be7cf4c95240f9dd42c823d7" />
+        input type="submit" value="Pagar" />
+        form>
+    </x-snippet>
 
     <h2 id="example">Ejemplo</h2>
     <p class="mb-32">Para llevar a cabo una transacción de compra en nuestro sistema, primero debemos crear la
         transacción. Utilizaremos los siguientes datos para configurar la transacción:
     </p>
+
     <div class="mb-32">
-        tabla
+        <x-table :request="$request" />
     </div>
 
     <p class="mb-32">Por último, con la respuesta del servicio que confirma la creación de la transacción, procedemos

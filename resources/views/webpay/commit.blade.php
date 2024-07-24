@@ -16,16 +16,16 @@
             información:
         </p>
     </ul>
-    <div class="mb-32"> @dump($resp)</div>
+    <x-snippet>(returnUrl)?token_ws={{ $token }} </x-snippet>
 
     <h2>Paso 2 - Petición:</h2>
     <p class="mb-32">
         Utilizarás el token recibido para confirmar la transacción mediante una nueva llamada a WebpayPlus.
     </p>
 
-    <div class="mb-32">
-        {{-- @dump($respond) --}}snippet
-    </div>
+    <x-snippet>
+        $resp = $transaction->commit($token);
+    </x-snippet>
 
     <h2>Paso 3 - Respuesta:</h2>
     <p class="mb-32">
@@ -33,9 +33,8 @@
         validación necesaria es que el campo "response_code" sea igual a cero.
     </p>
 
-    <div class="mb-32">
-        snippet
-    </div>
+    <x-snippet :content="$resp" />
+
 
     <h2>¡Listo!</h2>
     <p class="mb-32">
