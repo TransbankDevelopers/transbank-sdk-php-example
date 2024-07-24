@@ -36,7 +36,6 @@ class WebpayController extends Controller
     }
     public function commit(Request $request)
     {
-
         //flujo error
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
             return view('webpay.error', ["request" => $request]);
