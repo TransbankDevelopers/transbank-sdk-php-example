@@ -37,7 +37,7 @@
 
     <x-snippet>
         form action="https://webpay3gint.transbank.cl/webpayserver/initTransaction" method="POST">
-        input type="hidden" name="token_ws" value="01ab3dd2f9249e253ec4ebd0f835de8f0bd59177be7cf4c95240f9dd42c823d7" />
+        input type="hidden" name="token_ws" value="{{ $request['token'] }}" />
         input type="submit" value="Pagar" />
         form>
     </x-snippet>
