@@ -15,3 +15,10 @@ Route::prefix('webpay-plus')->name("webpay.")->group(function () {
     Route::post('/refund', [WebpayController::class, 'refund'])->name("refund");
     Route::get('/status', [WebpayController::class, 'status'])->name("status");
 });
+
+Route::prefix('webpay-plus-mall')->name("webpay-mall.")->group(function () {
+    Route::get('/create', [WebpayController::class, 'index'])->name("create");
+    Route::get('/commit', [WebpayController::class, 'commit'])->name("commit");
+    Route::post('/refund', [WebpayController::class, 'refund'])->name("refund");
+    Route::get('/status', [WebpayController::class, 'status'])->name("status");
+});
