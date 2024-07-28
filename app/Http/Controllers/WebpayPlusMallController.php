@@ -10,80 +10,85 @@ class WebpayPlusMallController extends Controller
 {
     const COMMERCE_CODE = "597055555535";
     const API_KEY = "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C";
-    private MallTransaction $MallTransaction;
+    private MallTransaction $mallTransaction;
     public function __construct()
     {
         $option = new Options(self::API_KEY, self::COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
-        $this->MallTransaction = new MallTransaction($option);
+        $this->mallTransaction = new mallTransaction($option);
     }
 
     public function create()
     {
 
         $createTx = [
-            'buyOrder' => "O-" . rand(1, 10000),
-            "sessionId" => "S-" . (string)(rand(1, 10000)),
-            'returnUrl' => url('/') . '/webpay-mall/commit',
+            'buy_order' => "O-" . rand(1, 10000),
+            "session_id" => "S-" . (string)(rand(1, 10000)),
+            'return_url' => url('/') . '/webpay-mall/commit',
         ];
-        $detail=[
+        $details = [
+            [
+                "amount" => 10000,
+                "commerce_code" => 597055555536,
+                "buy_order" => "ordenCompraDetalle1234"
+            ],
+            [
+                "amount" => 12000,
+                "commerce_code" => 597055555537,
+                "buy_order" => "ordenCompraDetalle4321"
+            ],
+        ];
 
-        ]
+        $resp = $this->mallTransaction->create($createTx["buy_order"], $createTx["session_id"],  $createTx["return_url"], $details);
 
-        $resp = $this->MallTransaction->create($req["buy_order"], $req["session_id"],  $req["return_url"], $req["detail"]);
-
-        return view('webpay-mall.create', compact('commerceCodeList'));
+        return view('webpay-mall.create', ["request" => $createTx, "resp" => $resp]);
     }
 
-    public function createdMallTransaction(Request $request)
+
+
+    public function commit(Request $request)
     {
-
-        $req = $request->except('_token');
-        $resp = (new WebpayPlus\MallTransaction)->create($req["buy_order"], $req["session_id"],  $req["return_url"], $req["detail"]);
-
-        return view('webpayplus/transaction_created', ["params" => $req, "response" => $resp]);
-    }
-
-
-    public function commitmallTransaction(Request $request)
-    {
-        //Flujo normal
-        if ($request->exists("token_ws")) {
-            $req = $request->except('_token');
-            $token = $req["token_ws"];
-            $resp = (new WebpayPlus\MallTransaction)->commit($token);
-
-            return view('webpayplus/mall_transaction_committed', ["params" => $req, "response" => $resp]);
-        }
-
-        //Pago abortado
-        if ($request->exists("TBK_TOKEN")) {
-            return view('webpayplus/mall_transaction_aborted', ["resp" => $request->all()]);
-        }
-
         //Timeout
-        return view('webpayplus/mall_transaction_timeout', ["resp" => $request->all()]);
-    }
+        $view = 'webpay-mall.timeout';
+        $data = ["request" => $request];
 
-    public function getMallTransactionStatus(Request $request)
-    {
-        $req = $request->except('_token');
-        $token = $req["token"];
-        $resp = (new WebpayPlus\MallTransaction)->status($token);
-
-        return view('webpayplus/mall_transaction_status', ["resp" => $resp, "req" => $req]);
-    }
-
-    public function refundMallTransaction(Request $request)
-    {
-        $req = $request->except('_token');
-        $token = $req["token"];
-        try {
-            $resp = (new WebpayPlus\MallTransaction)->refund($token, $req["buy_order"], $req["commerce_code"], $req["amount"]);
-        } catch (WebpayPlus\Exceptions\TransactionRefundException $e) {
-            dd($e);
+        //flujo error
+        if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
+            $view = 'webpay-mall.error';
+        }
+        //Pago abortadoas
+        elseif ($request->exists("TBK_TOKEN")) {
+            $view = 'webpay-mall.error';
+        }
+        //Flujo normal
+        elseif ($request->exists("token_ws")) {
+            $resp = $this->mallTransaction->commit($request["token_ws"]);
+            $view = 'webpay-mall.commit';
+            $data = ["resp" => $resp, "token" => $request["token_ws"]];
         }
 
+        return view($view, $data);
+    }
 
-        return view('webpayplus/mall_refund_success', ["req" => $req, "resp" => $resp]);
+
+    public function status(Request $request)
+    {
+        $req = $request->except('_token');
+        $resp = $this->mallTransaction->status($req["token"]);
+        return view('webpay-mall.status', ["resp" => $resp, "req" => $req]);
+    }
+
+    public function refund(Request $request)
+    {
+        try {
+            $req = $request->except('_token');
+            $resp = $this->mallTransaction->refund($req["token"], $req["buyOrder"], $req["childComerceCode"], $req["amount"]);
+        } catch (\Exception $e) {
+            $resp = array(
+                'msg' => $e->getMessage(),
+                'code' => $e->getCode()
+            );
+            return view('webpay-mall.refund', ["resp" => $resp, "req" => $req]);
+        }
+        return view('webpay-mall.refund', ["resp" => $resp, "req" => $req]);
     }
 }
