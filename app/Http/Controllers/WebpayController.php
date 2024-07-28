@@ -20,7 +20,7 @@ class WebpayController extends Controller
         $this->transaction = new Transaction($option);
     }
 
-    public function index()
+    public function create()
     {
 
         $createTx = [
@@ -36,24 +36,26 @@ class WebpayController extends Controller
     }
     public function commit(Request $request)
     {
+        //Timeout
+        $view = 'webpay.timeout';
+        $data = ["request" => $request];
+
         //flujo error
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
-            return view('webpay.error', ["request" => $request]);
+            $view = 'webpay.error';
         }
-
-        //Flujo normal
-        if ($request->exists("token_ws")) {
-            $resp = $this->transaction->commit($request["token_ws"]);
-            return view('webpay.commit', ["resp" => $resp, "token" => $request["token_ws"]]);
-        }
-
         //Pago abortadoas
-        if ($request->exists("TBK_TOKEN")) {
-            return view('webpay.error', ["request" => $request]);
+        elseif ($request->exists("TBK_TOKEN")) {
+            $view = 'webpay.error';
+        }
+        //Flujo normal
+        elseif ($request->exists("token_ws")) {
+            $resp = $this->transaction->commit($request["token_ws"]);
+            $view = 'webpay.commit';
+            $data = ["resp" => $resp, "token" => $request["token_ws"]];
         }
 
-        //Timeout
-        return view('webpay.timeout', ["request" => $request]);
+        return view($view, $data);
     }
 
     public function refund(Request $request)
