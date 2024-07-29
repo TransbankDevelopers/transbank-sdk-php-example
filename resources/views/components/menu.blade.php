@@ -4,7 +4,7 @@
         @foreach ([
         'Wepbay Plus' => route('webpay.create'),
         'Wepbay Plus Diferido' => route('webpay.create'),
-        'Wepbay Mall' => route('webpay.create'),
+        'Wepbay Mall' => route('webpay-mall.create'),
         'Wepbay Mall Diferido' => route('webpay.create'),
     ] as $menuItemName => $url)
             <a href="{{ $url }}" class="tbk-menu-item {{ $activeLink == $menuItemName ? 'active' : '' }}">

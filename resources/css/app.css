@@ -204,6 +204,11 @@ code {
     margin-bottom: 32px;
 }
 
+.tbk-link {
+    color: var(--tbk-red);
+    text-decoration: underline;
+}
+
 /* layout */
 
 .main-container {
