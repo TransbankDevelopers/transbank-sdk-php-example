@@ -16,16 +16,28 @@
         <li>Comienza por importar la librería WebpayPlus en tu proyecto.</li>
         <li>Luego, crea una transacción utilizando las funciones proporcionadas mediante el SDK.</li>
     </ul>
-    <x-snippet>
-        use Transbank\Webpay\Options;
-        use Transbank\Webpay\WebpayPlus\MallTransaction;
-        //configuración de la transacción
-        $option = new Options(API_KEY, COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
-        $this->mallTransaction = new mallTransaction($option);
-        $resp = $this->mallTransaction->create($buy_order, $session_id, $return_url,
-        $details);
+    <pre class="mb-32"><code>
+use Transbank\Webpay\Options;
+use Transbank\Webpay\WebpayPlus\MallTransaction;
+//configuración de la transacción
+$details = [
+    [
+        "amount" => 10000,
+        "commerce_code" => 597055555536,
+        "buy_order" => "ordenCompraDetalle1234"
+    ],
+    [
+        "amount" => 12000,
+        "commerce_code" => 597055555537,
+        "buy_order" => "ordenCompraDetalle4321"
+    ],
+];
+$option = new Options(API_KEY, COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
+$mallTransaction = new mallTransaction($option);
+$resp = $mallTransaction->create($buy_order, $session_id, $return_url,
+$details);
+    </code></pre>
 
-    </x-snippet>
 
     <h2>Paso 2: Respuesta</h2>
     <p class="mb-32">Una vez que hayas creado la transacción, aquí encontrarás los datos de respuesta generados por el
