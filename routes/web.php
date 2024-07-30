@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\WebpayController;
 use App\Http\Controllers\WebpayPlusMallController;
+use App\Http\Controllers\WebpayPlusDeferredController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,4 +23,12 @@ Route::prefix('webpay-mall')->name("webpay-mall.")->group(function () {
     Route::get('/commit', [WebpayPlusMallController::class, 'commit'])->name("commit");
     Route::post('/refund', [WebpayPlusMallController::class, 'refund'])->name("refund");
     Route::get('/status', [WebpayPlusMallController::class, 'status'])->name("status");
+});
+
+Route::prefix('webpay-plus-diferido')->name("webpay-deferred.")->group(function () {
+    Route::get('/create', [WebpayPlusDeferredController::class, 'create'])->name("create");
+    Route::get('/commit', [WebpayPlusDeferredController::class, 'commit'])->name("commit");
+    Route::post('/capture', [WebpayPlusDeferredController::class, 'capture'])->name("capture");
+    Route::post('/refund', [WebpayPlusDeferredController::class, 'refund'])->name("refund");
+    Route::get('/status', [WebpayPlusDeferredController::class, 'status'])->name("status");
 });
