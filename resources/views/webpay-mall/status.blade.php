@@ -2,7 +2,7 @@
     $navigation = ['state' => 'Consultar estado'];
 @endphp
 
-<x-layout active-link="Wepbay Plus" :navigation="$navigation">
+<x-layout active-link="Webpay Plus" :navigation="$navigation">
 
     <h1 id="state">Webpay Plus - Consultar estado de transacción</h1>
     <p class="mb-32">Puedes solicitar el estado de una transacción hasta 7 días después de su realización. No hay límite

@@ -42,7 +42,7 @@ class WebpayPlusDeferredController extends Controller
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
             $view = 'webpay-deferred.error';
         }
-        //Pago abortadoas
+        //Pago abortado
         elseif ($request->exists("TBK_TOKEN")) {
             $view = 'webpay-deferred.error';
         }

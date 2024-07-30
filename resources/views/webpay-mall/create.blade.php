@@ -2,7 +2,7 @@
     $navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
 @endphp
 
-<x-layout active-link="Wepbay Mall" :navigation="$navigation">
+<x-layout active-link="Webpay Mall" :navigation="$navigation">
     <h1 id="create">Webpay Mall - Creación de transacción Mall
     </h1>
     <p class="mb-32">

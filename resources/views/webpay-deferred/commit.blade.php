@@ -2,7 +2,7 @@
     $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Ejemplo'];
 @endphp
 
-<x-layout active-link="Wepbay Plus Diferido" :navigation="$navigation">
+<x-layout active-link="Webpay Plus Diferido" :navigation="$navigation">
 
     <h1 id="confirm">Webpay Plus Diferido - Confirmar transacción</h1>
     <p class="mb-32">En este paso es importante confirmar la transacción para notificar a Transbank que hemos recibido

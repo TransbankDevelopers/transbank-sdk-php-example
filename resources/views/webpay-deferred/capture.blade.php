@@ -2,7 +2,7 @@
     $navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
 @endphp
 
-<x-layout active-link="Wepbay Plus Diferido" :navigation="$navigation">
+<x-layout active-link="Webpay Plus Diferido" :navigation="$navigation">
     <h1 id="create">Webpay Plus Diferido - Creación de transacción</h1>
     <p class="mb-32">
         En este paso debemos capturar la transacción para realmente capturar el dinero que habia sido previamente
@@ -50,7 +50,7 @@
                 <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>
             </div>
             <div class="tbk-card-footer ">
-                <button class="tbk-button primary">REEBOLSAR</button>
+                <button class="tbk-button primary">REEMBOLSAR</button>
             </div>
         </div>
     </form>

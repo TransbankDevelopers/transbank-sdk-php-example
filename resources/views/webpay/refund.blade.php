@@ -2,7 +2,7 @@
     $navigation = ['refund' => 'Reembolsar'];
 @endphp
 
-<x-layout active-link="Wepbay Plus" :navigation="$navigation">
+<x-layout active-link="Webpay Plus" :navigation="$navigation">
 
     <h1 id="refund">Webpay Plus - Reembolsar</h1>
     <p class="mb-32">En esta etapa, tienes la opción de solicitar el reembolso del monto al titular de la tarjeta.
