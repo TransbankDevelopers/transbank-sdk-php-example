@@ -3,7 +3,7 @@
         <span class="tbk-menu-item-text">Webpay Plus</span>
         @foreach ([
         'Wepbay Plus' => route('webpay.create'),
-        'Wepbay Plus Diferido' => route('webpay.create'),
+        'Wepbay Plus Diferido' => route('webpay-deferred.create'),
         'Wepbay Mall' => route('webpay-mall.create'),
         'Wepbay Mall Diferido' => route('webpay.create'),
     ] as $menuItemName => $url)
