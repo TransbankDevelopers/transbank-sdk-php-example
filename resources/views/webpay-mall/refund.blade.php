@@ -33,7 +33,7 @@
         </a> podrás ver
         mayor información sobre las condiciones y casos para anular o reversar transacciones.</p>
     <x-snippet>
-        $resp = $mallTransaction->refund($token, $buyOrder, $childComerceCode,
+        $resp = $mallTransaction->refund($token, $buyOrder, $childCommerceCode,
         $amount);
     </x-snippet>
 

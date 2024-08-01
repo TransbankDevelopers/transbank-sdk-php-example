@@ -57,7 +57,7 @@ class WebpayPlusMallDeferredController extends Controller
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
             $view = 'webpay-mall-deferred.error';
         }
-        //Pago abortadoas
+        //Pago abortados
         elseif ($request->exists("TBK_TOKEN")) {
             $view = 'webpay-mall-deferred.error';
         }
@@ -83,7 +83,7 @@ class WebpayPlusMallDeferredController extends Controller
     {
         try {
             $req = $request->except('_token');
-            $resp = $this->mallTransaction->refund($req["token"], $req["buyOrder"], $req["childComerceCode"], $req["amount"]);
+            $resp = $this->mallTransaction->refund($req["token"], $req["buyOrder"], $req["childCommerceCode"], $req["amount"]);
         } catch (\Exception $e) {
             $resp = array(
                 'msg' => $e->getMessage(),
@@ -98,7 +98,7 @@ class WebpayPlusMallDeferredController extends Controller
     {
         try {
             $req = $request->except('_token');
-            $resp = $this->mallTransaction->capture($req["childComerceCode"], $req["token"], $req["buyOrder"], $req["authorizationCode"], $req["amount"]);
+            $resp = $this->mallTransaction->capture($req["childCommerceCode"], $req["token"], $req["buyOrder"], $req["authorizationCode"], $req["amount"]);
         } catch (\Exception $e) {
             $resp = array(
                 'msg' => $e->getMessage(),

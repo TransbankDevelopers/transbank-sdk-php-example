@@ -68,7 +68,7 @@
                 <div class="input-container">
                     <label for="amount" class="tbk-label">Monto a capturar:</label>
                     <input type="text" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
-                    <input type="hidden" name="childComerceCode" class="tbk-input-text"
+                    <input type="hidden" name="childCommerceCode" class="tbk-input-text"
                         value={{ $detail->commerceCode }}>
                     <input type="hidden" name="authorizationCode" class="tbk-input-text"
                         value={{ $detail->authorizationCode }}>

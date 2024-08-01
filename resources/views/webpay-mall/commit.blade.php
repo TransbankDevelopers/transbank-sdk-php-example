@@ -64,7 +64,7 @@
                 <div class="input-container">
                     <label for="amount" class="tbk-label">Monto a reembolsar:</label>
                     <input type="text" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
-                    <input type="hidden" name="childComerceCode" class="tbk-input-text"
+                    <input type="hidden" name="childCommerceCode" class="tbk-input-text"
                         value={{ $detail->commerceCode }}>
                     <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
                     <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>

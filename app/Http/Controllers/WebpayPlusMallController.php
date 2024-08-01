@@ -82,7 +82,7 @@ class WebpayPlusMallController extends Controller
     {
         try {
             $req = $request->except('_token');
-            $resp = $this->mallTransaction->refund($req["token"], $req["buyOrder"], $req["childComerceCode"], $req["amount"]);
+            $resp = $this->mallTransaction->refund($req["token"], $req["buyOrder"], $req["childCommerceCode"], $req["amount"]);
         } catch (\Exception $e) {
             $resp = array(
                 'msg' => $e->getMessage(),

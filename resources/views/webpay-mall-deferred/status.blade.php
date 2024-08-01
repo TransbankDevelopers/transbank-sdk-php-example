@@ -13,7 +13,7 @@
     <h2>Paso 1 - Petición:</h2>
     <p class="mb-32">
         Para realizar la consulta, necesitas el token de la transacción de la cual deseas obtener el estado. Utiliza
-        este token para realizar una llamada a WebpayPlus.Transaction.
+        este token para realizar una llamada a WebpayPlus.MallTransaction.
     </p>
 
     <x-snippet> $resp = $mallTransaction->status($token);</x-snippet>

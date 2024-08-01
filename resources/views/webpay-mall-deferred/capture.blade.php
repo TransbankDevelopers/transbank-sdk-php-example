@@ -41,8 +41,8 @@
             <div class="input-container">
                 <label for="amount" class="tbk-label">Monto a reembolsar:</label>
                 <input type="text" name="amount" class="tbk-input-text" value={{ $resp->capturedAmount }}>
-                <input type="hidden" name="childComerceCode" class="tbk-input-text"
-                    value={{ $request['childComerceCode'] }}>
+                <input type="hidden" name="childCommerceCode" class="tbk-input-text"
+                    value={{ $request['childCommerceCode'] }}>
                 <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $request['buyOrder'] }}>
                 <input type="hidden" name="token" class="tbk-input-text" value={{ $request['token'] }}>
             </div>
