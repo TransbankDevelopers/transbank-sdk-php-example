@@ -23,7 +23,7 @@ class WebpayPlusDeferredController extends Controller
 
         $createTx = [
             'buyOrder' => "O-" . rand(1, 10000),
-            "sessionId" => "S-" . (string)(rand(1, 10000)),
+            "sessionId" => "S-" . rand(1, 10000),
             'returnUrl' => url('/') . '/webpay-plus-diferido/commit',
             'amount' => rand(1000, 2000)
         ];

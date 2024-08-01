@@ -22,7 +22,7 @@ class WebpayPlusMallController extends Controller
 
         $createTx = [
             "buy_order" => "O-" . rand(1, 10000),
-            "session_id" => "S-" . (string)(rand(1, 10000)),
+            "session_id" => "S-" . rand(1, 10000),
             "return_url" => url("/") . "/webpay-mall/commit",
             "details" => [
                 [
