@@ -35,12 +35,6 @@
         realizada.
     </p>
 
-    <p class="mb-32">
-        Por último, con la respuesta del servicio que confirma la creación de la transacción, procedemos
-        a crear el formulario de pago. Para fines de este ejemplo, haremos visible el campo "token_ws", el cual es
-        esencial para completar el proceso de pago de manera exitosa.
-    </p>
-
     <form action={{ route('webpay-deferred.refund') }} method="POST">
         @csrf
         <div class="tbk-card">

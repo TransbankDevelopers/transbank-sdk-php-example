@@ -3,7 +3,7 @@
 @endphp
 
 <x-layout active-link="Webpay Mall" :navigation="$navigation">
-    <h1 id="refund">Webpay Plus - Reembolsar</h1>
+    <h1 id="refund">Webpay Mall - Reembolsar</h1>
     <p class="mb-32">En esta etapa, tienes la opción de solicitar el reembolso del monto al titular de la tarjeta.
         Dependiendo del monto y el tiempo transcurrido desde la transacción, este proceso podría resultar en una
         Reversa, Anulación o Anulación Parcial.
