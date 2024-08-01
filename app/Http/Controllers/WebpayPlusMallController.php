@@ -21,24 +21,25 @@ class WebpayPlusMallController extends Controller
     {
 
         $createTx = [
-            'buy_order' => "O-" . rand(1, 10000),
+            "buy_order" => "O-" . rand(1, 10000),
             "session_id" => "S-" . (string)(rand(1, 10000)),
-            'return_url' => url('/') . '/webpay-mall/commit',
-        ];
-        $details = [
-            [
-                "amount" => 10000,
-                "commerce_code" => 597055555536,
-                "buy_order" => "ordenCompraDetalle1234"
-            ],
-            [
-                "amount" => 12000,
-                "commerce_code" => 597055555537,
-                "buy_order" => "ordenCompraDetalle4321"
-            ],
+            "return_url" => url("/") . "/webpay-mall/commit",
+            "details" => [
+                [
+                    "amount" => 10000,
+                    "commerce_code" => 597055555536,
+                    "buy_order" => "ordenCompraDetalle1234"
+                ],
+                [
+                    "amount" => 12000,
+                    "commerce_code" => 597055555537,
+                    "buy_order" => "ordenCompraDetalle4321"
+                ],
+            ]
         ];
 
-        $resp = $this->mallTransaction->create($createTx["buy_order"], $createTx["session_id"],  $createTx["return_url"], $details);
+
+        $resp = $this->mallTransaction->create($createTx["buy_order"], $createTx["session_id"],  $createTx["return_url"], $createTx["details"]);
 
         return view('webpay-mall.create', ["request" => $createTx, "resp" => $resp]);
     }
