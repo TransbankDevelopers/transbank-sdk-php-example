@@ -2,9 +2,9 @@
     $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Otras operaciones'];
 @endphp
 
-<x-layout active-link="Webpay Mall" :navigation="$navigation">
+<x-layout active-link="Webpay Mall Diferido" :navigation="$navigation">
 
-    <h1 id="confirm">Webpay Mall - Confirmar transacción</h1>
+    <h1 id="confirm">Webpay Mall diferido - Confirmar transacción</h1>
     <p class="mb-32">En este paso es importante confirmar la transacción para notificar a Transbank que hemos recibido
         exitosamente los detalles de la transacción. Es importante destacar que si la confirmación no se realiza, la
         transacción será reversada.
@@ -25,7 +25,7 @@
     </p>
 
     <x-snippet>
-        $resp = $transaction->commit($token);
+        $resp = $mallTransaction->commit($token);
     </x-snippet>
 
     <h2>Paso 3 - Respuesta:</h2>
@@ -37,43 +37,52 @@
     <x-snippet :content="$resp" />
 
 
-    <h2>¡Listo!</h2>
+    <h2 id="other">¡Listo!</h2>
     <p class="mb-32">
-        Con la confirmación exitosa, ya puedes mostrar al usuario una página de éxito de la transacción,
-        proporcionándole la tranquilidad de que el proceso ha sido completado con éxito.
+        Es importante tener en cuenta que la transacción aún no ha sido capturada, por lo que hay que dejarle saber al
+        tarjetahabiente que necesita un paso más; solo se ha retenido el saldo en su tarjeta. Después de confirmar la
+        transacción, puedes:
     </p>
-    <p>
-        Después de confirmar la transacción, podrás realizar otras operaciones útiles:
-    </p>
-    <ul id="other">
+
+    <ul class="mb-32">
         <li>
-            <span class="fw-700">Reembolsar:</span> Puedes reversar o anular el pago según ciertas condiciones
-            comerciales.
+            Capturar la transacción.
         </li>
         <li>
-            <span class="fw-700">Consultar Estado:</span> Hasta 7 días después de la transacción, podrás consultar el
-            estado de la
-            transacción.
+            Revertir la transacción si es necesario.
+        </li>
+        <li>
+            Consultar el estado de la transacción hasta 7 días después de realizada.
         </li>
     </ul>
 
+    <p class="mb-32">
+        Capturar la transacción para realmente capturar el dinero que habia sido previamente
+        reservado.
+    </p>
+
     @foreach ($resp->details as $detail)
-        <form action={{ route('webpay-mall.refund') }} method="POST">
+        <form action={{ route('webpay-mall-deferred.capture') }} method="POST">
             @csrf
             <div class="tbk-card">
                 <div class="input-container">
-                    <label for="amount" class="tbk-label">Monto a reembolsar:</label>
+                    <label for="amount" class="tbk-label">Monto a capturar:</label>
                     <input type="text" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
                     <input type="hidden" name="childCommerceCode" class="tbk-input-text"
                         value={{ $detail->commerceCode }}>
+                    <input type="hidden" name="authorizationCode" class="tbk-input-text"
+                        value={{ $detail->authorizationCode }}>
+
                     <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
                     <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>
                 </div>
                 <div class="tbk-card-footer ">
-                    <button class="tbk-button primary">REEMBOLSAR</button>
+                    <button class="tbk-button primary">Capturar</button>
                 </div>
             </div>
         </form>
     @endforeach
-    <a href={{ route('webpay-mall.status', ['token' => $token]) }} class="tbk-button primary mb-32">CONSULTAR ESTADO</a>
+    <a href={{ route('webpay-mall-deferred.status', ['token' => $token]) }} class="tbk-button primary mb-32">
+        CONSULTAR ESTADO
+    </a>
 </x-layout>
