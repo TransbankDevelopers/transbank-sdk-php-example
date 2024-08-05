@@ -1,14 +1,13 @@
-# ChatBot para soporte
+# Proyecto de Ejemplo SDK PHP
 
 ## Descripción
 
-ChatBot de Slack que se conecta con un LLM para apoyar el soporte a las comunidades.
+Proyecto de ejemplo mostrando el paso a paso de como usar el SDK PHP de transbank
 
 ## Requisitos
 
--   Node 18+
--   Slack Bolt
--   Dotenv
+-   PHP 8.3+
+-   laravel 11
 
 ## Iniciar aplicación
 

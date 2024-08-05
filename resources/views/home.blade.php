@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" class="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <title>Transbank developers</title>
+    <title>Transbank Developers</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -13,7 +13,7 @@
         @include('partials.header')
         <div class="flex-col">
             <div class="tbk-home-container">
-                <h1>Proyectos de Ejemplo del SDK para PHP</h1>
+                <h1 class="title">Proyectos de Ejemplo del SDK para PHP</h1>
                 <div class="tbk-home-intro">
                     <Image src="{{ asset('images/php-img.svg') }}" alt="Node.js Logo" class="self-center" width="168"
                         height="120" class="aling-self-start" />
@@ -92,7 +92,7 @@
         </div>
         @include('partials.footer')
     </div>
-
+    @stack('scripts')
 </body>
 
 </html>
