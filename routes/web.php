@@ -4,6 +4,7 @@ use App\Http\Controllers\WebpayController;
 use App\Http\Controllers\WebpayPlusMallController;
 use App\Http\Controllers\WebpayPlusDeferredController;
 use App\Http\Controllers\WebpayPlusMallDeferredController;
+use App\Http\Controllers\OneclickMallController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,10 +34,20 @@ Route::prefix('webpay-plus-diferido')->name("webpay-deferred.")->group(function 
     Route::post('/refund', [WebpayPlusDeferredController::class, 'refund'])->name("refund");
     Route::get('/status', [WebpayPlusDeferredController::class, 'status'])->name("status");
 });
+
 Route::prefix('webpay-mall-diferido')->name("webpay-mall-deferred.")->group(function () {
     Route::get('/create', [WebpayPlusMallDeferredController::class, 'create'])->name("create");
     Route::get('/commit', [WebpayPlusMallDeferredController::class, 'commit'])->name("commit");
     Route::post('/capture', [WebpayPlusMallDeferredController::class, 'capture'])->name("capture");
     Route::post('/refund', [WebpayPlusMallDeferredController::class, 'refund'])->name("refund");
     Route::get('/status', [WebpayPlusMallDeferredController::class, 'status'])->name("status");
+});
+
+Route::prefix('oneclick-mall')->name("oneclick-mall.")->group(function () {
+    Route::get('/start', [OneclickMallController::class, 'startInscription'])->name("start");
+    Route::get('/finish', [OneclickMallController::class, 'finishInscription'])->name("finish");
+    Route::get('/authorize', [OneclickMallController::class, 'authorizeMall'])->name("authorize");
+    Route::get('/delete', [OneclickMallController::class, 'deleteInscription'])->name("delete");
+    Route::post('/refund', [OneclickMallController::class, 'refund'])->name("refund");
+    Route::get('/status', [OneclickMallController::class, 'status'])->name("status");
 });
