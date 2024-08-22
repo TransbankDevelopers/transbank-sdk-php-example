@@ -77,7 +77,7 @@ $details);
         esencial para completar el proceso de pago de manera exitosa.
     </p>
 
-    <form action={{ $resp->url }} action="POST">
+    <form action={{ $resp->url }} method="POST">
         <div class="tbk-card">
             <span class="tbk-card-title">Formulario de redirección</span>
             <div class="input-container">

@@ -56,7 +56,7 @@
         esencial para completar el proceso de pago de manera exitosa.
     </p>
 
-    <form action={{ $respond->url }} action="POST">
+    <form action={{ $respond->url }} method="POST">
         <div class="tbk-card">
             <span class="tbk-card-title">Formulario de redirección</span>
             <div class="input-container">
