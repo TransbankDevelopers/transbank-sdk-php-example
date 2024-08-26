@@ -46,29 +46,36 @@ class OneclickMallController extends Controller
     public function finishInscription(Request $request)
     {
         try {
-            //flujo error
-            if ($request->exists("TBK_ORDEN_COMPRA")) {
-                return view('error-page');
-            }
-
+            $view = 'error-page';
+            $data = ["error" => $request];
+            $params = $request->only(['TBK_ORDEN_COMPRA', 'TBK_TOKEN', 'TBK_ID_SESION']);
             $token = $request["TBK_TOKEN"];
             $userName = session('username', '');
+
+            if ($request->exists("TBK_ORDEN_COMPRA")) {
+                return view('oneclick-mall.recoverTransaction', ["req" => $params]);
+            }
+
             $resp = $this->mallInscription->finish($token);
 
-
             if ($resp->responseCode == self::REJECTED) {
+                $view = 'oneclick-mall.rejected';
+                $data = ["resp" => $resp, "token" => $token];
                 return view('oneclick-mall.rejected', ["resp" => $resp, "token" => $token]);
-            }
-
-            if ($resp->responseCode == self::TIMEOUT) {
+            } else if ($resp->responseCode == self::TIMEOUT) {
+                $view = 'oneclick-mall.timeout';
+                $data = ["resp" => $resp];
                 return view('oneclick-mall.timeout', ["resp" => $resp]);
+            } else {
+                $table = [
+                    "username" => $userName,
+                    "tbk_user" => $resp->tbkUser,
+                ];
+                $data = ["resp" => $resp, "token" => $token, "table" => $table];
+                $view = 'oneclick-mall.finish';
             }
 
-            $table = [
-                "username" => $userName,
-                "tbk_user" => $resp->tbkUser,
-            ];
-            return view('oneclick-mall.finish', ["resp" => $resp, "token" => $token, "table" => $table]);
+            return view($view, $data);
         } catch (\Exception $e) {
             $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
             return view('error-page', ["error" => $error]);
