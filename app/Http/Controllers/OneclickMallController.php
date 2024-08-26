@@ -10,6 +10,8 @@ use Transbank\Webpay\Oneclick\MallTransaction;
 class OneclickMallController extends Controller
 {
 
+    const  TIMEOUT = -96;
+    const REJECTED = -1;
     const COMMERCE_CODE = "597055555541";
     const API_KEY = "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C";
     private MallInscription $mallInscription;
@@ -24,15 +26,21 @@ class OneclickMallController extends Controller
 
     public function startInscription()
     {
-        $startTx = [
-            "username" => "User-" . random_int(1, 10000),
-            "email" => "user." . random_int(1, 10000) . "@example.cl",
-            "response_url" => url("/") . "/oneclick-mall/finish"
-        ];
+        try {
 
-        session(['username' => $startTx["username"]]);
-        $resp = $this->mallInscription->start($startTx["username"], $startTx["email"], $startTx["response_url"]);
-        return view('oneclick-mall.start', ["request" => $startTx, "resp" => $resp]);
+            $startTx = [
+                "username" => "User-" . random_int(1, 10000),
+                "email" => "user." . random_int(1, 10000) . "@example.cl",
+                "response_url" => url("/") . "/oneclick-mall/finish"
+            ];
+
+            session(['username' => $startTx["username"]]);
+            $resp = $this->mallInscription->start($startTx["username"], $startTx["email"], $startTx["response_url"]);
+            return view('oneclick-mall.start', ["request" => $startTx, "resp" => $resp]);
+        } catch (\Exception $e) {
+            $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
+            return view('error-page', ["error" => $error]);
+        }
     }
 
     public function finishInscription(Request $request)
@@ -48,11 +56,11 @@ class OneclickMallController extends Controller
             $resp = $this->mallInscription->finish($token);
 
 
-            if ($resp->responseCode == -1) {
+            if ($resp->responseCode == self::REJECTED) {
                 return view('oneclick-mall.rejected', ["resp" => $resp, "token" => $token]);
             }
 
-            if ($resp->responseCode == -96) {
+            if ($resp->responseCode == self::TIMEOUT) {
                 return view('oneclick-mall.timeout', ["resp" => $resp]);
             }
 
@@ -110,23 +118,31 @@ class OneclickMallController extends Controller
 
     public function status(Request $request)
     {
-        $buyOrder = $request["buyOrder"];
-
-        $resp = $this->mallTransaction->status($buyOrder);
-
-        return view('oneclick-mall.status', ["resp" => $resp]);
+        try {
+            $buyOrder = $request["buyOrder"];
+            $resp = $this->mallTransaction->status($buyOrder);
+            return view('oneclick-mall.status', ["resp" => $resp]);
+        } catch (\Exception $e) {
+            $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
+            return view('error-page', ["error" => $error]);
+        }
     }
 
     public function refund(Request $request)
     {
-        $req = $request->except('_token');
-        $buyOrder = $req["buyOrder"];
-        $childCommerceCode = $req["childCommerceCode"];
-        $childBuyOrder = $req["childBuyOrder"];
-        $amount = $req["amount"];
+        try {
+            $req = $request->except('_token');
+            $buyOrder = $req["buyOrder"];
+            $childCommerceCode = $req["childCommerceCode"];
+            $childBuyOrder = $req["childBuyOrder"];
+            $amount = $req["amount"];
 
-        $resp = $this->mallTransaction->refund($buyOrder, $childCommerceCode, $childBuyOrder, $amount);
+            $resp = $this->mallTransaction->refund($buyOrder, $childCommerceCode, $childBuyOrder, $amount);
 
-        return view('oneclick-mall.refund', ["resp" => $resp]);
+            return view('oneclick-mall.refund', ["resp" => $resp]);
+        } catch (\Exception $e) {
+            $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
+            return view('error-page', ["error" => $error]);
+        }
     }
 }
