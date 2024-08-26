@@ -32,6 +32,6 @@
     <x-snippet :content="$resp" />
 
 
-    <p class="mb-32">En este caso la inscripción fue rechaza, tendras que repetir el proceso</p>
+    <p class="mb-32">En este caso la inscripción fue rechazada, tendrás que repetir el proceso</p>
 
 </x-layout>
