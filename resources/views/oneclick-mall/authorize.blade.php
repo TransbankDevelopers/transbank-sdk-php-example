@@ -69,7 +69,7 @@
             <div class="tbk-card">
                 <div class="card-multi-field">
                     <div class="input-container">
-                        <label for="buyOrder" class="tbk-label">Orden compra::</label>
+                        <label for="buyOrder" class="tbk-label">Orden compra:</label>
                         <input type="text" name="buyOrder" class="tbk-input-text" value={{ $resp->buyOrder }}>
                     </div>
                     <div class="input-container">
