@@ -20,7 +20,7 @@
     <h2>Paso 2: Respuesta</h2>
     <p class="mb-32">
         En caso de éxito, Transbank responderá con un status code 204 (No Content), y el SDK retornará un
-        InsciptionDeleteResponse con success: true y code: (statuscode). La eliminación de la inscripción se ha
+        InscriptionDeleteResponse con success: true y code: (statuscode). La eliminación de la inscripción se ha
         realizado de manera exitosa.
     </p>
 
