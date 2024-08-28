@@ -2,48 +2,33 @@
     $navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
 @endphp
 
-<x-layout active-link="Webpay Mall Diferido" :navigation="$navigation">
-    <h1 id="create">Webpay Mall Diferido - Creación de transacción Mall
-
-    </h1>
+<x-layout active-link="Oneclick Mall" :navigation="$navigation">
+    <h1 id="create">Oneclick Mall - Creación de transacción</h1>
     <p class="mb-32">
-        En esta etapa, se procederá a la creación de una transacción con el fin de obtener un identificador
-        único. Esto nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago en el siguiente paso.
-
+        En esta etapa comienza el proceso de inscripción del medio de pago. Este paso inicial es fundamental, para
+        dirigir al tarjetahabiente al formulario de inscripción.
     </p>
 
     <h2>Paso 1: Petición</h2>
     <ul class="mb-32">
-        <li>Comienza por importar la librería WebpayPlus en tu proyecto.</li>
-        <li>Luego, crea una transacción utilizando las funciones proporcionadas mediante el SDK.</li>
+        <li>Comienza por importar la librería Oneclick en tu proyecto.</li>
+        <li>Después podrás iniciar una inscripción.</li>
     </ul>
-    <pre class="mb-32"><code>
-use Transbank\Webpay\Options;
-use Transbank\Webpay\WebpayPlus\MallTransaction;
-//configuración de la transacción
-$details = [
-    [
-        "amount" => 10000,
-        "commerce_code" => 597055555536,
-        "buy_order" => "ordenCompraDetalle1234"
-    ],
-    [
-        "amount" => 12000,
-        "commerce_code" => 597055555537,
-        "buy_order" => "ordenCompraDetalle4321"
-    ],
-];
-$option = new Options(API_KEY, COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
-$mallTransaction = new mallTransaction($option);
-$resp = $mallTransaction->create($buy_order, $session_id, $return_url,
-$details);
-    </code></pre>
-
+    <x-snippet>
+        use Illuminate\Http\Request;
+        use Transbank\Webpay\Options;
+        use Transbank\Webpay\Oneclick\MallInscription;
+        use Transbank\Webpay\Oneclick\MallTransaction;
+        //configuración de la transacción
+        $option = new Options(self::API_KEY, self::COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
+        $mallInscription = new MallInscription($option);
+        $mallTransaction = new MallTransaction($option);
+        $resp = $mallInscription->start($startTx["userName"], $startTx["email"], $startTx["responseUrl"]);
+    </x-snippet>
 
     <h2>Paso 2: Respuesta</h2>
     <p class="mb-32">
-        Una vez que hayas creado la transacción, aquí encontrarás los datos de respuesta generados por el
-        proceso.
+        Una vez que hayas iniciado la inscripción, aquí encontrarás los datos de respuesta generados por el proceso.
     </p>
 
     <x-snippet :content="$resp" />
@@ -77,15 +62,15 @@ $details);
         esencial para completar el proceso de pago de manera exitosa.
     </p>
 
-    <form action={{ $resp->url }} method="POST">
+    <form action={{ $resp->urlWebpay }} method="POST">
         <div class="tbk-card">
             <span class="tbk-card-title">Formulario de redirección</span>
             <div class="input-container">
                 <label for="tokew_ws" class="tbk-label">Token</label>
-                <input type="text" name="token_ws" class="tbk-input-text" value={{ $resp->token }} required>
+                <input type="text" name="TBK_TOKEN" class="tbk-input-text" value={{ $resp->token }} required>
             </div>
             <div class="tbk-card-footer">
-                <button class="tbk-button primary">PAGAR</button>
+                <button class="tbk-button primary">INSCRIBIR</button>
             </div>
         </div>
     </form>

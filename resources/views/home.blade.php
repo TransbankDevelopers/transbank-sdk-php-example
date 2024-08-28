@@ -52,7 +52,7 @@
                                 para el tarjetahabiente, una vez que este haya registrado su tarjeta en el comercio.
                             </p>
                         </div>
-                        <a href={{ route('oneclick-mall') }} class="card-info-link">
+                        <a href={{ route('oneclick-mall.start') }} class="card-info-link">
                             Ver ejemplos y modalidades
                         </a>
                     </div>

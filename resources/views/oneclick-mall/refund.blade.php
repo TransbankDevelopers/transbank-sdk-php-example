@@ -2,8 +2,9 @@
     $navigation = ['refund' => 'Reembolsar'];
 @endphp
 
-<x-layout active-link="Webpay Mall Diferido" :navigation="$navigation">
-    <h1 id="refund">Webpay Mall Diferido - Reembolsar</h1>
+<x-layout active-link="Oneclick Mall" :navigation="$navigation">
+
+    <h1 id="refund">Oneclick Mall - Reembolsar</h1>
     <p class="mb-32">
         En esta etapa, tienes la opción de solicitar el reembolso del monto al titular de la tarjeta.
         Dependiendo del monto y el tiempo transcurrido desde la transacción, este proceso podría resultar en una
@@ -11,22 +12,26 @@
     </p>
 
     <h2>Paso 1 - Petición:</h2>
-    <p class="mb-32">
-        Para llevar a cabo el reembolso, necesitas proporcionar el token de la transacción, el monto que
-        quieres reversar, el código de comercio de la tienda hijo y el orden de compra del detalle de la transacción.
+    <p class="mb-16">
+        Para realizar el reembolso, necesitarás la siguiente información:
     </p>
 
+    <ul class="mb-32">
+        <li>Orden de compra de la transacción.</li>
+        <li>Monto que deseas reversar.</li>
+        <li>Código de comercio de la tienda hijo.</li>
+        <li>Orden de compra del detalle de la transacción.</li>
+    </ul>
+
     <p class="mb-32">
-        Las transacciones de Webpay se pueden anular o reversar dadas algunas condiciones. Para cualquiera
-        de éstas operaciones se utiliza el mismo servicio web que discernirá si se realizará una reversa o una
-        anulación.
+        Las transacciones de Webpay se pueden anular o reversar dadas algunas condiciones. Para cualquiera de éstas
+        operaciones se utiliza el mismo servicio web que discernirá si se realizará una reversa o una anulación.
 
         Para poder ejecutar una reversa ésta debe ser realizada antes de las 3 horas de efectuada la confirmación por el
         monto total y en compras con tarjeta de crédito, débito o prepago.
 
         Una vez pasadas las tres horas, siempre se ejecutará una anulación.
     </p>
-
     <ul class="mb-32">
         <li>
             En transacciones con tarjeta de débito o prepago solo es posible anular por el monto total.
@@ -46,14 +51,15 @@
     </p>
 
     <x-snippet>
-        $resp = $mallTransaction->refund($token, $buyOrder, $childCommerceCode,
-        $amount);
+        $resp = $mallTransaction->refund($buyOrder, $childCommerceCode, $childBuyOrder, $amount);
     </x-snippet>
 
-    <h2>Paso 2: Respuesta</h2>
-    <p class="mb-32">Transbank responderá con el resultado del proceso de reembolso, indicando si se ha realizado una
-        Reversa, Anulación o Anulación Parcial.
+    <p class="mb-32">Paso 2 - Respuesta:</p>
+    <p class="mb-32">
+        Transbank responderá con el resultado de la reversa o anulación. Analiza esta respuesta para confirmar que el
+        reembolso se ha procesado correctamente.
     </p>
 
     <x-snippet :content="$resp" />
+
 </x-layout>
