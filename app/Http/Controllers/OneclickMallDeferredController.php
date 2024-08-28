@@ -61,7 +61,7 @@ class OneclickMallDeferredController extends Controller
                 $view = 'oneclick-mall-deferred.rejected';
                 $data = ["resp" => $resp, "token" => $token];
                 return view('oneclick-mall-deferred.rejected', ["resp" => $resp, "token" => $token]);
-            } else if ($resp->responseCode == self::TIMEOUT) {
+            } elseif ($resp->responseCode == self::TIMEOUT) {
                 $view = 'oneclick-mall-deferred.timeout';
                 $data = ["resp" => $resp];
                 return view('oneclick-mall-deferred.timeout', ["resp" => $resp]);
