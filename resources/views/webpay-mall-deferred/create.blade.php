@@ -24,12 +24,12 @@ use Transbank\Webpay\WebpayPlus\MallTransaction;
 $details = [
     [
         "amount" => 10000,
-        "commerce_code" => 597055555536,
+        "commerce_code" => 597055555583,
         "buy_order" => "ordenCompraDetalle1234"
     ],
     [
         "amount" => 12000,
-        "commerce_code" => 597055555537,
+        "commerce_code" => 597055555582,
         "buy_order" => "ordenCompraDetalle4321"
     ],
 ];
