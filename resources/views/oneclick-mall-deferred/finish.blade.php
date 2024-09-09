@@ -2,8 +2,8 @@
     $navigation = ['finish' => 'Finalizar inscripción', 'authorize' => 'Autorizar una transacción'];
 @endphp
 
-<x-layout active-link="Oneclick Mall" :navigation="$navigation">
-    <h1 id="finish">Oneclick Mall - Finalizar inscripción</h1>
+<x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
+    <h1 id="finish">Oneclick Mall Diferido - Finalizar inscripción</h1>
     <p class="mb-32">
         En esta fase, completaremos el proceso de inscripción, permitiéndonos posteriormente realizar cargos a la
         tarjeta que el tarjetahabiente haya inscrito.
@@ -48,11 +48,11 @@
             <p>Después de una inscripción exitosa, tienen dos opciones: autorizar un pago o borrar al usuario que se
                 acaba de inscribir.</p>
             <div class="card-right-container">
-                <a href={{ route('oneclick-mall.delete', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
+                <a href={{ route('oneclick-mall-deferred.delete', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
                     class="tbk-button primary">
                     BORRAR USUARIO
                 </a>
-                <a href={{ route('oneclick-mall.authorize', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
+                <a href={{ route('oneclick-mall-deferred.authorize', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
                     class="tbk-button primary">AUTORIZAR UN PAGO</a>
             </div>
         </div>

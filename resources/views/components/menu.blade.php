@@ -17,7 +17,7 @@
         <span class="tbk-menu-item-text">Webpay Oneclick</span>
         @foreach ([
         'Oneclick Mall' => route('oneclick-mall.start'),
-        'Oneclick Mall Diferido' => route('webpay.create'),
+        'Oneclick Mall Diferido' => route('oneclick-mall-deferred.start'),
     ] as $menuItemName => $url)
             <a href="{{ $url }}" class="tbk-menu-item {{ $activeLink == $menuItemName ? 'active' : '' }}">
                 {{ $menuItemName }}
