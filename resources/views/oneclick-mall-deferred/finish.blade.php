@@ -53,7 +53,7 @@
                     BORRAR USUARIO
                 </a>
                 <a href={{ route('oneclick-mall-deferred.authorize', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
-                    class="tbk-button primary">AUTHORIZAR UN PAGO</a>
+                    class="tbk-button primary">AUTORIZAR UN PAGO</a>
             </div>
         </div>
 

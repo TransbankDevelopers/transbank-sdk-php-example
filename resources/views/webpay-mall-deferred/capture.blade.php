@@ -5,9 +5,9 @@
 <x-layout active-link="Webpay Mall Diferido" :navigation="$navigation">
 
     <h1 id="confirm">Webpay Mall diferido - capturar transacción</h1>
-    <p class="mb-32"> En este paso debemos capturar la transacción para realmente capturar el dinero que habia sido
-        previamente
-        reservado al hacer la transacción
+    <p class="mb-32">
+        En este paso debemos capturar la transacción para hacer efectiva la reserva de dinero realizada
+        previamente en la etapa de autorización.
     </p>
 
     <h2>Paso 1: Petición</h2>
