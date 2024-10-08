@@ -28,12 +28,12 @@ class WebpayPlusMallController extends Controller
                 [
                     "amount" => 10000,
                     "commerce_code" => 597055555536,
-                    "buy_order" => "ordenCompraDetalle1234"
+                    "buy_order" => "ordenCompraDetalle" . rand(1, 10000)
                 ],
                 [
                     "amount" => 12000,
                     "commerce_code" => 597055555537,
-                    "buy_order" => "ordenCompraDetalle4321"
+                    "buy_order" => "ordenCompraDetalle" . rand(1, 10000)
                 ],
             ]
         ];
