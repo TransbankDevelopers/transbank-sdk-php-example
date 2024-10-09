@@ -21,19 +21,19 @@ class WebpayPlusMallDeferredController extends Controller
     {
 
         $createTx = [
-            'buy_order' => "O-" . rand(1, 10000),
-            "session_id" => "S-" . rand(1, 10000),
+            'buy_order' => "O-" . random_int(1, 10000),
+            "session_id" => "S-" . random_int(1, 10000),
             'return_url' => url('/') . '/webpay-mall-diferido/commit',
             'details' => [
                 [
                     "amount" => 10000,
                     "commerce_code" => 597055555582,
-                    "buy_order" => "ordenCompraDetalle" . rand(1, 10000)
+                    "buy_order" => "ordenCompraDetalle" . random_int(1, 10000)
                 ],
                 [
                     "amount" => 12000,
                     "commerce_code" => 597055555583,
-                    "buy_order" => "ordenCompraDetalle" . rand(1, 10000)
+                    "buy_order" => "ordenCompraDetalle" . random_int(1, 10000)
                 ],
             ]
         ];

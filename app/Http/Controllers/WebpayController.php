@@ -24,10 +24,10 @@ class WebpayController extends Controller
     {
 
         $createTx = [
-            'buyOrder' => "O-" . rand(1, 10000),
-            "sessionId" => "S-" . rand(1, 10000),
+            'buyOrder' => "O-" . random_int(1, 10000),
+            "sessionId" => "S-" . random_int(1, 10000),
             'returnUrl' => url('/') . '/webpay-plus/commit',
-            'amount' => rand(1000, 2000)
+            'amount' => random_int(1000, 2000)
         ];
 
 
