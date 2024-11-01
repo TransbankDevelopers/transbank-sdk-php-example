@@ -4,6 +4,8 @@
 
 <x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
     <h1 id="create">Oneclick Mall Diferido - Creación de transacción</h1>
+    <p class="mb-32">Todas las transacciones en este proyecto de ejemplo son realizadas en ambiente de integración.</p>
+
     <p class="mb-32">
         En esta etapa comienza el proceso de inscripción del medio de pago. Este paso inicial es fundamental, para
         dirigir al tarjetahabiente al formulario de inscripción.
@@ -26,7 +28,8 @@
 
     <h2>Paso 2: Respuesta</h2>
     <p class="mb-32">
-        Una vez que hayas iniciado la inscripción, aquí encontrarás los datos de respuesta generados por el proceso.
+        Una vez que hayas iniciado la inscripción, aquí encontrarás los datos de respuesta generados por el proceso
+        (recuerda que El token tienen una vigencia de 7 días desde su creación).
     </p>
 
     <x-snippet :content="$resp" />

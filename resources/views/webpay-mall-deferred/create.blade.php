@@ -3,9 +3,9 @@
 @endphp
 
 <x-layout active-link="Webpay Mall Diferido" :navigation="$navigation">
-    <h1 id="create">Webpay Mall Diferido - Creación de transacción Mall
+    <h1 id="create">Webpay Mall Diferido - Creación de transacción Mall</h1>
+    <p class="mb-32">Todas las transacciones en este proyecto de ejemplo son realizadas en ambiente de integración.</p>
 
-    </h1>
     <p class="mb-32">
         En esta etapa, se procederá a la creación de una transacción con el fin de obtener un identificador
         único. Esto nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago en el siguiente paso.
@@ -43,7 +43,7 @@ $details);
     <h2>Paso 2: Respuesta</h2>
     <p class="mb-32">
         Una vez que hayas creado la transacción, aquí encontrarás los datos de respuesta generados por el
-        proceso.
+        proceso (recuerda que El token tienen una vigencia de 7 días desde su creación).
     </p>
 
     <x-snippet :content="$resp" />
