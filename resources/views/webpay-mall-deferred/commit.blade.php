@@ -1,13 +1,12 @@
 @php
-    $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Otras operaciones'];
+$navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Otras operaciones'];
 @endphp
 
 <x-layout active-link="Webpay Mall Diferido" :navigation="$navigation">
 
     <h1 id="confirm">Webpay Mall diferido - Confirmar transacción</h1>
     <p class="mb-32">En este paso es importante confirmar la transacción para notificar a Transbank que hemos recibido
-        exitosamente los detalles de la transacción. Es importante destacar que si la confirmación no se realiza, la
-        transacción será reversada.
+        exitosamente los detalles de la transacción. <b>Es importante destacar que si la confirmación no se realiza, la transacción será caducada.</b>
     </p>
 
     <h2>Paso 1 - Datos recibidos:</h2>
@@ -30,8 +29,8 @@
 
     <h2>Paso 3 - Respuesta:</h2>
     <p class="mb-32">
-        Transbank responderá con la siguiente información. Es crucial guardar esta respuesta, y la única
-        validación necesaria es que el campo "response_code" sea igual a cero.
+        Una vez que la transacción ha sido confirmada Transbank proporcionará la siguiente información.
+        Es fundamental conservar esta respuesta y verificar que el campo "response_code" tenga un valor de cero y que el campo "status" sea "AUTHORIZED".
     </p>
 
     <x-snippet :content="$resp" />
@@ -62,25 +61,25 @@
     </p>
 
     @foreach ($resp->details as $detail)
-        <form action={{ route('webpay-mall-deferred.capture') }} method="POST">
-            @csrf
-            <div class="tbk-card">
-                <div class="input-container">
-                    <label for="amount" class="tbk-label">Monto a capturar:</label>
-                    <input type="text" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
-                    <input type="hidden" name="childCommerceCode" class="tbk-input-text"
-                        value={{ $detail->commerceCode }}>
-                    <input type="hidden" name="authorizationCode" class="tbk-input-text"
-                        value={{ $detail->authorizationCode }}>
+    <form action={{ route('webpay-mall-deferred.capture') }} method="POST">
+        @csrf
+        <div class="tbk-card">
+            <div class="input-container">
+                <label for="amount" class="tbk-label">Monto a capturar:</label>
+                <input type="text" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
+                <input type="hidden" name="childCommerceCode" class="tbk-input-text"
+                    value={{ $detail->commerceCode }}>
+                <input type="hidden" name="authorizationCode" class="tbk-input-text"
+                    value={{ $detail->authorizationCode }}>
 
-                    <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
-                    <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>
-                </div>
-                <div class="tbk-card-footer ">
-                    <button class="tbk-button primary">Capturar</button>
-                </div>
+                <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
+                <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>
             </div>
-        </form>
+            <div class="tbk-card-footer ">
+                <button class="tbk-button primary">Capturar</button>
+            </div>
+        </div>
+    </form>
     @endforeach
     <a href={{ route('webpay-mall-deferred.status', ['token' => $token]) }} class="tbk-button primary mb-32">
         CONSULTAR ESTADO
