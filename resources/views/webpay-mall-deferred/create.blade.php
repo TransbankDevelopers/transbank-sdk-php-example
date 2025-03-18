@@ -1,5 +1,5 @@
 @php
-    $navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
+$navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Webpay Mall Diferido" :navigation="$navigation">
@@ -8,7 +8,7 @@
     </h1>
     <p class="mb-32">
         En esta etapa, se procederá a la creación de una transacción con el fin de obtener un identificador
-        único. Esto nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago en el siguiente paso.
+        único. Esto nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago de Transbank en el siguiente paso.
 
     </p>
 
@@ -50,7 +50,7 @@ $details);
 
     <h2>Paso 3: Creación del formulario</h2>
     <p class="mb-32">
-        Utiliza estos datos de respuesta para generar y presentar un formulario de pago al Tarjetahabiente.
+        Utiliza estos datos de respuesta para redireccionar al usuario al formulario de pago al Tarjetahabiente.
         Este formulario será la interfaz a través de la cual el usuario realizará su transacción.
     </p>
 
@@ -76,6 +76,7 @@ $details);
         a crear el formulario de pago. Para fines de este ejemplo, haremos visible el campo "token_ws", el cual es
         esencial para completar el proceso de pago de manera exitosa.
     </p>
+    <span>Antes de continuar al formulario de Webpay, asegúrate de contar con los datos de las tarjetas de prueba que están en la <a href="https://transbankdevelopers.cl/documentacion/como_empezar#tarjetas-de-prueba" class="tbk-link">documentación.</a></span>
 
     <form action={{ $resp->url }} method="POST">
         <div class="tbk-card">

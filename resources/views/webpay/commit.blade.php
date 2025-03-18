@@ -1,12 +1,13 @@
 @php
-    $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Ejemplo'];
+$navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Webpay Plus" :navigation="$navigation">
 
     <h1 id="confirm">Webpay Plus - Confirmar transacción</h1>
     <p class="mb-32">En este paso es importante confirmar la transacción para notificar a Transbank que hemos recibido
-        exitosamente los detalles de la transacción. Si la confirmación no se realiza, la transacción será reversada.
+        exitosamente los detalles de la transacción. <b>Es importante destacar que si la confirmación no se realiza, la transacción será caducada.</b>
+
     </p>
 
     <h2>Paso 1 - Datos recibidos:</h2>
@@ -20,7 +21,7 @@
 
     <h2>Paso 2 - Petición:</h2>
     <p class="mb-32">
-        Utilizarás el token recibido para confirmar la transacción mediante una nueva llamada a WebpayPlus.
+        Utilizarás el token recibido para confirmar la transacción mediante el SDK.
     </p>
 
     <x-snippet>
@@ -29,8 +30,8 @@
 
     <h2>Paso 3 - Respuesta:</h2>
     <p class="mb-32">
-        Transbank responderá con la siguiente información. Es crucial guardar esta respuesta, y la única
-        validación necesaria es que el campo "response_code" sea igual a cero.
+        Una vez que la transacción ha sido confirmada Transbank proporcionará la siguiente información.
+        Es fundamental conservar esta respuesta y verificar que el campo "response_code" tenga un valor de cero y que el campo "status" sea "AUTHORIZED".
     </p>
 
     <x-snippet :content="$resp" />
