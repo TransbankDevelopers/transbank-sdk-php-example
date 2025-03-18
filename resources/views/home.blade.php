@@ -56,32 +56,6 @@
                             Ver ejemplos y modalidades
                         </a>
                     </div>
-
-                    <div class="card-info ">
-                        <div class="card-info-body ">
-                            <img src={{ asset('images/fulltx.svg') }} alt="webpay" width="300" height="74"
-                                class="card-info-image" />
-                            <p class="card-info-text">Transacción Completa permite al comercio presentar al
-                                tarjetahabiente un formulario propio para almacenar los datos de la tarjeta, fecha de
-                                vencimiento y cvv.</p>
-                        </div>
-                        <a href={{ route('transaccion-completa') }} class="card-info-link">
-                            Ver ejemplos y modalidades
-                        </a>
-                    </div>
-
-                    <div class="card-info ">
-                        <div class="card-info-body ">
-                            <img src={{ asset('images/patpass.svg') }} alt="webpay" width="300" height="74"
-                                class="card-info-image" />
-                            <p class="card-info-text">PatPass es el servicio de Transbank que permite el pago automático
-                                de cuentas mediante tarjetas de crédito. Es la solución ideal para pago de cuentas,
-                                centros educativos, aportes a fundaciones, y otros comercios e instituciones.</p>
-                        </div>
-                        <a href={{ route('patpass') }} class="card-info-link">
-                            Ver ejemplos y modalidades
-                        </a>
-                    </div>
                 </div>
 
                 <hr class="separed-home" />
