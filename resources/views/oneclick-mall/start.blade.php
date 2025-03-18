@@ -1,5 +1,5 @@
 @php
-    $navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
+$navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Oneclick Mall" :navigation="$navigation">
@@ -8,6 +8,7 @@
         En esta etapa comienza el proceso de inscripción del medio de pago. Este paso inicial es fundamental, para
         dirigir al tarjetahabiente al formulario de inscripción.
     </p>
+    <p>Todas las transacciones en este proyecto de ejemplo son realizadas en ambiente de integración.</p>
 
     <h2>Paso 1: Petición</h2>
     <ul class="mb-32">
@@ -58,6 +59,7 @@
         a crear el formulario de pago. Para fines de este ejemplo, haremos visible el campo "TBK_TOKEN", el cual es
         esencial para completar el proceso de pago de manera exitosa.
     </p>
+    <span>Antes de continuar al formulario de Webpay, asegúrate de contar con los datos de las tarjetas de prueba que están en la <a href="https://transbankdevelopers.cl/documentacion/como_empezar#tarjetas-de-prueba" class="tbk-link">documentación.</a></span>
 
     <form action={{ $resp->urlWebpay }} method="POST">
         <div class="tbk-card">
