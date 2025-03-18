@@ -1,21 +1,22 @@
 @php
-    $navigation = ['recovery' => 'Inscripción anulada'];
+$navigation = ['recovery' => 'Inscripción anulada'];
 @endphp
 
 <x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
     <h1 id="recovery">Oneclick Mall Diferido - Inscripción anulada</h1>
     <p class="mb-32">
-        El pago de la inscripción ha sido anulado por el usuario. En esta etapa, después de abandonar el formulario de
-        pago, no es necesario realizar la confirmación. Aquí te proporcionamos información esencial sobre el estado de
-        la transacción anulada:
+        La inscripción ha sido anulada por el usuario. En esta instancia, la inscripción fue abandonada al seleccionar la opción 'Abandonar y volver al comercio'.
     </p>
 
     <h2>Datos Recibidos:</h2>
     <p class="mb-32">
-        Para evitar posibles problemas, recomendamos reiniciar la transacción y completar el proceso de pago en una
-        sesión activa y continua.
+        Después de que el usuario anule la inscripción en el formulario de pago, recibirás un GET con la siguiente información:
     </p>
 
     <x-snippet :content="$req" />
+
+    <h2>¡Se abandonó la inscripción!</h2>
+    <p class="mb-32">Este mensaje indica que la inscripción ha sido cancelada por decisión del usuario. Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarnos. Lamentamos cualquier inconveniente y agradecemos tu comprensión.
+    </p>
 
 </x-layout>
