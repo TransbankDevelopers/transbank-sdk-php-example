@@ -1,13 +1,14 @@
 @php
-    $navigation = ['refund' => 'Reembolsar'];
+$navigation = ['refund' => 'Reembolsar'];
 @endphp
 
 <x-layout active-link="Webpay Plus Diferido" :navigation="$navigation">
 
     <h1 id="refund">Webpay Plus Diferido - Reembolsar</h1>
-    <p class="mb-32">En esta etapa, tienes la opción de solicitar el reembolso del monto al titular de la tarjeta.
-        Dependiendo del monto y el tiempo transcurrido desde la transacción, este proceso podría resultar en una
-        Reversa, Anulación o Anulación Parcial.
+    <p class="mb-32">
+        En esta etapa, tienes la opción de solicitar el reembolso del monto al titular de la tarjeta.
+        Dependiendo del monto y el tiempo transcurrido desde la transacción, este proceso podría resultar en una Reversa o Anulación, dependiendo de ciertas condiciones (Reversa en las primeras 3 horas de la autorización, anulación posterior a eso), o una Anulación parcial si el monto es menor al total.
+        Las anulaciones parciales para tarjetas débito y prepago no están soportadas.
     </p>
 
     <h2>Paso 1 - Petición:</h2>

@@ -1,5 +1,5 @@
 @php
-    $navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
+$navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Webpay Plus Diferido" :navigation="$navigation">
@@ -13,7 +13,7 @@
     <h2>Paso 1: Petición</h2>
     <ul class="mb-32">
         <li>Comienza por importar la librería WebpayPlus en tu proyecto.</li>
-        <li>Luego, crea una transacción utilizando las funciones proporcionadas por WebpayPlus.</li>
+        <li>Luego, crea una transacción utilizando las funciones proporcionadas mediante el SDK.</li>
     </ul>
     <x-snippet>
         use Transbank\Webpay\WebpayPlus\Transaction;
@@ -21,7 +21,7 @@
         //configuración de la transacción
         $option = new Options(API_KEY, COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
         $transaction = new Transaction($option);
-        $transaction->create($buyOrder, $sessionId, $amount, $returnUrl);
+        $response = $transaction->create($buyOrder, $sessionId, $amount, $returnUrl);
     </x-snippet>
 
     <h2>Paso 2: Respuesta</h2>
@@ -32,7 +32,7 @@
     <x-snippet :content="$respond" />
 
     <h2>Paso 3: Creación del formulario</h2>
-    <p class="mb-32">Utiliza estos datos de respuesta para generar y presentar un formulario de pago al Tarjetahabiente.
+    <p class="mb-32">Utiliza estos datos de respuesta para redireccionar al usuario al formulario de pago al Tarjetahabiente.
         Este formulario será la interfaz a través de la cual el usuario realizará su transacción.
     </p>
 
