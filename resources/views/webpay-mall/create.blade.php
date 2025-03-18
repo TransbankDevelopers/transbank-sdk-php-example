@@ -1,5 +1,5 @@
 @php
-    $navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
+$navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Webpay Mall" :navigation="$navigation">
@@ -7,7 +7,7 @@
     </h1>
     <p class="mb-32">
         En esta etapa, se procederá a la creación de una transacción con el fin de obtener un identificador
-        único. Esto nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago en el siguiente paso.
+        único. Esto nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago de Transbank en el siguiente paso.
 
     </p>
 
@@ -47,7 +47,7 @@ $details);
     <x-snippet :content="$resp" />
 
     <h2>Paso 3: Creación del formulario</h2>
-    <p class="mb-32">Utiliza estos datos de respuesta para generar y presentar un formulario de pago al Tarjetahabiente.
+    <p class="mb-32">Utiliza estos datos de respuesta para redireccionar al usuario al formulario de pago al Tarjetahabiente.
         Este formulario será la interfaz a través de la cual el usuario realizará su transacción.
     </p>
 
