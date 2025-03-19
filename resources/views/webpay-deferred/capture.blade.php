@@ -1,9 +1,9 @@
 @php
-    $navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
+$navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Webpay Plus Diferido" :navigation="$navigation">
-    <h1 id="create">Webpay Plus Diferido - Creación de transacción</h1>
+    <h1 id="create">Webpay Plus Diferido - Captura de transacción</h1>
     <p class="mb-32">
         En este paso debemos capturar la transacción para realmente capturar el dinero que habia sido previamente
         reservado al hacer la transacción
@@ -37,17 +37,17 @@
 
     <form action={{ route('webpay-deferred.refund') }} method="POST">
         @csrf
-        <div class="tbk-card">
+        <div class="tbk-refund-card  mb-32">
             <div class="input-container">
                 <label for="amount" class="tbk-label">Monto a Reembolsar:</label>
                 <input type="text" name="amount" class="tbk-input-text" value={{ $resp->capturedAmount }}>
                 <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>
             </div>
-            <div class="tbk-card-footer ">
+            <div class="tbk-refund-button-container">
                 <button class="tbk-button primary">REEMBOLSAR</button>
+                <a href={{ route('webpay-deferred.status', ['token' => $token]) }} class="tbk-button primary">CONSULTAR
+                    ESTADO</a>
             </div>
         </div>
     </form>
-    <a href={{ route('webpay-deferred.status', ['token' => $token]) }} class="tbk-button primary mb-32">CONSULTAR
-        ESTADO</a>
 </x-layout>
