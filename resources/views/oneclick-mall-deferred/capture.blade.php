@@ -29,7 +29,7 @@
     <h2>¡Transacción Capturada!</h2>
 
     <p class="mb-32">Con la transacción capturada, puedes mostrar al usuario una página de éxito de la transacción,
-        proporcionándole la confirmación de que el proceso se ha completado con éxito.p>
+        proporcionándole la confirmación de que el proceso se ha completado con éxito.</p>
 
     <h2 id="other">Otras Utilidades:</h2>
     <p class="mb-32">Después de confirmar la transacción, considera las siguientes
