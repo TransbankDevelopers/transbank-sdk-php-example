@@ -2,12 +2,11 @@
 $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Ejemplo'];
 @endphp
 
-<x-layout active-link="Webpay Plus" :navigation="$navigation">
+<x-layout active-link="Webpay Plus Diferido" :navigation="$navigation">
 
-    <h1 id="confirm">Webpay Plus - Confirmar transacción</h1>
+    <h1 id="confirm">Webpay Plus Diferido - Confirmar transacción</h1>
     <p class="mb-32">En este paso es importante confirmar la transacción para notificar a Transbank que hemos recibido
         exitosamente los detalles de la transacción. <b>Es importante destacar que si la confirmación no se realiza, la transacción será caducada.</b>
-
     </p>
 
     <h2>Paso 1 - Datos recibidos:</h2>
@@ -39,36 +38,41 @@ $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Ejemplo'];
 
     <h2>¡Listo!</h2>
     <p class="mb-32">
-        Con la confirmación exitosa, ya puedes mostrar al usuario una página de éxito de la transacción,
-        proporcionándole la tranquilidad de que el proceso ha sido completado con éxito.
+        Es importante tener en cuenta que la transacción aún no ha sido capturada, por lo que hay que dejarle saber al
+        tarjetahabiente que necesita un paso más; solo se ha retenido el saldo en su tarjeta. Después de confirmar la
+        transacción, puedes:
     </p>
-    <p>
-        Después de confirmar la transacción, podrás realizar otras operaciones útiles:
-    </p>
-    <ul>
+
+    <ul class="mb-32">
         <li>
-            <span class="fw-700">Reembolsar:</span> Puedes reversar o anular el pago según ciertas condiciones
-            comerciales.
+            Capturar la transacción.
         </li>
         <li>
-            <span class="fw-700">Consultar Estado:</span> Hasta 7 días después de la transacción, podrás consultar el
-            estado de la
-            transacción.
+            Revertir la transacción si es necesario.
+        </li>
+        <li>
+            Consultar el estado de la transacción hasta 7 días después de realizada.
         </li>
     </ul>
 
-    <form action={{ route('webpay.refund') }} method="POST">
+    <form action={{ route('webpay-deferred.capture') }} method="POST">
         @csrf
-        <div class="tbk-refund-card mb-32">
+        <div class="tbk-card">
+            <p class="mb-32">Capturar la transacción para realmente capturar el dinero que habia sido previamente
+                reservado.</p>
             <div class="input-container">
-                <label for="amount" class="tbk-label">Monto a reembolsar:</label>
+                <label for="amount" class="tbk-label">Monto a capturar:</label>
                 <input type="text" name="amount" class="tbk-input-text" value={{ $resp->amount }}>
+                <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $resp->buyOrder }}>
+                <input type="hidden" name="authorizationCode" class="tbk-input-text"
+                    value={{ $resp->authorizationCode }}>
                 <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>
             </div>
-            <div class="tbk-refund-button-container">
-                <button class="tbk-button primary">REEMBOLSAR</button>
-                <a href={{ route('webpay.status', ['token' => $token]) }} class="tbk-button primary">CONSULTAR ESTADO</a>
+            <div class="tbk-card-footer ">
+                <button class="tbk-button primary">CAPTURAR</button>
             </div>
         </div>
     </form>
+    <a href={{ route('webpay-deferred.status', ['token' => $token]) }} class="tbk-button primary mb-32">CONSULTAR
+        ESTADO</a>
 </x-layout>

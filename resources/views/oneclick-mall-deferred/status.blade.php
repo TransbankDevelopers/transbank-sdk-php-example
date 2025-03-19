@@ -2,9 +2,9 @@
     $navigation = ['state' => 'Consultar estado'];
 @endphp
 
-<x-layout active-link="Webpay Plus" :navigation="$navigation">
+<x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
 
-    <h1 id="state">Webpay Plus - Consultar estado de transacción</h1>
+    <h1 id="state">Oneclick Mall Diferido - Consultar estado de transacción</h1>
     <p class="mb-32">Puedes solicitar el estado de una transacción hasta 7 días después de su realización. No hay límite
         de solicitudes de este tipo durante ese período. Sin embargo, una vez pasados los 7 días, ya no podrás revisar
         su estado.
@@ -12,11 +12,11 @@
 
     <h2>Paso 1 - Petición:</h2>
     <p class="mb-32">
-        Para realizar la consulta, necesitas el token de la transacción de la cual deseas obtener el estado. Utiliza
-        este token para realizar una llamada a WebpayPlus.Transaction.
+        Para realizar la consulta, necesitarás el "buyOrder" de la transacción de interés. Utiliza este identificador
+        para efectuar una llamada a Oneclick.MallTransaction.
     </p>
 
-    <x-snippet> $resp = $transaction->status($token);</x-snippet>
+    <x-snippet> $resp = $mallTransaction->status($buyOrder);</x-snippet>
 
 
     <h2>Paso 2: Respuesta</h2>
