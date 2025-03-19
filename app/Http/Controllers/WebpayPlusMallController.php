@@ -88,8 +88,8 @@ class WebpayPlusMallController extends Controller
                 'msg' => $e->getMessage(),
                 'code' => $e->getCode()
             );
-            return view('webpay-mall.refund', ["resp" => $resp, "req" => $req]);
+            return view('webpay-mall.refund', ["resp" => $resp, "req" => $req, "token" => $req["token"]]);
         }
-        return view('webpay-mall.refund', ["resp" => $resp, "req" => $req]);
+        return view('webpay-mall.refund', ["resp" => $resp, "req" => $req, "token" => $req["token"]]);
     }
 }
