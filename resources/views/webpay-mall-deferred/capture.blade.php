@@ -1,5 +1,5 @@
 @php
-    $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Otras operaciones'];
+$navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Otras operaciones'];
 @endphp
 
 <x-layout active-link="Webpay Mall Diferido" :navigation="$navigation">
@@ -37,7 +37,7 @@
 
     <form action={{ route('webpay-mall-deferred.refund') }} method="POST">
         @csrf
-        <div class="tbk-card">
+        <div class="tbk-refund-card  mb-32">
             <div class="input-container">
                 <label for="amount" class="tbk-label">Monto a reembolsar:</label>
                 <input type="text" name="amount" class="tbk-input-text" value={{ $resp->capturedAmount }}>
@@ -46,13 +46,13 @@
                 <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $request['buyOrder'] }}>
                 <input type="hidden" name="token" class="tbk-input-text" value={{ $request['token'] }}>
             </div>
-            <div class="tbk-card-footer ">
+            <div class="tbk-refund-button-container">
                 <button class="tbk-button primary">REEMBOLSAR</button>
+                <a href={{ route('webpay-mall-deferred.status', ['token' => $request['token']]) }}
+                    class="tbk-button primary">CONSULTAR
+                    ESTADO</a>
             </div>
         </div>
     </form>
 
-    <a href={{ route('webpay-mall-deferred.status', ['token' => $request['token']]) }}
-        class="tbk-button primary mb-32">CONSULTAR
-        ESTADO</a>
 </x-layout>
