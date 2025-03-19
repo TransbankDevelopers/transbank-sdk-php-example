@@ -2,9 +2,10 @@
 $navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
 @endphp
 
-<x-layout active-link="Webpay Plus" :navigation="$navigation">
-    <h1 id="create">Webpay Plus - Creación de transacción</h1>
-    <p class="mb-32">En esta etapa, se procederá a la creación de una transacción con el fin de obtener un identificador
+<x-layout active-link="Webpay Plus Diferido" :navigation="$navigation">
+    <h1 id="create">Webpay Plus Diferido - Creación de transacción</h1>
+    <p class="mb-32">
+        En esta etapa, se procederá a la creación de una transacción con el fin de obtener un identificador
         único. Esto
         nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago en el siguiente paso.
     </p>
