@@ -1,9 +1,9 @@
 @php
-$navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
+$navigation = ['capture' => 'Capturar transacción', 'example' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Webpay Plus Diferido" :navigation="$navigation">
-    <h1 id="create">Webpay Plus Diferido - Captura de transacción</h1>
+    <h1 id="capture">Webpay Plus Diferido - Captura de transacción</h1>
     <p class="mb-32">
         En este paso debemos capturar la transacción para realmente capturar el dinero que habia sido previamente
         reservado al hacer la transacción
