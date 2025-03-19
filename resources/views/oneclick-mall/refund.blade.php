@@ -62,4 +62,7 @@ $navigation = ['refund' => 'Reembolsar'];
 
     <x-snippet :content="$resp" />
 
+    <a href={{ route('oneclick-mall.status', ['buyOrder' => $buyOrder]) }}
+        class="tbk-button primary mb-32">CONSULTAR ESTADO</a>
+
 </x-layout>
