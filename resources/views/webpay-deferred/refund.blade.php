@@ -54,4 +54,8 @@ $navigation = ['refund' => 'Reembolsar'];
     </p>
 
     <x-snippet :content="$resp" />
+
+    <a href={{ route('webpay-deferred.status', ['token' => $token]) }} class="tbk-button primary mb-32">CONSULTAR
+        ESTADO</a>
+
 </x-layout>
