@@ -44,9 +44,10 @@ class WebpayController extends Controller
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
             $view = 'webpay.error';
         }
-        //Pago abortadoas
+        //Pago abortadas
         elseif ($request->exists("TBK_TOKEN")) {
-            $view = 'webpay.error';
+            $view = 'webpay.error.aborted';
+            $data["resp"] = $this->transaction->status($request["TBK_TOKEN"]);
         }
         //Flujo normal
         elseif ($request->exists("token_ws")) {
