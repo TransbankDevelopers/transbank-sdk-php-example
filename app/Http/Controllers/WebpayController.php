@@ -42,7 +42,7 @@ class WebpayController extends Controller
 
         //flujo error
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
-            $view = 'webpay.error';
+            $view = 'webpay.error.form-error';
         }
         //Pago abortadas
         elseif ($request->exists("TBK_TOKEN")) {
