@@ -37,7 +37,7 @@ class WebpayController extends Controller
     public function commit(Request $request)
     {
         //Timeout
-        $view = 'webpay.timeout';
+        $view = 'webpay.error.timeout';
         $data = ["request" => $request];
 
         //flujo error
