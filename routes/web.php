@@ -48,7 +48,7 @@ Route::prefix('webpay-mall-diferido')->name("webpay-mall-deferred.")->group(func
 Route::prefix('oneclick-mall')->name("oneclick-mall.")->group(function () {
     Route::get('/start', [OneclickMallController::class, 'startInscription'])->name("start");
     Route::get('/finish', [OneclickMallController::class, 'finishInscription'])->name("finish");
-    Route::get('/authorize', [OneclickMallController::class, 'authorizeMall'])->name("authorize");
+    Route::post('/authorize', [OneclickMallController::class, 'authorizeMall'])->name("authorize");
     Route::get('/delete', [OneclickMallController::class, 'deleteInscription'])->name("delete");
     Route::post('/refund', [OneclickMallController::class, 'refund'])->name("refund");
     Route::get('/status', [OneclickMallController::class, 'status'])->name("status");
@@ -56,7 +56,7 @@ Route::prefix('oneclick-mall')->name("oneclick-mall.")->group(function () {
 Route::prefix('oneclick-mall-diferido')->name("oneclick-mall-deferred.")->group(function () {
     Route::get('/start', [OneclickMallDeferredController::class, 'startInscription'])->name("start");
     Route::get('/finish', [OneclickMallDeferredController::class, 'finishInscription'])->name("finish");
-    Route::get('/authorize', [OneclickMallDeferredController::class, 'authorizeMall'])->name("authorize");
+    Route::post('/authorize', [OneclickMallDeferredController::class, 'authorizeMall'])->name("authorize");
     Route::get('/delete', [OneclickMallDeferredController::class, 'deleteInscription'])->name("delete");
     Route::get('/status', [OneclickMallDeferredController::class, 'status'])->name("status");
     Route::post('/refund', [OneclickMallDeferredController::class, 'refund'])->name("refund");
