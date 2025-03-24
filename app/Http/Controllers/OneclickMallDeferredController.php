@@ -162,7 +162,7 @@ class OneclickMallDeferredController extends Controller
 
             $resp = $this->mallTransaction->refund($buyOrder, $childCommerceCode, $childBuyOrder, $amount);
 
-            return view('oneclick-mall-deferred.refund', ["resp" => $resp]);
+            return view('oneclick-mall-deferred.refund', ["resp" => $resp, "buyOrder" => $buyOrder]);
         } catch (\Exception $e) {
             $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
             return view('error-page', ["error" => $error]);

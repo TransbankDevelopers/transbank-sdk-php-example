@@ -53,4 +53,7 @@ $navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
     </p>
 
     <x-snippet :content="$resp" />
+
+    <a href={{ route('webpay.status', ['token' => $token]) }} class="tbk-button primary mb-32">CONSULTAR ESTADO</a>
+
 </x-layout>
