@@ -1,17 +1,17 @@
 @php
-$navigation = ['refund' => 'Reembolsar'];
+$navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
 @endphp
 
 <x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
 
-    <h1 id="refund">Oneclick Mall Diferido - Reembolsar</h1>
+    <h1>Oneclick Mall Diferido - Reembolsar</h1>
     <p class="mb-32">
         En esta etapa, tienes la opción de solicitar el reembolso del monto al titular de la tarjeta.
         Dependiendo del monto y el tiempo transcurrido desde la transacción, este proceso podría resultar en una Reversa o Anulación, dependiendo de ciertas condiciones (Reversa en las primeras 3 horas de la autorización, anulación posterior a eso), o una Anulación parcial si el monto es menor al total.
         Las anulaciones parciales para tarjetas débito y prepago no están soportadas.
     </p>
 
-    <h2>Paso 1 - Petición:</h2>
+    <h2 id="request">Paso 1 - Petición:</h2>
     <p class="mb-16">
         Para realizar el reembolso, necesitarás la siguiente información:
     </p>
@@ -54,7 +54,7 @@ $navigation = ['refund' => 'Reembolsar'];
         $resp = $mallTransaction->refund($buyOrder, $childCommerceCode, $childBuyOrder, $amount);
     </x-snippet>
 
-    <h2>Paso 2 - Respuesta:</h2>
+    <h2 id="response">Paso 2 - Respuesta:</h2>
     <p class="mb-32">
         Transbank responderá con el resultado de la reversa o anulación. Analiza esta respuesta para confirmar que el
         reembolso se ha procesado correctamente.
