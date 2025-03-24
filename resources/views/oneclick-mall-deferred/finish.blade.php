@@ -50,6 +50,7 @@ $navigation = ['data' => 'Datos', 'request' => 'Petición', 'response' => 'Respu
         <input type="hidden" name="userName" value="{{ $table['username'] }}">
         <input type="hidden" name="tbkUser" value="{{ $table['tbk_user'] }}">
         <div class="tbk-card">
+            <p class="mb-16">Tienda 1</p>
             <div class="card-multi-field">
                 <div class="input-container">
                     <label for="amountCommerce1" class="tbk-label">Monto:</label>
@@ -59,6 +60,9 @@ $navigation = ['data' => 'Datos', 'request' => 'Petición', 'response' => 'Respu
                     <label for="installmentsCommerce1" class="tbk-label">Cuotas:</label>
                     <input type="number" name="installmentsCommerce1" class="tbk-input-text" value="0">
                 </div>
+            </div>
+            <p class="mb-16 mt-32">Tienda 2</p>
+            <div class="card-multi-field">
                 <div class="input-container">
                     <label for="amountCommerce2" class="tbk-label">Monto:</label>
                     <input type="number" name="amountCommerce2" class="tbk-input-text" value="5000">
