@@ -16,7 +16,8 @@ Route::view('/patpass-comercio', 'home')->name('patpass');
 
 Route::prefix('webpay-plus')->name("webpay.")->group(function () {
     Route::get('/create', [WebpayController::class, 'create'])->name("create");
-    Route::get('/commit', [WebpayController::class, 'commit'])->name("commit");
+    Route::match(['get', 'post'], '/commit', [WebpayController::class, 'commit'])
+        ->name("commit");
     Route::post('/refund', [WebpayController::class, 'refund'])->name("refund");
     Route::get('/status', [WebpayController::class, 'status'])->name("status");
 });
