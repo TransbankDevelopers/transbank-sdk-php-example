@@ -1,15 +1,15 @@
 @php
-$navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
+$navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario', 'example' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Webpay Plus" :navigation="$navigation">
-    <h1 id="create">Webpay Plus - Creación de transacción</h1>
+    <h1>Webpay Plus - Creación de transacción</h1>
     <p class="mb-32">En esta etapa, se procederá a la creación de una transacción con el fin de obtener un identificador
         único. Esto
         nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago en el siguiente paso.
     </p>
 
-    <h2>Paso 1: Petición</h2>
+    <h2 id="request">Paso 1: Petición</h2>
     <ul class="mb-32">
         <li>Comienza por importar la librería WebpayPlus en tu proyecto.</li>
         <li>Luego, crea una transacción utilizando las funciones proporcionadas mediante el SDK.</li>
@@ -23,14 +23,14 @@ $navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
         $response = $transaction->create($buyOrder, $sessionId, $amount, $returnUrl);
     </x-snippet>
 
-    <h2>Paso 2: Respuesta</h2>
+    <h2 id="response">Paso 2: Respuesta</h2>
     <p class="mb-32">Una vez que hayas creado la transacción, aquí encontrarás los datos de respuesta generados por el
         proceso.
     </p>
 
     <x-snippet :content="$respond" />
 
-    <h2>Paso 3: Creación del formulario</h2>
+    <h2 id="form">Paso 3: Creación del formulario</h2>
     <p class="mb-32">Utiliza estos datos de respuesta para redireccionar al usuario al formulario de pago al Tarjetahabiente.
         Este formulario será la interfaz a través de la cual el usuario realizará su transacción.
     </p>

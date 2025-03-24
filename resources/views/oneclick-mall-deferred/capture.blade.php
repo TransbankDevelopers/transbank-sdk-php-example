@@ -1,16 +1,16 @@
 @php
-    $navigation = ['capture' => 'Capturar pago', 'other' => 'Consultas'];
+$navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'other' => 'Otras utilidades'];
 @endphp
 
 <x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
-    <h1 id="capture">Oneclick Mall Diferido - Capturar pago</h1>
+    <h1>Oneclick Mall Diferido - Capturar pago</h1>
     <p class="mb-32">
         En este paso debemos capturar la transacción para realmente capturar el dinero que habia sido previamente
         reservado al hacer la transacción.
 
     </p>
 
-    <h2>Paso 1: Peticion</h2>
+    <h2 id="request">Paso 1: Peticion</h2>
     <p class="mb-32">
         Para capturar una transacción necesitaremos el código de comercio de la tienda hija y Orden de compra de la
         tienda hija, Código de autorización y monto a capturar. Se hace de la siguiente manera.
@@ -19,7 +19,7 @@
         $resp = $mallTransaction->capture($childCommerceCode, $childBuyOrder, $authorizationCode, $amount);
     </x-snippet>
 
-    <h2>Paso 2: Respuesta</h2>
+    <h2 id="response">Paso 2: Respuesta</h2>
     <p class="mb-32">
         Una vez capturada la transacción, recibirás los siguientes datos de respuesta:
     </p>

@@ -1,17 +1,17 @@
 @php
-$navigation = ['refund' => 'Reembolsar'];
+$navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
 @endphp
 
 <x-layout active-link="Webpay Plus" :navigation="$navigation">
 
-    <h1 id="refund">Webpay Plus - Reembolsar</h1>
+    <h1>Webpay Plus - Reembolsar</h1>
     <p class="mb-32">
         En esta etapa, tienes la opción de solicitar el reembolso del monto al titular de la tarjeta.
         Dependiendo del monto y el tiempo transcurrido desde la transacción, este proceso podría resultar en una Reversa o Anulación, dependiendo de ciertas condiciones (Reversa en las primeras 3 horas de la autorización, anulación posterior a eso), o una Anulación parcial si el monto es menor al total.
         Las anulaciones parciales para tarjetas débito y prepago no están soportadas.
     </p>
 
-    <h2>Paso 1 - Petición:</h2>
+    <h2 id="request">Paso 1 - Petición:</h2>
     <p class="mb-32">
         Para llevar a cabo el reembolso, necesitas proporcionar el token de la transacción y el monto que
         deseas reversar.
@@ -47,7 +47,7 @@ $navigation = ['refund' => 'Reembolsar'];
 
     <x-snippet> $resp = $transaction->refund($token, $amount);</x-snippet>
 
-    <h2>Paso 2: Respuesta</h2>
+    <h2 id="response">Paso 2: Respuesta</h2>
     <p class="mb-32">Transbank responderá con el resultado del proceso de reembolso, indicando si se ha realizado una
         Reversa, Anulación o Anulación Parcial.
     </p>
