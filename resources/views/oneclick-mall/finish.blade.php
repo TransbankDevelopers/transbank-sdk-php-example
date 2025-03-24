@@ -43,20 +43,44 @@ $navigation = ['data' => 'Datos recibidos', 'request' => 'Petición', 'response'
 
     <x-table :request="$table" />
 
-    <div class="tbk-card">
-        <div class="divided-card">
-            <p>Después de una inscripción exitosa, tienen dos opciones: autorizar un pago o borrar al usuario que se
-                acaba de inscribir.</p>
-            <div class="card-right-container">
-                <a href={{ route('oneclick-mall.delete', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
-                    class="tbk-button primary">
-                    BORRAR USUARIO
-                </a>
-                <a href={{ route('oneclick-mall.authorize', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
-                    class="tbk-button primary">AUTORIZAR UN PAGO</a>
+    <p class="mt-32">Después de una inscripción exitosa, tienen dos opciones: autorizar un pago o borrar al usuario que se
+        acaba de inscribir.</p>
+
+    <form action={{ route('oneclick-mall.authorize') }} method="POST">
+        @csrf
+        <input type="hidden" name="userName" value="{{ $table['username'] }}">
+        <input type="hidden" name="tbkUser" value="{{ $table['tbk_user'] }}">
+        <div class="tbk-card">
+            <p class="mb-16">Tienda 1</p>
+            <div class="card-multi-field">
+                <div class="input-container">
+                    <label for="amountCommerce1" class="tbk-label">Monto:</label>
+                    <input type="number" name="amountCommerce1" class="tbk-input-text" value="10000">
+                </div>
+                <div class="input-container">
+                    <label for="installmentsCommerce1" class="tbk-label">Cuotas:</label>
+                    <input type="number" name="installmentsCommerce1" class="tbk-input-text" value="0">
+                </div>
+            </div>
+            <p class="mb-16 mt-32">Tienda 2</p>
+            <div class="card-multi-field">
+                <div class="input-container">
+                    <label for="amountCommerce2" class="tbk-label">Monto:</label>
+                    <input type="number" name="amountCommerce2" class="tbk-input-text" value="5000">
+                </div>
+                <div class="input-container">
+                    <label for="installmentsCommerce2" class="tbk-label">Cuotas:</label>
+                    <input type="number" name="installmentsCommerce2" class="tbk-input-text" value="0">
+                </div>
+            </div>
+            <div class="tbk-card-footer">
+                <button class="tbk-button primary">AUTORIZAR</button>
             </div>
         </div>
-
-    </div>
+    </form>
+    <a href={{ route('oneclick-mall.delete', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
+        class="tbk-button primary mb-32">
+        BORRAR USUARIO
+    </a>
 
 </x-layout>
