@@ -71,7 +71,7 @@ class WebpayController extends Controller
             );
             return view('webpay.refund', ["resp" => $resp]);
         }
-        return view('webpay.refund', ["resp" => $resp]);
+        return view('webpay.refund', ["resp" => $resp, 'token' => $req["token"]]);
     }
 
     public function status(Request $request)

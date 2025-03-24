@@ -1,15 +1,15 @@
 @php
-$navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Otras operaciones'];
+$navigation = ['data' => 'Datos recibidos', 'request' => 'Petición', 'response' => 'Respuesta', 'operations' => 'Operaciones'];
 @endphp
 
 <x-layout active-link="Webpay Mall Diferido" :navigation="$navigation">
 
-    <h1 id="confirm">Webpay Mall diferido - Confirmar transacción</h1>
+    <h1>Webpay Mall diferido - Confirmar transacción</h1>
     <p class="mb-32">En este paso es importante confirmar la transacción para notificar a Transbank que hemos recibido
         exitosamente los detalles de la transacción. <b>Es importante destacar que si la confirmación no se realiza, la transacción será caducada.</b>
     </p>
 
-    <h2>Paso 1 - Datos recibidos:</h2>
+    <h2 id="data">Paso 1 - Datos recibidos:</h2>
     <ul class="mb-32">
         <p class="m-32">
             Después de completar el flujo en el formulario de pago, recibirás un GET con la siguiente
@@ -18,7 +18,7 @@ $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Otras operacio
     </ul>
     <x-snippet>(returnUrl)?token_ws={{ $token }} </x-snippet>
 
-    <h2>Paso 2 - Petición:</h2>
+    <h2 id="request">Paso 2 - Petición:</h2>
     <p class="mb-32">
         Utilizarás el token recibido para confirmar la transacción mediante el SDK.
     </p>
@@ -27,7 +27,7 @@ $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Otras operacio
         $resp = $mallTransaction->commit($token);
     </x-snippet>
 
-    <h2>Paso 3 - Respuesta:</h2>
+    <h2 id="response">Paso 3 - Respuesta:</h2>
     <p class="mb-32">
         Una vez que la transacción ha sido confirmada Transbank proporcionará la siguiente información.
         Es fundamental conservar esta respuesta y verificar que el campo "response_code" tenga un valor de cero y que el campo "status" sea "AUTHORIZED".
@@ -36,7 +36,7 @@ $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Otras operacio
     <x-snippet :content="$resp" />
 
 
-    <h2 id="other">¡Listo!</h2>
+    <h2 id="operations">¡Listo!</h2>
     <p class="mb-32">
         Es importante tener en cuenta que la transacción aún no ha sido capturada, por lo que hay que dejarle saber al
         tarjetahabiente que necesita un paso más; solo se ha retenido el saldo en su tarjeta. Después de confirmar la

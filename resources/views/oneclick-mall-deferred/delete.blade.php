@@ -1,14 +1,14 @@
 @php
-    $navigation = ['delete' => 'Borrar usuario'];
+$navigation = ['delete' => 'Borrar usuario'];
 @endphp
 
 <x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
-    <h1 id="delete">Oneclick Mall Diferido - Borrar usuario</h1>
+    <h1>Oneclick Mall Diferido - Borrar usuario</h1>
     <p class="mb-32">
         En este paso fundamental, procederemos a eliminar la inscripción del usuario y su medio de pago.
     </p>
 
-    <h2>Paso 1: Petición</h2>
+    <h2 id="request">Paso 1: Petición</h2>
     <p class="mb-32">
         Para llevar a cabo la eliminación, necesitas el "userName" (Nombre de Usuario) y el "tbkUser". Realiza la
         llamada a Oneclick.MallInscription utilizando el siguiente código:
@@ -17,7 +17,7 @@
         $resp = $mallInscription->delete($tbkUser, $userName);
     </x-snippet>
 
-    <h2>Paso 2: Respuesta</h2>
+    <h2 id="response">Paso 2: Respuesta</h2>
     <p class="mb-32">
         En caso de éxito, Transbank responderá con un status code 204 (No Content), y el SDK retornará un
         InscriptionDeleteResponse con success: true y code: (statuscode). La eliminación de la inscripción se ha

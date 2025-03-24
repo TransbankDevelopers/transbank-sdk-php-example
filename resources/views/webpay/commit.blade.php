@@ -1,16 +1,16 @@
 @php
-$navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Ejemplo'];
+$navigation = ['data' => 'Datos recibidos', 'request' => 'Petición', 'response' => 'Respuesta', 'operations' => 'Operaciones'];
 @endphp
 
 <x-layout active-link="Webpay Plus" :navigation="$navigation">
 
-    <h1 id="confirm">Webpay Plus - Confirmar transacción</h1>
+    <h1>Webpay Plus - Confirmar transacción</h1>
     <p class="mb-32">En este paso es importante confirmar la transacción para notificar a Transbank que hemos recibido
         exitosamente los detalles de la transacción. <b>Es importante destacar que si la confirmación no se realiza, la transacción será caducada.</b>
 
     </p>
 
-    <h2>Paso 1 - Datos recibidos:</h2>
+    <h2 id="data">Paso 1 - Datos recibidos:</h2>
     <ul class="mb-32">
         <p class="m-32">
             Después de completar el flujo en el formulario de pago, recibirás un GET con la siguiente
@@ -19,7 +19,7 @@ $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Ejemplo'];
     </ul>
     <x-snippet>(returnUrl)?token_ws={{ $token }} </x-snippet>
 
-    <h2>Paso 2 - Petición:</h2>
+    <h2 id="request">Paso 2 - Petición:</h2>
     <p class="mb-32">
         Utilizarás el token recibido para confirmar la transacción mediante el SDK.
     </p>
@@ -28,7 +28,7 @@ $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Ejemplo'];
         $resp = $transaction->commit($token);
     </x-snippet>
 
-    <h2>Paso 3 - Respuesta:</h2>
+    <h2 id="response">Paso 3 - Respuesta:</h2>
     <p class="mb-32">
         Una vez que la transacción ha sido confirmada Transbank proporcionará la siguiente información.
         Es fundamental conservar esta respuesta y verificar que el campo "response_code" tenga un valor de cero y que el campo "status" sea "AUTHORIZED".
@@ -42,7 +42,7 @@ $navigation = ['confirm' => 'Confirmar transacción', 'other' => 'Ejemplo'];
         Con la confirmación exitosa, ya puedes mostrar al usuario una página de éxito de la transacción,
         proporcionándole la tranquilidad de que el proceso ha sido completado con éxito.
     </p>
-    <p>
+    <p id="operations">
         Después de confirmar la transacción, podrás realizar otras operaciones útiles:
     </p>
     <ul>

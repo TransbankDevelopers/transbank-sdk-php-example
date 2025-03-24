@@ -1,21 +1,21 @@
 @php
-    $navigation = ['finish' => 'Finalizar inscripción', 'authorize' => 'Autorizar una transacción'];
+$navigation = ['data' => 'Datos', 'request' => 'Petición', 'response' => 'Respuesta', 'authorize' => 'Autorizar una transacción'];
 @endphp
 
 <x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
-    <h1 id="finish">Oneclick Mall Diferido - Finalizar inscripción</h1>
+    <h1>Oneclick Mall Diferido - Finalizar inscripción</h1>
     <p class="mb-32">
         En esta fase, completaremos el proceso de inscripción, permitiéndonos posteriormente realizar cargos a la
         tarjeta que el tarjetahabiente haya inscrito.
     </p>
 
-    <h2>Paso 1: Datos recibidos</h2>
+    <h2 id="data">Paso 1: Datos recibidos</h2>
     <p class="mb-32">
         Después de finalizar el flujo en el formulario de inscripción, recibirás un GET con la siguiente información:
     </p>
     <x-snippet :content="$resp" />
 
-    <h2>Paso 2: Petición de autorización</h2>
+    <h2 id="request">Paso 2: Petición de autorización</h2>
     <p class="mb-32">
         Utiliza el token recibido para finalizar la Inscripción mediante una nueva llamada a Oneclick.
     </p>
@@ -24,7 +24,7 @@
         $resp = $mallInscription->finish($token);
     </x-snippet>
 
-    <h2>Paso 3: Respuesta</h2>
+    <h2 id="response">Paso 3: Respuesta</h2>
     <p class="mb-32">
         Transbank responderá con información crucial. Guarda estos detalles, ya que serán necesarios para autorizar
         transacciones futuras.

@@ -83,7 +83,7 @@ class WebpayPlusDeferredController extends Controller
             );
             return view('webpay-deferred.refund', ["resp" => $resp]);
         }
-        return view('webpay-deferred.refund', ["resp" => $resp]);
+        return view('webpay-deferred.refund', ["resp" => $resp, 'token' => $req["token"]]);
     }
 
     public function status(Request $request)
