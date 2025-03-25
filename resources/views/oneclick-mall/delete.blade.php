@@ -20,13 +20,13 @@ $navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
     <h2 id="response">Paso 2: Respuesta</h2>
     <p class="mb-32">
         En caso de éxito, Transbank responderá con un status code 204 (No Content), y el SDK retornará un
-        InscriptionDeleteResponse con success: true y code: (statuscode). La eliminación de la inscripción se ha
+        booleano con valor true. La eliminación de la inscripción se ha
         realizado de manera exitosa.
     </p>
 
     <p class="mb-32">
         En el caso de que no se encuentre el "userName" o el "tbkUser", Transbank responderá con un status code 404 (Not
-        Found), y el SDK retornará un InscriptionDeleteResponse con success: false y code: (statuscode).
+        Found), y el SDK lanzará una excepción del tipo InscriptionDeleteException.
     </p>
 
     <p class="mb-32">
