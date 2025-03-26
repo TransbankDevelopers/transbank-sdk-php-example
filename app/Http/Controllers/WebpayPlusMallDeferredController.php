@@ -39,13 +39,16 @@ class WebpayPlusMallDeferredController extends Controller
         ];
 
 
-        $resp = $this->mallTransaction->create($createTx["buy_order"], $createTx["session_id"],  $createTx["return_url"], $createTx["details"]);
+        $resp = $this->createTransaction($createTx["buy_order"], $createTx["session_id"],  $createTx["return_url"], $createTx["details"]);
 
 
         return view('webpay-mall-deferred.create', ["request" => $createTx, "resp" => $resp]);
     }
 
-
+    public function createTransaction($buyOrder, $sessionId, $returnUrl, $details)
+    {
+        return $this->mallTransaction->create($buyOrder, $sessionId, $returnUrl, $details);
+    }
 
     public function commit(Request $request)
     {
