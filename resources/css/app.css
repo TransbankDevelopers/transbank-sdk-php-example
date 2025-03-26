@@ -1,22 +1,28 @@
 /* config */
 
 @font-face {
-    font-family: "Roboto";
-    src: url("/public/fonts/Roboto-Regular.ttf") format("truetype");
+    font-family: "Open Sans";
+    src: url("/public/fonts/OpenSans-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
-
 @font-face {
-    font-family: "Roboto";
-    src: url("/public/fonts/Roboto-Medium.ttf") format("truetype");
+    font-family: "Open Sans";
+    src: url("/public/fonts/OpenSans-Medium.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
-    font-family: "Roboto";
-    src: url("/public/fonts/Roboto-Bold.ttf") format("truetype");
+    font-family: "Open Sans";
+    src: url("/public/fonts/OpenSans-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("/public/fonts/OpenSans-Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
 }
@@ -71,7 +77,7 @@
 
 body {
     background-color: var(--background);
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin: 0px;
     padding: 0px;
 }
@@ -110,7 +116,7 @@ h2 {
 
 p {
     margin: 0px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1em;
     font-style: normal;
     font-weight: 400;
@@ -140,7 +146,7 @@ li {
 }
 
 input {
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 0.875em;
     font-weight: 500;
     line-height: 24px;
@@ -150,7 +156,7 @@ input {
 h1.title {
     color: var(--primary-text);
     text-align: center;
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 2.125em;
     font-weight: 700;
     line-height: 54px;
@@ -182,6 +188,12 @@ code {
 
 .fw-700 {
     font-weight: 700;
+}
+
+.general-text {
+    font-size: 1rem;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
 }
 
 .text-tbk-red {
@@ -654,7 +666,7 @@ code {
 
 /* pages content styles  */
 .step-title {
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1em;
     font-style: normal;
     font-weight: 700;
