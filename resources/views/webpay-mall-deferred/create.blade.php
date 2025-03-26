@@ -81,10 +81,7 @@ $details);
     <form action={{ $resp->url }} method="POST">
         <div class="tbk-card">
             <span class="tbk-card-title">Formulario de redirección</span>
-            <div class="input-container">
-                <label for="tokew_ws" class="tbk-label">Token</label>
-                <input type="text" name="token_ws" class="tbk-input-text" value={{ $resp->token }} required>
-            </div>
+            <livewire:webpay-mall-deferred-token :token="$resp->token" :details="$request['details']" :buyOrder="$request['buy_order']" :sessionId="$request['session_id']" :returnUrl="$request['return_url']" />
             <div class="tbk-card-footer">
                 <button class="tbk-button primary">PAGAR</button>
             </div>
