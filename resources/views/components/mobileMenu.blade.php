@@ -250,7 +250,3 @@
         </div> --}}
     </nav>
 </aside>
-
-@push('scripts')
-    <script></script>
-@endpush
