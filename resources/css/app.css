@@ -220,6 +220,11 @@ code {
     }
 }
 
+.text-tbk-black {
+    --tw-text-opacity: 1;
+    color: rgb(45 51 56 / var(--tw-text-opacity, 1));
+}
+
 .underline {
     text-decoration-line: underline;
 }
@@ -982,6 +987,26 @@ code {
     flex-direction: column;
     align-items: end;
     gap: 16px;
+}
+
+.tbk-info-token {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    justify-content: flex-start;
+}
+
+.tbk-info-token-icon {
+    width: 17px;
+    height: 17px;
+    vertical-align: middle;
+    color: transparent;
+}
+
+.tbk-info-token-text {
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 @media (max-width: 1439.98px) {
