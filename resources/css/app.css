@@ -44,6 +44,7 @@
     --white-elevation: 0 0 0 1px hsla(0, 0%, 100%, 0.15),
         0px 0.8px 2px rgba(0, 0, 0, 0.032), 0px 2.7px 6.7px rgba(0, 0, 0, 0.048),
         0px 12px 30px rgba(0, 0, 0, 0.08);
+    --tbk-white-red: #ffb9b93b;
 }
 
 :root {
@@ -52,6 +53,7 @@
     --primary-text: #0e1520;
     --elevation: #fcfdfe;
     --elevation-w: #fff;
+    --tbk-full-red: #d5006c;
     --tbk-red: #d5006c;
     --tbk-red-dark: #cc0066;
     --tbk-light-red: #d5006c0d;
@@ -60,6 +62,8 @@
     --white: #ffffff;
     --tbk-grey: #828ea5;
     --tbk-grey-2: #707382;
+    --tbk-text-grey: #99a1b3;
+    --tbk-text-grey2: #ebecf0;
     --tbk-grey-3: #8c939f;
     --tbk-grey-4: #343a46;
     --tbk-black: #0e1520;
@@ -67,8 +71,10 @@
     --text-black: #333333;
     --tbk-black-bg: #1f242e;
     --tbk-border-blue: #c9d0e4;
+    --tbk-sweet-red: #ffe6e6;
     --tbk-table-header: hsl(329.58deg 100% 41.76% / 5%);
-    ---bg-hover: #343a46;
+    --bg-hover: #343a46;
+    --tbk-white-red: #f9f6f6;
 }
 
 * {
