@@ -141,7 +141,7 @@
         </div>
 
         <!-- ======================================================
-           SECCIÓN 3: WEBPAY TRANSACCION COMPLETA (todo)
+           SECCIÓN 3: WEBPAY TRANSACCION COMPLETA
            ====================================================== -->
         {{-- <div>
             <p class="tbk-sidebar-item-title">Webpay transaccion completa</p>
@@ -234,7 +234,7 @@
         </div> --}}
 
         <!-- ======================================================
-           SECCIÓN 4: PATPASS (todo)
+           SECCIÓN 4: PATPASS
            ====================================================== -->
         {{-- <div>
             <p class="tbk-sidebar-item-title">Patpass</p>
