@@ -23,7 +23,7 @@
         const burgerMenu = document.getElementById('burger-menu');
         const mobileSdContainer = document.querySelector('.tbk-sidebar-mobile');
         const closeBtn = document.getElementById('close-sidebar-btn');
-        console.log(closeBtn);
+
         burgerMenu.addEventListener('click', () => {
             mobileSdContainer.classList.toggle('show');
         });
