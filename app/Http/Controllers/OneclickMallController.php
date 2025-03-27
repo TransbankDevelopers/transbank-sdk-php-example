@@ -95,21 +95,25 @@ class OneclickMallController extends Controller
     public function authorizeMall(Request $request)
     {
         try {
-            $tbkUser = $request["tbkUser"];
-            $userName = $request["userName"];
+            $tbkUser = $request->post('tbkUser', '');
+            $userName = $request->post('userName', '');
             $buyOrder = "O-" . random_int(1000, 9999);
+            $amountCommerce1 = $request->post('amountCommerce1', 1693);
+            $installmentsCommerce1 = $request->post('installmentsCommerce1', 1);
+            $amountCommerce2 = $request->post('amountCommerce2', 1960);
+            $installmentsCommerce2 = $request->post('installmentsCommerce2', 1);
             $details = [
                 [
                     "commerce_code" => "597055555542",
                     "buy_order" => "O1-" . random_int(1000, 9999),
-                    "amount" => 1693,
-                    "installments_number" => 1
+                    "amount" => $amountCommerce1,
+                    "installments_number" => $installmentsCommerce1
                 ],
                 [
                     "commerce_code" => "597055555543",
                     "buy_order" => "O2-" . random_int(1000, 9999),
-                    "amount" => 1960,
-                    "installments_number" => 1
+                    "amount" => $amountCommerce2,
+                    "installments_number" => $installmentsCommerce2
                 ]
             ];
 
@@ -144,7 +148,7 @@ class OneclickMallController extends Controller
 
             $resp = $this->mallTransaction->refund($buyOrder, $childCommerceCode, $childBuyOrder, $amount);
 
-            return view('oneclick-mall.refund', ["resp" => $resp]);
+            return view('oneclick-mall.refund', ["resp" => $resp, "buyOrder" => $buyOrder]);
         } catch (\Exception $e) {
             $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
             return view('error-page', ["error" => $error]);

@@ -1,16 +1,16 @@
 @php
-$navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
+$navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario', 'example' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Oneclick Mall" :navigation="$navigation">
-    <h1 id="create">Oneclick Mall - Creación de transacción</h1>
+    <h1>Oneclick Mall - Creación de transacción</h1>
     <p class="mb-32">
         En esta etapa comienza el proceso de inscripción del medio de pago. Este paso inicial es fundamental, para
         dirigir al tarjetahabiente al formulario de inscripción.
     </p>
     <p>Todas las transacciones en este proyecto de ejemplo son realizadas en ambiente de integración.</p>
 
-    <h2>Paso 1: Petición</h2>
+    <h2 id="request">Paso 1: Petición</h2>
     <ul class="mb-32">
         <li>Comienza por importar la librería Oneclick en tu proyecto.</li>
         <li>Después podrás iniciar una inscripción.</li>
@@ -25,14 +25,14 @@ $navigation = ['create' => 'Crear transacción', 'example' => 'Ejemplo'];
         $resp = $mallInscription->start($startTx["userName"], $startTx["email"], $startTx["responseUrl"]);
     </x-snippet>
 
-    <h2>Paso 2: Respuesta</h2>
+    <h2 id="response">Paso 2: Respuesta</h2>
     <p class="mb-32">
         Una vez que hayas iniciado la inscripción, aquí encontrarás los datos de respuesta generados por el proceso.
     </p>
 
     <x-snippet :content="$resp" />
 
-    <h2>Paso 3: Creación del formulario</h2>
+    <h2 id="form">Paso 3: Creación del formulario</h2>
     <p class="mb-32">
         Utiliza estos datos de respuesta para generar y presentar un formulario de Inscripción al Tarjetahabiente.
     </p>

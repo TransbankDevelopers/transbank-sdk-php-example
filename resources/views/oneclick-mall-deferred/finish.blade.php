@@ -1,21 +1,21 @@
 @php
-    $navigation = ['finish' => 'Finalizar inscripción', 'authorize' => 'Autorizar una transacción'];
+$navigation = ['data' => 'Datos', 'request' => 'Petición', 'response' => 'Respuesta', 'authorize' => 'Autorizar una transacción'];
 @endphp
 
 <x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
-    <h1 id="finish">Oneclick Mall Diferido - Finalizar inscripción</h1>
+    <h1>Oneclick Mall Diferido - Finalizar inscripción</h1>
     <p class="mb-32">
         En esta fase, completaremos el proceso de inscripción, permitiéndonos posteriormente realizar cargos a la
         tarjeta que el tarjetahabiente haya inscrito.
     </p>
 
-    <h2>Paso 1: Datos recibidos</h2>
+    <h2 id="data">Paso 1: Datos recibidos</h2>
     <p class="mb-32">
         Después de finalizar el flujo en el formulario de inscripción, recibirás un GET con la siguiente información:
     </p>
     <x-snippet :content="$resp" />
 
-    <h2>Paso 2: Petición de autorización</h2>
+    <h2 id="request">Paso 2: Petición de autorización</h2>
     <p class="mb-32">
         Utiliza el token recibido para finalizar la Inscripción mediante una nueva llamada a Oneclick.
     </p>
@@ -24,7 +24,7 @@
         $resp = $mallInscription->finish($token);
     </x-snippet>
 
-    <h2>Paso 3: Respuesta</h2>
+    <h2 id="response">Paso 3: Respuesta</h2>
     <p class="mb-32">
         Transbank responderá con información crucial. Guarda estos detalles, ya que serán necesarios para autorizar
         transacciones futuras.
@@ -43,20 +43,44 @@
 
     <x-table :request="$table" />
 
-    <div class="tbk-card">
-        <div class="divided-card">
-            <p>Después de una inscripción exitosa, tienen dos opciones: autorizar un pago o borrar al usuario que se
-                acaba de inscribir.</p>
-            <div class="card-right-container">
-                <a href={{ route('oneclick-mall-deferred.delete', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
-                    class="tbk-button primary">
-                    BORRAR USUARIO
-                </a>
-                <a href={{ route('oneclick-mall-deferred.authorize', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
-                    class="tbk-button primary">AUTORIZAR UN PAGO</a>
+    <p class="mt-32">Después de una inscripción exitosa, tienen dos opciones: autorizar un pago o borrar al usuario que se
+        acaba de inscribir.</p>
+    <form action={{ route('oneclick-mall-deferred.authorize') }} method="POST">
+        @csrf
+        <input type="hidden" name="userName" value="{{ $table['username'] }}">
+        <input type="hidden" name="tbkUser" value="{{ $table['tbk_user'] }}">
+        <div class="tbk-card">
+            <p class="mb-16">Tienda 1</p>
+            <div class="card-multi-field">
+                <div class="input-container">
+                    <label for="amountCommerce1" class="tbk-label">Monto:</label>
+                    <input type="number" name="amountCommerce1" class="tbk-input-text" value="10000">
+                </div>
+                <div class="input-container">
+                    <label for="installmentsCommerce1" class="tbk-label">Cuotas:</label>
+                    <input type="number" name="installmentsCommerce1" class="tbk-input-text" value="0">
+                </div>
+            </div>
+            <p class="mb-16 mt-32">Tienda 2</p>
+            <div class="card-multi-field">
+                <div class="input-container">
+                    <label for="amountCommerce2" class="tbk-label">Monto:</label>
+                    <input type="number" name="amountCommerce2" class="tbk-input-text" value="5000">
+                </div>
+                <div class="input-container">
+                    <label for="installmentsCommerce2" class="tbk-label">Cuotas:</label>
+                    <input type="number" name="installmentsCommerce2" class="tbk-input-text" value="0">
+                </div>
+            </div>
+            <div class="tbk-card-footer">
+                <button class="tbk-button primary">AUTORIZAR</button>
             </div>
         </div>
+    </form>
 
-    </div>
+    <a href={{ route('oneclick-mall-deferred.delete', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
+        class="tbk-button primary mb-32">
+        BORRAR USUARIO
+    </a>
 
 </x-layout>
