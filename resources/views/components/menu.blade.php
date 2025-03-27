@@ -21,11 +21,11 @@
                                 Flujo Completo
                             </a>
                         </li>
-                        <li class="collapsible-items">
+                        {{-- <li class="collapsible-items">
                             <a href="/api-reference/webpay-plus" class="tbk-sidebar-item">
                                 Operaciones API
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 
@@ -41,11 +41,11 @@
                                 Flujo Completo
                             </a>
                         </li>
-                        <li class="collapsible-items">
+                        {{-- <li class="collapsible-items">
                             <a href="/api-reference/webpay-mall" class="tbk-sidebar-item">
                                 Operaciones API
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 
@@ -61,11 +61,11 @@
                                 Flujo Completo
                             </a>
                         </li>
-                        <li class="collapsible-items">
+                        {{-- <li class="collapsible-items">
                             <a href="/api-reference/webpay-plus-deferred" class="tbk-sidebar-item">
                                 Operaciones API
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 
@@ -81,11 +81,11 @@
                                 Flujo Completo
                             </a>
                         </li>
-                        <li class="collapsible-items">
+                        {{-- <li class="collapsible-items">
                             <a href="/api-reference/webpay-mall-deferred" class="tbk-sidebar-item">
                                 Operaciones API
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
             </ul>
@@ -108,11 +108,11 @@
                                 Flujo Completo
                             </a>
                         </li>
-                        <li class="collapsible-items">
+                        {{-- <li class="collapsible-items">
                             <a href="/api-reference/oneclick-mall" class="tbk-sidebar-item">
                                 Operaciones API
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 
@@ -129,11 +129,11 @@
                                 Flujo Completo
                             </a>
                         </li>
-                        <li class="collapsible-items">
+                        {{-- <li class="collapsible-items">
                             <a href="/api-reference/oneclick-mall-deferred" class="tbk-sidebar-item">
                                 Operaciones API
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
             </ul>
