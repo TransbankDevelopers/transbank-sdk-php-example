@@ -723,28 +723,6 @@ code {
     }
 }
 
-.tbk-toggle-btn {
-    position: sticky;
-    top: 95px;
-    width: 30px;
-    height: 30px;
-    background-color: var(--tbk-red);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 1;
-    transition: transform 0.5s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
-
-.dark .tbk-toggle-btn {
-    color: var(--background);
-}
-
 .tbk-sidebar {
     display: flex;
     flex-direction: column;
@@ -893,6 +871,10 @@ code {
     align-items: center;
     justify-content: center;
     font-weight: bold;
+}
+
+.dark .tbk-toggle-btn {
+    color: var(--background);
 }
 
 .tbk-sidebar-hide .tbk-toggle-btn {
