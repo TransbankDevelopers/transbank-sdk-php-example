@@ -64,11 +64,8 @@ $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'F
     <form action={{ $resp->urlWebpay }} method="POST">
         <div class="tbk-card">
             <span class="tbk-card-title">Formulario de redirección</span>
-            <div class="input-container">
-                <label for="tokew_ws" class="tbk-label">Token</label>
-                <input type="text" name="TBK_TOKEN" class="tbk-input-text" value={{ $resp->token }} required>
-            </div>
-            <div class="tbk-card-footer">
+            <livewire:oneclick-token :token="$resp->token" :userName="$request['username']" :email="$request['email']" :responseUrl="$request['response_url']" />
+            <div class=" tbk-card-footer">
                 <button class="tbk-button primary">INSCRIBIR</button>
             </div>
         </div>

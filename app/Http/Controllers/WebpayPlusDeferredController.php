@@ -29,9 +29,15 @@ class WebpayPlusDeferredController extends Controller
         ];
 
 
-        $resp = $this->transaction->create($createTx['buyOrder'], $createTx['sessionId'], $createTx['amount'], $createTx['returnUrl']);
+        $resp = $this->createTransaction($createTx['buyOrder'], $createTx['sessionId'], $createTx['amount'], $createTx['returnUrl']);
         return view('webpay-deferred.create', ["request" => $createTx, "respond" => $resp]);
     }
+
+    public function createTransaction($buyOrder, $sessionId, $amount, $returnUrl)
+    {
+        return $this->transaction->create($buyOrder, $sessionId, $amount, $returnUrl);
+    }
+
     public function commit(Request $request)
     {
         //Timeout

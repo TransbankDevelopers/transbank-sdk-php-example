@@ -34,12 +34,17 @@ class OneclickMallDeferredController extends Controller
             ];
 
             session(['username' => $startTx["username"]]);
-            $resp = $this->mallInscription->start($startTx["username"], $startTx["email"], $startTx["response_url"]);
+            $resp = $this->createInscription($startTx["username"], $startTx["email"], $startTx["response_url"]);
             return view('oneclick-mall-deferred.start', ["request" => $startTx, "resp" => $resp]);
         } catch (\Exception $e) {
             $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
             return view('error-page', ["error" => $error]);
         }
+    }
+
+    public function createInscription($username, $email, $responseUrl)
+    {
+        return $this->mallInscription->start($username, $email, $responseUrl);
     }
 
     public function finishInscription(Request $request)

@@ -60,10 +60,7 @@ $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'F
     <form action={{ $respond->url }} method="POST">
         <div class="tbk-card">
             <span class="tbk-card-title">Formulario de redirección</span>
-            <div class="input-container">
-                <label for="tokew_ws" class="tbk-label">Token</label>
-                <input type="text" name="token_ws" class="tbk-input-text" value={{ $respond->token }} required>
-            </div>
+            <livewire:webpay-deferred-token :token="$respond->token" :amount="$request['amount']" :buyOrder="$request['buyOrder']" :sessionId="$request['sessionId']" :returnUrl="$request['returnUrl']" />
             <div class="tbk-card-footer">
                 <button class="tbk-button primary">PAGAR</button>
             </div>
