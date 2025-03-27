@@ -1,8 +1,9 @@
-<aside class="tbk-sidebar" id="sidebar-desk">
-    <div class="toogle-btn-container">
-        <button class="tbk-toggle-btn" id="toggle-sidebar-btn">
-            &lt;
+<aside class="tbk-sidebar-mobile" id="sidebar">
+    <div class="btn-close-container">
+        <button id="close-sidebar-btn" class="toggle-close-btn">
+            <img src={{ asset('images/close.svg') }} alt="menu" width="21" height="21" />
         </button>
+
     </div>
 
     <nav class="sidebar-content" id="sidebar-content">
@@ -249,68 +250,3 @@
         </div> --}}
     </nav>
 </aside>
-
-@push('scripts')
-    <script>
-        const toggleBtn = document.getElementById('toggle-sidebar-btn');
-        const sidebar = document.getElementById('sidebar-desk');
-        const bodyContainer = document.querySelector('.body-container');
-
-        let isMenuVisible = true;
-        toggleBtn.addEventListener('click', () => {
-            isMenuVisible = !isMenuVisible;
-            if (!isMenuVisible) {
-                sidebar.classList.add("tbk-sidebar-hide");
-                bodyContainer.classList.add("hide-sd");
-            } else {
-                sidebar.classList.remove("tbk-sidebar-hide");
-                bodyContainer.classList.remove("hide-sd");
-            }
-        });
-
-
-        const collapsibleTitles = document.querySelectorAll('.sidebar-collapsible-title');
-        collapsibleTitles.forEach(title => {
-            title.addEventListener('click', () => {
-                const content = title.nextElementSibling;
-                const arrow = title.querySelector('.arrow');
-                if (!content) return;
-
-                content.classList.toggle('open');
-                arrow.classList.toggle('sidebar-icons-rotate');
-            });
-        });
-
-        (function highlightActiveByUrl() {
-            const currentPath = window.location.pathname;
-            const principalPath = currentPath.split("/")[1];
-
-
-            document.querySelectorAll("li.collapsible-items > a").forEach((anchor) => {
-                const linkPath = anchor.getAttribute("href") || "";
-                const principalLinkPath = linkPath.split("/")[1];
-
-
-                const activeCurrentAnchor = currentPath === linkPath || principalLinkPath === principalPath
-
-
-
-                if (activeCurrentAnchor) {
-                    const liItem = anchor.parentElement;
-                    liItem.classList.add("active");
-
-                    const collapsibleUl = liItem.closest(".collapsible-content");
-                    if (collapsibleUl) {
-                        collapsibleUl.classList.add("open");
-
-                        const collapsibleButton = collapsibleUl.previousElementSibling;
-                        if (collapsibleButton) {
-                            const icon = collapsibleButton.querySelector("img");
-                            if (icon) icon.classList.add("sidebar-icons-rotate");
-                        }
-                    }
-                }
-            });
-        })();
-    </script>
-@endpush
