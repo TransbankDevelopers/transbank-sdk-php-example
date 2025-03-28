@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="trusted-domain" content="https://www.googletagmanager.com">
     <title>{{ $title ?? 'Webpay Plus' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
