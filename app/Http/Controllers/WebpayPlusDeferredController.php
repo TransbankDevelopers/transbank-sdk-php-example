@@ -8,13 +8,13 @@ use Transbank\Webpay\Options;
 
 class WebpayPlusDeferredController extends Controller
 {
-    const COMMERCE_CODE = "597055555540";
-    const API_KEY = "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C";
     private Transaction $transaction;
 
     public function __construct()
     {
-        $option = new Options(self::API_KEY, self::COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
+        $apiKey = config('app.transbank.webpay_api_key');
+        $commerceCode = config('app.transbank.webpay_plus_deferred_cc');
+        $option = new Options($apiKey, $commerceCode, Options::ENVIRONMENT_INTEGRATION);
         $this->transaction = new Transaction($option);
     }
 
