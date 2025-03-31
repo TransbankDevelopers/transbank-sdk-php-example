@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Transbank\Webpay\WebpayPlus\Transaction;
 use Transbank\Webpay\Options;
-use Transbank\Webpay\WebpayPlus\Responses\TransactionCreateResponse;
+
+
 
 class WebpayController extends Controller
 {
