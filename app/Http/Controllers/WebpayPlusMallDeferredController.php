@@ -45,6 +45,8 @@ class WebpayPlusMallDeferredController extends Controller
         return view('webpay-mall-deferred.create', ["request" => $createTx, "resp" => $resp]);
     }
 
+
+
     public function commit(Request $request)
     {
         //Timeout

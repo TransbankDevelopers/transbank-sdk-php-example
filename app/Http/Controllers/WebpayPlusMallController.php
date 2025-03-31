@@ -44,6 +44,8 @@ class WebpayPlusMallController extends Controller
         return view('webpay-mall.create', ["request" => $createTx, "resp" => $resp]);
     }
 
+
+
     public function commit(Request $request)
     {
         //Timeout

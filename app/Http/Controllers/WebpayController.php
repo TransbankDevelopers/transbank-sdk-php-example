@@ -29,10 +29,11 @@ class WebpayController extends Controller
             'returnUrl' => url('/') . '/webpay-plus/commit',
             'amount' => random_int(1000, 2000)
         ];
+
+
         $resp = $this->transaction->create($createTx['buyOrder'], $createTx['sessionId'], $createTx['amount'], $createTx['returnUrl']);
         return view('webpay.create', ["request" => $createTx, "respond" => $resp]);
     }
-
     public function commit(Request $request)
     {
         //Timeout
