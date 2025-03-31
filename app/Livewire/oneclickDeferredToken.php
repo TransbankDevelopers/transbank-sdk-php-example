@@ -2,12 +2,18 @@
 
 namespace App\Livewire;
 
-use App\Http\Controllers\OneclickMallDeferredController;
+use Transbank\Webpay\Options;
+use Transbank\Webpay\Oneclick\MallInscription;
 
 class OneclickDeferredToken extends OneclickToken
 {
-    protected function getController()
+    protected function getProduct()
     {
-        return new OneclickMallDeferredController();
+        $option = new Options(
+            config('app.transbank.webpay_api_key'),
+            config('app.transbank.oneclick_deferred_cc'),
+            Options::ENVIRONMENT_INTEGRATION
+        );
+        return new MallInscription($option);
     }
 }

@@ -2,22 +2,19 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use App\Http\Controllers\OneclickMallController;
+use Transbank\Webpay\Options;
+use Transbank\Webpay\Oneclick\MallInscription;
 
-class OneclickToken extends Component
+class OneclickToken extends Token
 {
-    public $token;
     public $userName;
     public $email;
     public $responseUrl;
 
-    public $tokenName = 'TBK_TOKEN';
-
     public function updateToken()
     {
-        $controller = $this->getController();
-        $inscription = $controller->createInscription(
+        $product = $this->getProduct();
+        $inscription = $product->start(
             $this->userName,
             $this->email,
             $this->responseUrl,
@@ -25,14 +22,18 @@ class OneclickToken extends Component
         $this->token = $inscription->getToken();
     }
 
-    protected function getController()
+    protected function setTokenName()
     {
-        return new OneclickMallController();
+        $this->tokenName = 'TBK_TOKEN';
     }
 
-    public function render()
+    protected function getProduct()
     {
-
-        return view('livewire.token');
+        $option = new Options(
+            config('app.transbank.webpay_api_key'),
+            config('app.transbank.oneclick_cc'),
+            Options::ENVIRONMENT_INTEGRATION
+        );
+        return new MallInscription($option);
     }
 }
