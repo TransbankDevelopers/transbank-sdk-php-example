@@ -1,4 +1,4 @@
-<div class="input-container" wire:poll.300s="updateToken">
+<div class="input-container" wire:poll.{{ $pollInterval }}="updateToken">
     <label for={{ $tokenName }} class="tbk-label">Token</label>
     <input type="text" name={{ $tokenName }} class="tbk-input-text" value={{ $token }} required>
     <div class="tbk-info-token">
