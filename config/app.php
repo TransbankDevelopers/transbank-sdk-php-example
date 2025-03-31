@@ -123,4 +123,15 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'transbank' => [
+        'poll_interval' => env('TBK_POLL_INTERVAL', 300),
+        'webpay_api_key' => env('WP_API_KEY'),
+        'webpay_plus_cc' => env('WP_PLUS_CC'),
+        'webpay_plus_deferred_cc' => env('WP_PLUS_DEFERRED_CC'),
+        'webpay_plus_mall_cc' => env('WP_PLUS_MALL_CC'),
+        'webpay_plus_mall_deferred_cc' => env('WP_PLUS_MALL_DEFERRED_CC'),
+        'oneclick_cc' => env('ONECLICK_CC'),
+        'oneclick_deferred_cc' => env('ONECLICK_DEFERRED_CC'),
+    ]
+
 ];
