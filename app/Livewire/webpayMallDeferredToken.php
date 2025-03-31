@@ -2,12 +2,18 @@
 
 namespace App\Livewire;
 
-use App\Http\Controllers\WebpayPlusMallDeferredController;
+use Transbank\Webpay\Options;
+use Transbank\Webpay\WebpayPlus\MallTransaction;
 
 class WebpayMallDeferredToken extends WebpayMallToken
 {
-    protected function getController()
+    protected function getProduct(): MallTransaction
     {
-        return new WebpayPlusMallDeferredController();
+        $option = new Options(
+            config('app.transbank.webpay_api_key'),
+            config('app.transbank.webpay_plus_mall_deferred_cc'),
+            Options::ENVIRONMENT_INTEGRATION
+        );
+        return new MallTransaction($option);
     }
 }
