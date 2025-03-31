@@ -8,12 +8,12 @@ use Transbank\Webpay\WebpayPlus\MallTransaction;
 
 class WebpayPlusMallController extends Controller
 {
-    const COMMERCE_CODE = "597055555535";
-    const API_KEY = "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C";
     private MallTransaction $mallTransaction;
     public function __construct()
     {
-        $option = new Options(self::API_KEY, self::COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
+        $apiKey = config('app.transbank.webpay_api_key');
+        $commerceCode = config('app.transbank.webpay_plus_mall_cc');
+        $option = new Options($apiKey, $commerceCode, Options::ENVIRONMENT_INTEGRATION);
         $this->mallTransaction = new mallTransaction($option);
     }
 
