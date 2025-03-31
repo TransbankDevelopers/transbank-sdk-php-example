@@ -2,22 +2,20 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use App\Http\Controllers\WebpayController;
+use Transbank\Webpay\WebpayPlus\Transaction;
+use Transbank\Webpay\Options;
 
-class WebpayToken extends Component
+class WebpayToken extends Token
 {
-    public $token;
     public $buyOrder;
     public $sessionId;
     public $amount;
     public $returnUrl;
-    public $tokenName = 'token_ws';
 
     public function updateToken()
     {
-        $controller = $this->getController();
-        $transaction = $controller->createTransaction(
+        $product = $this->getProduct();
+        $transaction = $product->create(
             $this->buyOrder,
             $this->sessionId,
             $this->amount,
@@ -26,12 +24,18 @@ class WebpayToken extends Component
         $this->token = $transaction->getToken();
     }
 
-    protected function getController()
+    protected function setTokenName()
     {
-        return new WebpayController();
+        $this->tokenName = 'token_ws';
     }
-    public function render()
+
+    protected function getProduct()
     {
-        return view('livewire.token');
+        $option = new Options(
+            config('app.transbank.webpay_api_key'),
+            config('app.transbank.webpay_plus_cc'),
+            Options::ENVIRONMENT_INTEGRATION
+        );
+        return new Transaction($option);
     }
 }
