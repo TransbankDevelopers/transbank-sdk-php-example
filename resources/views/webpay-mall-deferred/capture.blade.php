@@ -1,9 +1,22 @@
 @php
-$navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'operations' => 'Otras operaciones'];
+    $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'operations' => 'Otras operaciones'];
 @endphp
 
 <x-layout active-link="Webpay Mall Diferido" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
 
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a href="/webpay-mall-diferido/create">Webpay Mall Diferido</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="/webpay-mall-diferido/capture">capturar transacción</a>
+        </div>
+    </div>
     <h1>Webpay Mall diferido - capturar transacción</h1>
     <p class="mb-32">
         En este paso debemos capturar la transacción para hacer efectiva la reserva de dinero realizada
