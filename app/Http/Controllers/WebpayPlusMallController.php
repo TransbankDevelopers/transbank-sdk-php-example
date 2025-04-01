@@ -41,12 +41,10 @@ class WebpayPlusMallController extends Controller
             ];
 
             $resp = $this->mallTransaction->create($createTx["buy_order"], $createTx["session_id"], $createTx["return_url"], $createTx["details"]);
-
+            return view('webpay-mall.create', ["request" => $createTx, "resp" => $resp]);
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
         }
-
-        return view('webpay-mall.create', ["request" => $createTx, "resp" => $resp]);
     }
 
 
@@ -73,11 +71,10 @@ class WebpayPlusMallController extends Controller
                 $view = 'webpay-mall.commit';
                 $data = ["resp" => $resp, "token" => $request["token_ws"]];
             }
+            return view($view, $data);
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
         }
-
-        return view($view, $data);
     }
 
 
@@ -86,11 +83,10 @@ class WebpayPlusMallController extends Controller
         try {
             $req = $request->except('_token');
             $resp = $this->mallTransaction->status($req["token"]);
+            return view('webpay-mall.status', ["resp" => $resp, "req" => $req]);
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
         }
-
-        return view('webpay-mall.status', ["resp" => $resp, "req" => $req]);
     }
 
     public function refund(Request $request)
@@ -98,14 +94,9 @@ class WebpayPlusMallController extends Controller
         try {
             $req = $request->except('_token');
             $resp = $this->mallTransaction->refund($req["token"], $req["buyOrder"], $req["childCommerceCode"], $req["amount"]);
+            return view('webpay-mall.refund', ["resp" => $resp, "req" => $req, "token" => $req["token"]]);
         } catch (\Exception $e) {
-            $resp = array(
-                'msg' => $e->getMessage(),
-                'code' => $e->getCode()
-            );
             return view('error-page', ["error" => $e->getMessage()]);
         }
-
-        return view('webpay-mall.refund', ["resp" => $resp, "req" => $req, "token" => $req["token"]]);
     }
 }

@@ -31,11 +31,10 @@ class WebpayPlusDeferredController extends Controller
             ];
 
             $resp = $this->transaction->create($createTx['buyOrder'], $createTx['sessionId'], $createTx['amount'], $createTx['returnUrl']);
+            return view('webpay-deferred.create', ["request" => $createTx, "respond" => $resp]);
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
         }
-
-        return view('webpay-deferred.create', ["request" => $createTx, "respond" => $resp]);
     }
     public function commit(Request $request)
     {
@@ -59,11 +58,10 @@ class WebpayPlusDeferredController extends Controller
                 $view = 'webpay-deferred.commit';
                 $data = ["resp" => $resp, "token" => $request["token_ws"]];
             }
+            return view($view, $data);
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
         }
-
-        return view($view, $data);
     }
 
     public function capture(Request $request)
@@ -71,15 +69,11 @@ class WebpayPlusDeferredController extends Controller
         try {
             $req = $request->except('_token');
             $resp = $this->transaction->capture($req["token"], $req["buyOrder"], $req["authorizationCode"], $req["amount"]);
+            return view('webpay-deferred.capture', ["resp" => $resp, "token" => $req["token"]]);
         } catch (\Exception $e) {
-            $resp = array(
-                'msg' => $e->getMessage(),
-                'code' => $e->getCode()
-            );
             return view('error-page', ["error" => $e->getMessage()]);
         }
 
-        return view('webpay-deferred.capture', ["resp" => $resp, "token" => $req["token"]]);
     }
 
     public function refund(Request $request)
@@ -87,11 +81,10 @@ class WebpayPlusDeferredController extends Controller
         try {
             $req = $request->except('_token');
             $resp = $this->transaction->refund($req["token"], $req["amount"]);
+            return view('webpay-deferred.refund', ["resp" => $resp, 'token' => $req["token"]]);
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
         }
-
-        return view('webpay-deferred.refund', ["resp" => $resp, 'token' => $req["token"]]);
     }
 
     public function status(Request $request)
@@ -99,10 +92,9 @@ class WebpayPlusDeferredController extends Controller
         try {
             $token = $request["token"];
             $resp = $this->transaction->status($token);
+            return view('webpay-deferred.status', ["resp" => $resp, "req" => $request]);
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
         }
-
-        return view('webpay-deferred.status', ["resp" => $resp, "req" => $request]);
     }
 }
