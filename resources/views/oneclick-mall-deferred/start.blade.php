@@ -1,8 +1,17 @@
 @php
-$navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario', 'example' => 'Ejemplo'];
+    $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario', 'example' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="/oneclick-mall-diferido/start">Oneclick Mall Diferido</a>
+        </div>
+    </div>
     <h1>Oneclick Mall Diferido - Creación de transacción</h1>
     <p class="mb-32">
         En esta etapa comienza el proceso de inscripción del medio de pago. Este paso inicial es fundamental, para
@@ -59,7 +68,9 @@ $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'F
         a crear el formulario de pago. Para fines de este ejemplo, haremos visible el campo "TBK_TOKEN", el cual es
         esencial para completar el proceso de pago de manera exitosa.
     </p>
-    <span>Antes de continuar al formulario de Webpay, asegúrate de contar con los datos de las tarjetas de prueba que están en la <a href="https://transbankdevelopers.cl/documentacion/como_empezar#tarjetas-de-prueba" class="tbk-link">documentación.</a></span>
+    <span>Antes de continuar al formulario de Webpay, asegúrate de contar con los datos de las tarjetas de prueba que
+        están en la <a href="https://transbankdevelopers.cl/documentacion/como_empezar#tarjetas-de-prueba"
+            class="tbk-link">documentación.</a></span>
 
     <form action={{ $resp->urlWebpay }} method="POST">
         <div class="tbk-card">
