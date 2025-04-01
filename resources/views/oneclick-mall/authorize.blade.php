@@ -1,5 +1,5 @@
 @php
-$navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'other' => 'Otras operaciones'];
+    $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'other' => 'Otras operaciones'];
 @endphp
 
 <x-layout active-link="Oneclick Mall" :navigation="$navigation">
@@ -64,33 +64,32 @@ $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'other' => '
     </ul>
 
     @foreach ($resp->details as $detail)
-    <form action={{ route('oneclick-mall.refund') }} method="POST">
-        @csrf
-        <div class="tbk-card">
-            <div class="card-multi-field">
-                <div class="input-container">
-                    <label for="buyOrder" class="tbk-label">Orden compra:</label>
-                    <input type="text" name="buyOrder" class="tbk-input-text" value={{ $resp->buyOrder }}>
+        <form action={{ route('oneclick-mall.refund') }} method="GET">
+            @csrf
+            <div class="tbk-card">
+                <div class="card-multi-field">
+                    <div class="input-container">
+                        <label for="buyOrder" class="tbk-label">Orden compra:</label>
+                        <input type="text" name="buyOrder" class="tbk-input-text" value={{ $resp->buyOrder }}>
+                    </div>
+                    <div class="input-container">
+                        <label for="childCommerceCode" class="tbk-label">Código de comercio:</label>
+                        <input type="text" name="childCommerceCode" class="tbk-input-text" value={{ $detail->commerceCode }}>
+                    </div>
+                    <div class="input-container">
+                        <label for="childBuyOrder" class="tbk-label">Orden de compra (tienda hija):</label>
+                        <input type="text" name="childBuyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
+                    </div>
+                    <div class="input-container">
+                        <label for="amount" class="tbk-label">Monto a reembolsar:</label>
+                        <input type="text" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
+                    </div>
                 </div>
-                <div class="input-container">
-                    <label for="childCommerceCode" class="tbk-label">Código de comercio:</label>
-                    <input type="text" name="childCommerceCode" class="tbk-input-text"
-                        value={{ $detail->commerceCode }}>
-                </div>
-                <div class="input-container">
-                    <label for="childBuyOrder" class="tbk-label">Orden de compra (tienda hija):</label>
-                    <input type="text" name="childBuyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
-                </div>
-                <div class="input-container">
-                    <label for="amount" class="tbk-label">Monto a reembolsar:</label>
-                    <input type="text" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
+                <div class="tbk-card-footer ">
+                    <button class="tbk-button primary">REEMBOLSAR</button>
                 </div>
             </div>
-            <div class="tbk-card-footer ">
-                <button class="tbk-button primary">REEMBOLSAR</button>
-            </div>
-        </div>
-    </form>
+        </form>
     @endforeach
     <a href={{ route('oneclick-mall.status', ['buyOrder' => $resp->buyOrder]) }}
         class="tbk-button primary mb-32">CONSULTAR ESTADO</a>
