@@ -14,6 +14,7 @@ class OneclickMallController extends Controller
     const REJECTED = -1;
     private MallInscription $mallInscription;
     private MallTransaction $mallTransaction;
+    const PRODUCT = 'Oneclick Mall';
 
     public function __construct()
     {
@@ -59,11 +60,11 @@ class OneclickMallController extends Controller
             $resp = $this->mallInscription->finish($token);
 
             if ($resp->responseCode == self::REJECTED) {
-                $view = 'oneclick-mall.rejected';
-                $data = ["resp" => $resp, "token" => $token];
+                $view = 'error.oneclick.rejected';
+                $data = ["resp" => $resp, "token" => $token, "product" => self::PRODUCT];
             } elseif ($resp->responseCode == self::TIMEOUT) {
-                $view = 'oneclick-mall.timeout';
-                $data = ["resp" => $resp];
+                $view = 'error.oneclick.timeout';
+                $data = ["resp" => $resp, "product" => self::PRODUCT];
             } else {
                 $table = [
                     "username" => $userName,

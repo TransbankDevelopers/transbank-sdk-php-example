@@ -11,6 +11,7 @@ class OneclickMallDeferredController extends Controller
 {
     const  TIMEOUT = -96;
     const REJECTED = -1;
+    const PRODUCT = 'Oneclick Mall Diferido';
     private MallInscription $mallInscription;
     private MallTransaction $mallTransaction;
 
@@ -58,11 +59,11 @@ class OneclickMallDeferredController extends Controller
             $resp = $this->mallInscription->finish($token);
 
             if ($resp->responseCode == self::REJECTED) {
-                $view = 'oneclick-mall-deferred.rejected';
-                $data = ["resp" => $resp, "token" => $token];
+                $view = 'error.oneclick.rejected';
+                $data = ["resp" => $resp, "token" => $token, "product" => self::PRODUCT];
             } elseif ($resp->responseCode == self::TIMEOUT) {
-                $view = 'oneclick-mall-deferred.timeout';
-                $data = ["resp" => $resp];
+                $view = 'error.oneclick.timeout';
+                $data = ["resp" => $resp, "product" => self::PRODUCT];
             } else {
                 $table = [
                     "username" => $userName,
