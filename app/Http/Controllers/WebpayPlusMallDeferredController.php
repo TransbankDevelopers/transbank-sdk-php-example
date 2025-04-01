@@ -21,28 +21,29 @@ class WebpayPlusMallDeferredController extends Controller
     public function create()
     {
 
-        $createTx = [
-            'buy_order' => "O-" . random_int(1, 10000),
-            "session_id" => "S-" . random_int(1, 10000),
-            'return_url' => url('/') . '/webpay-mall-diferido/commit',
-            'details' => [
-                [
-                    "amount" => 10000,
-                    "commerce_code" => 597055555582,
-                    "buy_order" => "ordenCompraDetalle" . random_int(1, 10000)
-                ],
-                [
-                    "amount" => 12000,
-                    "commerce_code" => 597055555583,
-                    "buy_order" => "ordenCompraDetalle" . random_int(1, 10000)
-                ],
-            ]
-        ];
+        try {
+            $createTx = [
+                'buy_order' => "O-" . random_int(1, 10000),
+                "session_id" => "S-" . random_int(1, 10000),
+                'return_url' => url('/') . '/webpay-mall-diferido/commit',
+                'details' => [
+                    [
+                        "amount" => 10000,
+                        "commerce_code" => 597055555582,
+                        "buy_order" => "ordenCompraDetalle" . random_int(1, 10000)
+                    ],
+                    [
+                        "amount" => 12000,
+                        "commerce_code" => 597055555583,
+                        "buy_order" => "ordenCompraDetalle" . random_int(1, 10000)
+                    ],
+                ]
+            ];
 
-
-        $resp = $this->mallTransaction->create($createTx["buy_order"], $createTx["session_id"],  $createTx["return_url"], $createTx["details"]);
-
-
+            $resp = $this->mallTransaction->create($createTx["buy_order"], $createTx["session_id"], $createTx["return_url"], $createTx["details"]);
+        } catch (\Exception $e) {
+            return view('error-page', ["error" => $e->getMessage()]);
+        }
         return view('webpay-mall-deferred.create', ["request" => $createTx, "resp" => $resp]);
     }
 
@@ -50,24 +51,28 @@ class WebpayPlusMallDeferredController extends Controller
 
     public function commit(Request $request)
     {
-        //Timeout
-        $view = 'error.webpay.timeout';
-        $data = ["request" => $request, "product" => self::PRODUCT];
+        try {
+            //Timeout
+            $view = 'error.webpay.timeout';
+            $data = ["request" => $request, "product" => self::PRODUCT];
 
-        //flujo error
-        if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
-            $view = 'error.webpay.form-error';
-        }
-        //Pago abortados
-        elseif ($request->exists("TBK_TOKEN")) {
-            $view = 'error.webpay.aborted';
-            $data["resp"] = $this->mallTransaction->status($request["TBK_TOKEN"]);
-        }
-        //Flujo normal
-        elseif ($request->exists("token_ws")) {
-            $resp = $this->mallTransaction->commit($request["token_ws"]);
-            $view = 'webpay-mall-deferred.commit';
-            $data = ["resp" => $resp, "token" => $request["token_ws"]];
+            //flujo error
+            if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
+                $view = 'error.webpay.form-error';
+            }
+            //Pago abortados
+            elseif ($request->exists("TBK_TOKEN")) {
+                $view = 'error.webpay.aborted';
+                $data["resp"] = $this->mallTransaction->status($request["TBK_TOKEN"]);
+            }
+            //Flujo normal
+            elseif ($request->exists("token_ws")) {
+                $resp = $this->mallTransaction->commit($request["token_ws"]);
+                $view = 'webpay-mall-deferred.commit';
+                $data = ["resp" => $resp, "token" => $request["token_ws"]];
+            }
+        } catch (\Exception $e) {
+            return view('error-page', ["error" => $e->getMessage()]);
         }
 
         return view($view, $data);
@@ -76,8 +81,13 @@ class WebpayPlusMallDeferredController extends Controller
 
     public function status(Request $request)
     {
-        $req = $request->except('_token');
-        $resp = $this->mallTransaction->status($req["token"]);
+        try {
+            $req = $request->except('_token');
+            $resp = $this->mallTransaction->status($req["token"]);
+        } catch (\Exception $e) {
+            return view('error-page', ["error" => $e->getMessage()]);
+        }
+
         return view('webpay-mall-deferred.status', ["resp" => $resp, "req" => $req]);
     }
 
@@ -87,12 +97,9 @@ class WebpayPlusMallDeferredController extends Controller
             $req = $request->except('_token');
             $resp = $this->mallTransaction->refund($req["token"], $req["buyOrder"], $req["childCommerceCode"], $req["amount"]);
         } catch (\Exception $e) {
-            $resp = array(
-                'msg' => $e->getMessage(),
-                'code' => $e->getCode()
-            );
-            return view('webpay-mall-deferred.refund', ["resp" => $resp, "req" => $req]);
+            return view('error-page', ["error" => $e->getMessage()]);
         }
+
         return view('webpay-mall-deferred.refund', ["resp" => $resp, "req" => $req]);
     }
 
@@ -102,12 +109,9 @@ class WebpayPlusMallDeferredController extends Controller
             $req = $request->except('_token');
             $resp = $this->mallTransaction->capture($req["childCommerceCode"], $req["token"], $req["buyOrder"], $req["authorizationCode"], $req["amount"]);
         } catch (\Exception $e) {
-            $resp = array(
-                'msg' => $e->getMessage(),
-                'code' => $e->getCode()
-            );
-            return view('webpay-mall-deferred.capture', ["resp" => $resp, "request" => $req]);
+            return view('error-page', ["error" => $e->getMessage()]);
         }
+
         return view('webpay-mall-deferred.capture', ["resp" => $resp, "request" => $req]);
     }
 }
