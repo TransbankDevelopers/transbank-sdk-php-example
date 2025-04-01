@@ -1,12 +1,31 @@
 @php
-$navigation = ['data' => 'Datos recibidos', 'request' => 'Petición', 'response' => 'Respuesta', 'operations' => 'Operaciones'];
+    $navigation = [
+        'data' => 'Datos recibidos',
+        'request' => 'Petición',
+        'response' => 'Respuesta',
+        'operations' => 'Operaciones',
+    ];
 @endphp
 
 <x-layout active-link="Webpay Plus" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
 
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a href="/webpay-plus/create">Webpay Plus</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="/webpay-plus/commit">Confirmar transacción</a>
+        </div>
+    </div>
     <h1>Webpay Plus - Confirmar transacción</h1>
     <p class="mb-32">En este paso es importante confirmar la transacción para notificar a Transbank que hemos recibido
-        exitosamente los detalles de la transacción. <b>Es importante destacar que si la confirmación no se realiza, la transacción será caducada.</b>
+        exitosamente los detalles de la transacción. <b>Es importante destacar que si la confirmación no se realiza, la
+            transacción será caducada.</b>
 
     </p>
 
@@ -31,7 +50,8 @@ $navigation = ['data' => 'Datos recibidos', 'request' => 'Petición', 'response'
     <h2 id="response">Paso 3 - Respuesta:</h2>
     <p class="mb-32">
         Una vez que la transacción ha sido confirmada Transbank proporcionará la siguiente información.
-        Es fundamental conservar esta respuesta y verificar que el campo "response_code" tenga un valor de cero y que el campo "status" sea "AUTHORIZED".
+        Es fundamental conservar esta respuesta y verificar que el campo "response_code" tenga un valor de cero y que el
+        campo "status" sea "AUTHORIZED".
     </p>
 
     <x-snippet :content="$resp" />
@@ -67,7 +87,8 @@ $navigation = ['data' => 'Datos recibidos', 'request' => 'Petición', 'response'
             </div>
             <div class="tbk-refund-button-container">
                 <button class="tbk-button primary">REEMBOLSAR</button>
-                <a href={{ route('webpay.status', ['token' => $token]) }} class="tbk-button primary">CONSULTAR ESTADO</a>
+                <a href={{ route('webpay.status', ['token' => $token]) }} class="tbk-button primary">CONSULTAR
+                    ESTADO</a>
             </div>
         </div>
     </form>

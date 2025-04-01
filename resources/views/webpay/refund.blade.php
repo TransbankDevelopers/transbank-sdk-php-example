@@ -1,13 +1,28 @@
 @php
-$navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
+    $navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
 @endphp
 
 <x-layout active-link="Webpay Plus" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
 
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a href="/webpay-plus/create">Webpay Plus</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="/webpay-plus/refund">Reembolsar</a>
+        </div>
+    </div>
     <h1>Webpay Plus - Reembolsar</h1>
     <p class="mb-32">
         En esta etapa, tienes la opción de solicitar el reembolso del monto al titular de la tarjeta.
-        Dependiendo del monto y el tiempo transcurrido desde la transacción, este proceso podría resultar en una Reversa o Anulación, dependiendo de ciertas condiciones (Reversa en las primeras 3 horas de la autorización, anulación posterior a eso), o una Anulación parcial si el monto es menor al total.
+        Dependiendo del monto y el tiempo transcurrido desde la transacción, este proceso podría resultar en una Reversa
+        o Anulación, dependiendo de ciertas condiciones (Reversa en las primeras 3 horas de la autorización, anulación
+        posterior a eso), o una Anulación parcial si el monto es menor al total.
         Las anulaciones parciales para tarjetas débito y prepago no están soportadas.
     </p>
 
@@ -39,9 +54,9 @@ $navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
         </li>
     </ul>
 
-
     <p class="mb-32">
-        En <a href="https://www.transbankdevelopers.cl/producto/webpay#anulaciones-y-reversas" class="tbk-link">este link
+        En <a href="https://www.transbankdevelopers.cl/producto/webpay#anulaciones-y-reversas" class="tbk-link">este
+            link
         </a> podrás ver mayor información sobre las condiciones y casos para anular o reversar transacciones.
     </p>
 
