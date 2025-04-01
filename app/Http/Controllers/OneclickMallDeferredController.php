@@ -11,14 +11,14 @@ class OneclickMallDeferredController extends Controller
 {
     const  TIMEOUT = -96;
     const REJECTED = -1;
-    const COMMERCE_CODE = "597055555547";
-    const API_KEY = "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C";
     private MallInscription $mallInscription;
     private MallTransaction $mallTransaction;
 
     public function __construct()
     {
-        $option = new Options(self::API_KEY, self::COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
+        $apiKey = config('app.transbank.webpay_api_key');
+        $commerceCode = config('app.transbank.oneclick_deferred_cc');
+        $option = new Options($apiKey, $commerceCode, Options::ENVIRONMENT_INTEGRATION);
         $this->mallInscription = new MallInscription($option);
         $this->mallTransaction = new MallTransaction($option);
     }

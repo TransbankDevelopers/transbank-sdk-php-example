@@ -8,12 +8,13 @@ use Transbank\Webpay\WebpayPlus\MallTransaction;
 
 class WebpayPlusMallDeferredController extends Controller
 {
-    const COMMERCE_CODE = "597055555581";
-    const API_KEY = "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C";
     private MallTransaction $mallTransaction;
+    const PRODUCT = 'Webpay Plus Mall Diferido';
     public function __construct()
     {
-        $option = new Options(self::API_KEY, self::COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
+        $apiKey = config('app.transbank.webpay_api_key');
+        $commerceCode = config('app.transbank.webpay_plus_mall_deferred_cc');
+        $option = new Options($apiKey, $commerceCode, Options::ENVIRONMENT_INTEGRATION);
         $this->mallTransaction = new mallTransaction($option);
     }
 
@@ -50,16 +51,17 @@ class WebpayPlusMallDeferredController extends Controller
     public function commit(Request $request)
     {
         //Timeout
-        $view = 'webpay-mall-deferred.timeout';
-        $data = ["request" => $request];
+        $view = 'error.webpay.timeout';
+        $data = ["request" => $request, "product" => self::PRODUCT];
 
         //flujo error
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
-            $view = 'webpay-mall-deferred.error';
+            $view = 'error.webpay.form-error';
         }
         //Pago abortados
         elseif ($request->exists("TBK_TOKEN")) {
-            $view = 'webpay-mall-deferred.error';
+            $view = 'error.webpay.aborted';
+            $data["resp"] = $this->mallTransaction->status($request["TBK_TOKEN"]);
         }
         //Flujo normal
         elseif ($request->exists("token_ws")) {

@@ -10,13 +10,14 @@ use Transbank\Webpay\Options;
 
 class WebpayController extends Controller
 {
-    const COMMERCE_CODE = "597055555532";
-    const API_KEY = "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C";
     private Transaction $transaction;
+    const PRODUCT = 'Webpay Plus';
 
     public function __construct()
     {
-        $option = new Options(self::API_KEY, self::COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
+        $apiKey = config('app.transbank.webpay_api_key');
+        $commerceCode = config('app.transbank.webpay_plus_cc');
+        $option = new Options($apiKey, $commerceCode, Options::ENVIRONMENT_INTEGRATION);
         $this->transaction = new Transaction($option);
     }
 
@@ -37,16 +38,16 @@ class WebpayController extends Controller
     public function commit(Request $request)
     {
         //Timeout
-        $view = 'webpay.error.timeout';
-        $data = ["request" => $request];
+        $view = 'error.webpay.timeout';
+        $data = ["request" => $request, "product" => self::PRODUCT];
 
         //flujo error
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
-            $view = 'webpay.error.form-error';
+            $view = 'error.webpay.form-error';
         }
         //Pago abortadas
         elseif ($request->exists("TBK_TOKEN")) {
-            $view = 'webpay.error.aborted';
+            $view = 'error.webpay.aborted';
             $data["resp"] = $this->transaction->status($request["TBK_TOKEN"]);
         }
         //Flujo normal

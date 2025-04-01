@@ -48,7 +48,7 @@
         realizada.
     </p>
 
-    <form action={{ route('webpay-mall-deferred.refund') }} method="POST">
+    <form action={{ route('webpay-mall-deferred.refund') }} method="GET">
         @csrf
         <div class="tbk-refund-card  mb-32">
             <div class="input-container">

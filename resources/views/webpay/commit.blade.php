@@ -77,7 +77,7 @@
         </li>
     </ul>
 
-    <form action={{ route('webpay.refund') }} method="POST">
+    <form action={{ route('webpay.refund') }} method="GET">
         @csrf
         <div class="tbk-refund-card mb-32">
             <div class="input-container">
