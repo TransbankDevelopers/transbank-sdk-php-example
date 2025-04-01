@@ -9,6 +9,7 @@ use Transbank\Webpay\WebpayPlus\MallTransaction;
 class WebpayPlusMallController extends Controller
 {
     private MallTransaction $mallTransaction;
+    const PRODUCT = 'Webpay Plus Mall';
     public function __construct()
     {
         $apiKey = config('app.transbank.webpay_api_key');
@@ -49,16 +50,17 @@ class WebpayPlusMallController extends Controller
     public function commit(Request $request)
     {
         //Timeout
-        $view = 'webpay-mall.timeout';
-        $data = ["request" => $request];
+        $view = 'error.webpay.timeout';
+        $data = ["request" => $request, "product" => self::PRODUCT];
 
         //flujo error
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
-            $view = 'webpay-mall.error';
+            $view = 'error.webpay.form-error';
         }
-        //Pago abortadoas
+        //Pago abortado
         elseif ($request->exists("TBK_TOKEN")) {
-            $view = 'webpay-mall.error';
+            $view = 'error.webpay.aborted';
+            $data["resp"] = $this->mallTransaction->status($request["TBK_TOKEN"]);
         }
         //Flujo normal
         elseif ($request->exists("token_ws")) {

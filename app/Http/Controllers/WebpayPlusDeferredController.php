@@ -9,6 +9,7 @@ use Transbank\Webpay\Options;
 class WebpayPlusDeferredController extends Controller
 {
     private Transaction $transaction;
+    const PRODUCT = 'Webpay Plus Diferido';
 
     public function __construct()
     {
@@ -35,16 +36,17 @@ class WebpayPlusDeferredController extends Controller
     public function commit(Request $request)
     {
         //Timeout
-        $view = 'webpay-deferred.timeout';
-        $data = ["request" => $request];
+        $view = 'error.webpay.timeout';
+        $data = ["request" => $request, "product" => self::PRODUCT];
 
         //flujo error
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
-            $view = 'webpay-deferred.error';
+            $view = 'error.webpay.form-error';
         }
         //Pago abortado
         elseif ($request->exists("TBK_TOKEN")) {
-            $view = 'webpay-deferred.error';
+            $view = 'error.webpay.aborted';
+            $data["resp"] = $this->transaction->status($request["TBK_TOKEN"]);
         }
         //Flujo normal
         elseif ($request->exists("token_ws")) {
