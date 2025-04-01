@@ -9,6 +9,7 @@ use Transbank\Webpay\WebpayPlus\MallTransaction;
 class WebpayPlusMallDeferredController extends Controller
 {
     private MallTransaction $mallTransaction;
+    const PRODUCT = 'Webpay Plus Mall Diferido';
     public function __construct()
     {
         $apiKey = config('app.transbank.webpay_api_key');
@@ -51,7 +52,7 @@ class WebpayPlusMallDeferredController extends Controller
     {
         //Timeout
         $view = 'error.webpay.timeout';
-        $data = ["request" => $request];
+        $data = ["request" => $request, "product" => self::PRODUCT];
 
         //flujo error
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {

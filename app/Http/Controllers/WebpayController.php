@@ -11,6 +11,7 @@ use Transbank\Webpay\Options;
 class WebpayController extends Controller
 {
     private Transaction $transaction;
+    const PRODUCT = 'Webpay Plus';
 
     public function __construct()
     {
@@ -38,7 +39,7 @@ class WebpayController extends Controller
     {
         //Timeout
         $view = 'error.webpay.timeout';
-        $data = ["request" => $request];
+        $data = ["request" => $request, "product" => self::PRODUCT];
 
         //flujo error
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
