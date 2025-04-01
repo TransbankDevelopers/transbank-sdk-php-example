@@ -50,16 +50,17 @@ class WebpayPlusMallDeferredController extends Controller
     public function commit(Request $request)
     {
         //Timeout
-        $view = 'webpay-mall-deferred.timeout';
+        $view = 'error.webpay.timeout';
         $data = ["request" => $request];
 
         //flujo error
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
-            $view = 'webpay-mall-deferred.error';
+            $view = 'error.webpay.form-error';
         }
         //Pago abortados
         elseif ($request->exists("TBK_TOKEN")) {
-            $view = 'webpay-mall-deferred.error';
+            $view = 'error.webpay.aborted';
+            $data["resp"] = $this->mallTransaction->status($request["TBK_TOKEN"]);
         }
         //Flujo normal
         elseif ($request->exists("token_ws")) {

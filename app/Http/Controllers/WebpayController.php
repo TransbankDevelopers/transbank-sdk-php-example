@@ -37,16 +37,16 @@ class WebpayController extends Controller
     public function commit(Request $request)
     {
         //Timeout
-        $view = 'webpay.error.timeout';
+        $view = 'error.webpay.timeout';
         $data = ["request" => $request];
 
         //flujo error
         if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
-            $view = 'webpay.error.form-error';
+            $view = 'error.webpay.form-error';
         }
         //Pago abortadas
         elseif ($request->exists("TBK_TOKEN")) {
-            $view = 'webpay.error.aborted';
+            $view = 'error.webpay.aborted';
             $data["resp"] = $this->transaction->status($request["TBK_TOKEN"]);
         }
         //Flujo normal
