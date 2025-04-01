@@ -11,11 +11,11 @@ $navigation = ['timeout' => 'Time out'];
 
     <h2 id="data">Datos Recibidos:</h2>
     <p class="mb-32">
-        Después de 10 minutos (en el ambiente de integración) en el que no se haya recibido ninguna acción o interacción
-        del usuario, recibirás un POST
-        con la siguiente información:</p>
+        Después de 10 minutos en el que no se haya recibido ninguna acción o interacción del usuario,
+        recibirás un GET con la siguiente información:</p>
 
     <x-snippet :content="$resp" />
 
 
 </x-layout>
+
