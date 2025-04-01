@@ -78,29 +78,22 @@
     </ul>
 
     @foreach ($resp->details as $detail)
-        <<<<<<< HEAD <form action={{ route('webpay-mall.refund') }} method="POST">
-            =======
-            <form action={{ route('webpay-mall.refund') }} method="GET">
-                >>>>>>> 08deb42cdea013ab954b1dee62c6832fe543c4c4
-                @csrf
-                <div class="tbk-card">
-                    <div class="input-container">
-                        <label for="amount" class="tbk-label">Monto a reembolsar:</label>
-                        <input type="text" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
-                        <<<<<<< HEAD <input type="hidden" name="childCommerceCode" class="tbk-input-text"
-                            value={{ $detail->commerceCode }}>
-                            =======
-                            <input type="hidden" name="childCommerceCode" class="tbk-input-text"
-                                value={{ $detail->commerceCode }}>
-                            >>>>>>> 08deb42cdea013ab954b1dee62c6832fe543c4c4
-                            <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
-                            <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>
-                    </div>
-                    <div class="tbk-card-footer ">
-                        <button class="tbk-button primary">REEMBOLSAR</button>
-                    </div>
+        <form action={{ route('webpay-mall.refund') }} method="GET">
+            @csrf
+            <div class="tbk-card">
+                <div class="input-container">
+                    <label for="amount" class="tbk-label">Monto a reembolsar:</label>
+                    <input type="text" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
+                    <input type="hidden" name="childCommerceCode" class="tbk-input-text"
+                        value={{ $detail->commerceCode }}>
+                    <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
+                    <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>
                 </div>
-            </form>
+                <div class="tbk-card-footer ">
+                    <button class="tbk-button primary">REEMBOLSAR</button>
+                </div>
+            </div>
+        </form>
     @endforeach
     <a href={{ route('webpay-mall.status', ['token' => $token]) }} class="tbk-button primary mb-32">CONSULTAR
         ESTADO</a>
