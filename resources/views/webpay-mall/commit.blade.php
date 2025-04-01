@@ -1,9 +1,28 @@
 @php
-    $navigation = ['data' => 'Datos recibidos', 'request' => 'Petición', 'response' => 'Respuesta', 'operations' => 'Operaciones'];
+    $navigation = [
+        'data' => 'Datos recibidos',
+        'request' => 'Petición',
+        'response' => 'Respuesta',
+        'operations' => 'Operaciones',
+    ];
 @endphp
 
 <x-layout active-link="Webpay Mall" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
 
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a href="/webpay-mall/create">Webpay Mall</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="/webpay-mall/commit?token_ws={{ $token }}">
+                Confirmar transacción</a>
+        </div>
+    </div>
     <h1>Webpay Mall - Confirmar transacción</h1>
     <p class="mb-32">En este paso es importante confirmar la transacción para notificar a Transbank que hemos recibido
         exitosamente los detalles de la transacción. <b>Es importante destacar que si la confirmación no se realiza, la
@@ -65,7 +84,8 @@
                 <div class="input-container">
                     <label for="amount" class="tbk-label">Monto a reembolsar:</label>
                     <input type="text" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
-                    <input type="hidden" name="childCommerceCode" class="tbk-input-text" value={{ $detail->commerceCode }}>
+                    <input type="hidden" name="childCommerceCode" class="tbk-input-text"
+                        value={{ $detail->commerceCode }}>
                     <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
                     <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>
                 </div>
@@ -75,5 +95,6 @@
             </div>
         </form>
     @endforeach
-    <a href={{ route('webpay-mall.status', ['token' => $token]) }} class="tbk-button primary mb-32">CONSULTAR ESTADO</a>
+    <a href={{ route('webpay-mall.status', ['token' => $token]) }} class="tbk-button primary mb-32">CONSULTAR
+        ESTADO</a>
 </x-layout>

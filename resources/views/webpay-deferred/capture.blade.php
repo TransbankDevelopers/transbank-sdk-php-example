@@ -3,6 +3,20 @@
 @endphp
 
 <x-layout active-link="Webpay Plus Diferido" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
+
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a href="/webpay-plus-diferido/create">Webpay Plus Diferido</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="/webpay-plus-diferido/capture">Captura de transacción</a>
+        </div>
+    </div>
     <h1>Webpay Plus Diferido - Captura de transacción</h1>
     <p class="mb-32">
         En este paso debemos capturar la transacción para realmente capturar el dinero que habia sido previamente

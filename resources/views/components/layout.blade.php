@@ -34,7 +34,7 @@
                 @include('partials.channels')
             </div>
             <div class="helper-content">
-                <x-navigation :navigation="$navigation" />
+                <x-navigation :navigation="$navigation ?? []" />
             </div>
         </div>
 
