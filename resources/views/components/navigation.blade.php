@@ -1,19 +1,21 @@
-<div class="nav-container">
-    <span class="nav-title">Contenido en esta página</span>
-    <ul class="nav-list">
-        @foreach ($navigation as $sectionId => $title)
-            <li>
-                <a href="#{{ $sectionId }}" class="item">
-                    {{ $title }}
-                </a>
-            </li>
-        @endforeach
-    </ul>
-</div>
+@if (isset($navigation) && !empty($navigation))
+    <div class="nav-container">
+        <span class="nav-title">Contenido en esta página</span>
+        <ul class="nav-list">
+            @foreach ($navigation as $sectionId => $title)
+                <li>
+                    <a href="#{{ $sectionId }}" class="item">
+                        {{ $title }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var observer = new IntersectionObserver(entries => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {

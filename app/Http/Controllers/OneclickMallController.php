@@ -10,7 +10,7 @@ use Transbank\Webpay\Oneclick\MallTransaction;
 class OneclickMallController extends Controller
 {
 
-    const  TIMEOUT = -96;
+    const TIMEOUT = -96;
     const REJECTED = -1;
     private MallInscription $mallInscription;
     private MallTransaction $mallTransaction;
@@ -38,8 +38,7 @@ class OneclickMallController extends Controller
             $resp = $this->mallInscription->start($startTx["username"], $startTx["email"], $startTx["response_url"]);
             return view('oneclick-mall.start', ["request" => $startTx, "resp" => $resp]);
         } catch (\Exception $e) {
-            $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
-            return view('error-page', ["error" => $error]);
+            return view('error-page', ["error" => $e->getMessage()]);
         }
     }
 
@@ -75,8 +74,7 @@ class OneclickMallController extends Controller
 
             return view($view, $data);
         } catch (\Exception $e) {
-            $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
-            return view('error-page', ["error" => $error]);
+            return view('error-page', ["error" => $e->getMessage()]);
         }
     }
     public function deleteInscription(Request $request)
@@ -87,8 +85,7 @@ class OneclickMallController extends Controller
             $resp = $this->mallInscription->delete($tbkUser, $userName);
             return view('oneclick-mall.delete', ["resp" => $resp]);
         } catch (\Exception $e) {
-            $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
-            return view('error-page', ["error" => $error]);
+            return view('error-page', ["error" => $e->getMessage()]);
         }
     }
 
@@ -120,8 +117,7 @@ class OneclickMallController extends Controller
             $resp = $this->mallTransaction->authorize($userName, $tbkUser, $buyOrder, $details);
             return view('oneclick-mall.authorize', ["resp" => $resp]);
         } catch (\Exception $e) {
-            $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
-            return view('error-page', ["error" => $error]);
+            return view('error-page', ["error" => $e->getMessage()]);
         }
     }
 
@@ -132,8 +128,7 @@ class OneclickMallController extends Controller
             $resp = $this->mallTransaction->status($buyOrder);
             return view('oneclick-mall.status', ["resp" => $resp]);
         } catch (\Exception $e) {
-            $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
-            return view('error-page', ["error" => $error]);
+            return view('error-page', ["error" => $e->getMessage()]);
         }
     }
 
@@ -150,8 +145,7 @@ class OneclickMallController extends Controller
 
             return view('oneclick-mall.refund', ["resp" => $resp, "buyOrder" => $buyOrder]);
         } catch (\Exception $e) {
-            $error = ["msg" => $e->getMessage(), "code" => $e->getCode()];
-            return view('error-page', ["error" => $error]);
+            return view('error-page', ["error" => $e->getMessage()]);
         }
     }
 }
