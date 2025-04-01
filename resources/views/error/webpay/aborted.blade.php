@@ -1,10 +1,10 @@
 @php
-    $navigation = ['cancel' => 'Estado de compra cancelada', 'state' => 'Consulta de estado de transacción'];
+$navigation = ['cancel' => 'Estado de compra cancelada', 'state' => 'Consulta de estado de transacción'];
 @endphp
 
-<x-layout active-link="Webpay Plus" :navigation="$navigation">
+<x-layout active-link={{ $product }} :navigation="$navigation">
 
-    <h1 id="cancel">Webpay Plus - Estado de compra cancelada</h1>
+    <h1 id="cancel">{{ $product }} - Estado de compra cancelada</h1>
     <p class="mb-32">
         El pago de la compra ha sido anulado por el usuario. En esta etapa, después de abandonar el
         formulario de pago, no es necesario realizar la confirmación. Aquí te proporcionamos información esencial sobre

@@ -1,10 +1,10 @@
 @php
-    $navigation = ['error' => 'Error en formulario de pago'];
+$navigation = ['error' => 'Error en formulario de pago'];
 @endphp
 
-<x-layout active-link="Webpay Plus" :navigation="$navigation">
+<x-layout active-link={{ $product }} :navigation="$navigation">
 
-    <h1 id="error">Webpay Plus - Error en formulario de pago</h1>
+    <h1 id="error">{{ $product }} - Error en formulario de pago</h1>
     <p class="mb-32">
         Se ha producido un error en el formulario de pago. Si ha hecho clic
         en el botón &quot;Intentar nuevamente&quot; desde la pantalla de error
