@@ -1,8 +1,21 @@
 @php
-$navigation = ['delete' => 'Borrar usuario'];
+    $navigation = ['delete' => 'Borrar usuario'];
 @endphp
 
 <x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a href="/oneclick-mall-diferido/start">Oneclick Mall Diferido</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="#">Borrar usuario</a>
+        </div>
+    </div>
     <h1>Oneclick Mall Diferido - Borrar usuario</h1>
     <p class="mb-32">
         En este paso fundamental, procederemos a eliminar la inscripción del usuario y su medio de pago.
