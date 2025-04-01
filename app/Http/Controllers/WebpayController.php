@@ -24,37 +24,45 @@ class WebpayController extends Controller
     public function create()
     {
 
-        $createTx = [
-            'buyOrder' => "O-" . random_int(1, 10000),
-            "sessionId" => "S-" . random_int(1, 10000),
-            'returnUrl' => url('/') . '/webpay-plus/commit',
-            'amount' => random_int(1000, 2000)
-        ];
+        try {
+            $createTx = [
+                'buyOrder' => "O-" . random_int(1, 10000),
+                "sessionId" => "S-" . random_int(1, 10000),
+                'returnUrl' => url('/') . '/webpay-plus/commit',
+                'amount' => random_int(1000, 2000)
+            ];
 
+            $resp = $this->transaction->create($createTx['buyOrder'], $createTx['sessionId'], $createTx['amount'], $createTx['returnUrl']);
+        } catch (\Exception $e) {
+            return view('error-page', ["error" => $e->getMessage()]);
+        }
 
-        $resp = $this->transaction->create($createTx['buyOrder'], $createTx['sessionId'], $createTx['amount'], $createTx['returnUrl']);
         return view('webpay.create', ["request" => $createTx, "respond" => $resp]);
     }
     public function commit(Request $request)
     {
-        //Timeout
-        $view = 'error.webpay.timeout';
-        $data = ["request" => $request, "product" => self::PRODUCT];
+        try {
+            //Timeout
+            $view = 'error.webpay.timeout';
+            $data = ["request" => $request, "product" => self::PRODUCT];
 
-        //flujo error
-        if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
-            $view = 'error.webpay.form-error';
-        }
-        //Pago abortadas
-        elseif ($request->exists("TBK_TOKEN")) {
-            $view = 'error.webpay.aborted';
-            $data["resp"] = $this->transaction->status($request["TBK_TOKEN"]);
-        }
-        //Flujo normal
-        elseif ($request->exists("token_ws")) {
-            $resp = $this->transaction->commit($request["token_ws"]);
-            $view = 'webpay.commit';
-            $data = ["resp" => $resp, "token" => $request["token_ws"]];
+            //flujo error
+            if ($request->exists("TBK_TOKEN") && $request->exists("token_ws")) {
+                $view = 'error.webpay.form-error';
+            }
+            //Pago abortadas
+            elseif ($request->exists("TBK_TOKEN")) {
+                $view = 'error.webpay.aborted';
+                $data["resp"] = $this->transaction->status($request["TBK_TOKEN"]);
+            }
+            //Flujo normal
+            elseif ($request->exists("token_ws")) {
+                $resp = $this->transaction->commit($request["token_ws"]);
+                $view = 'webpay.commit';
+                $data = ["resp" => $resp, "token" => $request["token_ws"]];
+            }
+        } catch (\Exception $e) {
+            return view('error-page', ["error" => $e->getMessage()]);
         }
 
         return view($view, $data);
@@ -66,19 +74,19 @@ class WebpayController extends Controller
             $req = $request->except('_token');
             $resp = $this->transaction->refund($req["token"], $req["amount"]);
         } catch (\Exception $e) {
-            $resp = array(
-                'msg' => $e->getMessage(),
-                'code' => $e->getCode()
-            );
-            return view('webpay.refund', ["resp" => $resp]);
+            return view('error-page', ["error" => $e->getMessage()]);
         }
         return view('webpay.refund', ["resp" => $resp, 'token' => $req["token"]]);
     }
 
     public function status(Request $request)
     {
-        $token = $request["token"];
-        $resp = $this->transaction->status($token);
+        try {
+            $token = $request["token"];
+            $resp = $this->transaction->status($token);
+        } catch (\Exception $e) {
+            return view('error-page', ["error" => $e->getMessage()]);
+        }
         return view('webpay.status', ["resp" => $resp, "req" => $request]);
     }
 }
