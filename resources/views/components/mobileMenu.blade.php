@@ -14,7 +14,7 @@
                     <button class="sidebar-collapsible-title" data-collapsible="webpay-plus">
                         <span class="general-text">Webpay Plus</span>
                         <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24" class="" />
+                            height="24" />
                     </button>
                     <ul class="collapsible-content" id="collapse-webpay-plus">
                         <li class="collapsible-items">
@@ -34,7 +34,7 @@
                     <button class="sidebar-collapsible-title" data-collapsible="webpay-plus-mall">
                         <span class="general-text">Webpay Plus Mall</span>
                         <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24" class="" />
+                            height="24" />
                     </button>
                     <ul class="collapsible-content" id="collapse-webpay-plus-mall">
                         <li class="collapsible-items">
@@ -54,7 +54,7 @@
                     <button class="sidebar-collapsible-title" data-collapsible="webpay-plus-deferred">
                         <span class="general-text">Webpay Plus Diferido</span>
                         <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24" class="" />
+                            height="24" />
                     </button>
                     <ul class="collapsible-content" id="collapse-webpay-plus-deferred">
                         <li class="collapsible-items">
@@ -74,7 +74,7 @@
                     <button class="sidebar-collapsible-title" data-collapsible="webpay-mall-diferido">
                         <span class="general-text">Webpay Plus Mall Diferido</span>
                         <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24" class="" />
+                            height="24" />
                     </button>
                     <ul class="collapsible-content" id="collapse-webpay-mall-diferido">
                         <li class="collapsible-items">
@@ -101,7 +101,7 @@
                     <button class="sidebar-collapsible-title" data-collapsible="oneclick-mall">
                         <span class="general-text">Oneclick Mall</span>
                         <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24" class="" />
+                            height="24" />
                     </button>
                     <ul class="collapsible-content" id="collapse-oneclick-mall">
                         <li class="collapsible-items">
@@ -122,7 +122,7 @@
                     <button class="sidebar-collapsible-title" data-collapsible="oneclick-mall-deferred">
                         <span class="general-text">Oneclick Mall Diferido</span>
                         <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24" class="" />
+                            height="24" />
                     </button>
                     <ul class="collapsible-content" id="collapse-oneclick-mall-deferred">
                         <li class="collapsible-items">
@@ -152,7 +152,7 @@
                     <button class="sidebar-collapsible-title" data-collapsible="transaccion-completa">
                         <span class="general-text">Transaccion Completa</span>
                         <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24" class="" />
+                            height="24"   />
                     </button>
                     <ul class="collapsible-content" id="collapse-transaccion-completa">
                         <li class="collapsible-items">
@@ -173,7 +173,7 @@
                     <button class="sidebar-collapsible-title" data-collapsible="transaccion-completa-mall">
                         <span class="general-text">Transaccion Completa Mall</span>
                         <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24" class="" />
+                            height="24"   />
                     </button>
                     <ul class="collapsible-content" id="collapse-transaccion-completa-mall">
                         <li class="collapsible-items">
@@ -194,7 +194,7 @@
                     <button class="sidebar-collapsible-title" data-collapsible="transaccion-completa-diferido">
                         <span class="general-text">Transaccion Completa Diferido</span>
                         <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24" class="" />
+                            height="24"   />
                     </button>
                     <ul class="collapsible-content" id="collapse-transaccion-completa-diferido">
                         <li class="collapsible-items">
@@ -215,7 +215,7 @@
                     <button class="sidebar-collapsible-title" data-collapsible="transaccion-completa-mall-diferido">
                         <span class="general-text">Transaccion Completa Mall Diferido</span>
                         <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24" class="" />
+                            height="24"   />
                     </button>
                     <ul class="collapsible-content" id="collapse-transaccion-completa-mall-diferido">
                         <li class="collapsible-items">

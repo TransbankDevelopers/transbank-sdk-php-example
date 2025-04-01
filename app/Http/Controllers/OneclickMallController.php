@@ -126,7 +126,7 @@ class OneclickMallController extends Controller
         try {
             $buyOrder = $request["buyOrder"];
             $resp = $this->mallTransaction->status($buyOrder);
-            return view('oneclick-mall.status', ["resp" => $resp]);
+            return view('oneclick-mall.status', ["resp" => $resp, "buyOrder" => $buyOrder]);
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
         }

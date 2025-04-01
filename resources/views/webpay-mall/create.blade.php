@@ -1,13 +1,24 @@
 @php
-$navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario', 'example' => 'Ejemplo'];
+    $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario', 'example' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Webpay Mall" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
+
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="/webpay-mall/create">Webpay Mall</a>
+        </div>
+    </div>
     <h1>Webpay Mall - Creación de transacción Mall
     </h1>
     <p class="mb-32">
         En esta etapa, se procederá a la creación de una transacción con el fin de obtener un identificador
-        único. Esto nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago de Transbank en el siguiente paso.
+        único. Esto nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago de Transbank en el siguiente
+        paso.
 
     </p>
 
@@ -47,7 +58,8 @@ $details);
     <x-snippet :content="$resp" />
 
     <h2 id="form">Paso 3: Creación del formulario</h2>
-    <p class="mb-32">Utiliza estos datos de respuesta para redireccionar al usuario al formulario de pago al Tarjetahabiente.
+    <p class="mb-32">Utiliza estos datos de respuesta para redireccionar al usuario al formulario de pago al
+        Tarjetahabiente.
         Este formulario será la interfaz a través de la cual el usuario realizará su transacción.
     </p>
 
@@ -75,7 +87,8 @@ $details);
     <form action={{ $resp->url }} method="POST">
         <div class="tbk-card">
             <span class="tbk-card-title">Formulario de redirección</span>
-            <livewire:webpay-mall-token :token="$resp->token" :details="$request['details']" :buyOrder="$request['buy_order']" :sessionId="$request['session_id']" :returnUrl="$request['return_url']" />
+            <livewire:webpay-mall-token :token="$resp->token" :details="$request['details']" :buyOrder="$request['buy_order']" :sessionId="$request['session_id']"
+                :returnUrl="$request['return_url']" />
             <div class="tbk-card-footer">
                 <button class="tbk-button primary">PAGAR</button>
             </div>

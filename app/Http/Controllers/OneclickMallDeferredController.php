@@ -143,7 +143,7 @@ class OneclickMallDeferredController extends Controller
         try {
             $buyOrder = $request["buyOrder"];
             $resp = $this->mallTransaction->status($buyOrder);
-            return view('oneclick-mall-deferred.status', ["resp" => $resp]);
+            return view('oneclick-mall-deferred.status', ["resp" => $resp, "buyOrder" => $buyOrder]);
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
         }

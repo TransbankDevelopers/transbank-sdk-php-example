@@ -1,14 +1,25 @@
 @php
-$navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario', 'example' => 'Ejemplo'];
+    $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario', 'example' => 'Ejemplo'];
 @endphp
 
 <x-layout active-link="Webpay Mall Diferido" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
+
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="/webpay-mall-diferido/create">Webpay Mall Diferido</a>
+        </div>
+    </div>
     <h1>Webpay Mall Diferido - Creación de transacción Mall
 
     </h1>
     <p class="mb-32">
         En esta etapa, se procederá a la creación de una transacción con el fin de obtener un identificador
-        único. Esto nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago de Transbank en el siguiente paso.
+        único. Esto nos permitirá redirigir al Tarjetahabiente hacia el formulario de pago de Transbank en el siguiente
+        paso.
 
     </p>
 
@@ -76,12 +87,15 @@ $details);
         a crear el formulario de pago. Para fines de este ejemplo, haremos visible el campo "token_ws", el cual es
         esencial para completar el proceso de pago de manera exitosa.
     </p>
-    <span>Antes de continuar al formulario de Webpay, asegúrate de contar con los datos de las tarjetas de prueba que están en la <a href="https://transbankdevelopers.cl/documentacion/como_empezar#tarjetas-de-prueba" class="tbk-link">documentación.</a></span>
+    <span>Antes de continuar al formulario de Webpay, asegúrate de contar con los datos de las tarjetas de prueba que
+        están en la <a href="https://transbankdevelopers.cl/documentacion/como_empezar#tarjetas-de-prueba"
+            class="tbk-link">documentación.</a></span>
 
     <form action={{ $resp->url }} method="POST">
         <div class="tbk-card">
             <span class="tbk-card-title">Formulario de redirección</span>
-            <livewire:webpay-mall-deferred-token :token="$resp->token" :details="$request['details']" :buyOrder="$request['buy_order']" :sessionId="$request['session_id']" :returnUrl="$request['return_url']" />
+            <livewire:webpay-mall-deferred-token :token="$resp->token" :details="$request['details']" :buyOrder="$request['buy_order']" :sessionId="$request['session_id']"
+                :returnUrl="$request['return_url']" />
             <div class="tbk-card-footer">
                 <button class="tbk-button primary">PAGAR</button>
             </div>
