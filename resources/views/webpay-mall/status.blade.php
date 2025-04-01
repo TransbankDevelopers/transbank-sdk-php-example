@@ -1,11 +1,26 @@
 @php
-$navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
+    $navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
 @endphp
 
 <x-layout active-link="Webpay Mall" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
 
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a href="/webpay-mall/create">Webpay Mall</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="/webpay-mall/status?token={{ $req['token'] }}">
+                Consultar estado de transacción</a>
+        </div>
+    </div>
     <h1>Webpay Mall - Consultar estado de transacción</h1>
-    <p class="mb-32">Puedes solicitar el estado de una transacción hasta 7 días después de su realización. No hay límite
+    <p class="mb-32">Puedes solicitar el estado de una transacción hasta 7 días después de su realización. No hay
+        límite
         de solicitudes de este tipo durante ese período. Sin embargo, una vez pasados los 7 días, ya no podrás revisar
         su estado.
     </p>
