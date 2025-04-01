@@ -47,7 +47,7 @@ $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'other' => '
     </ul>
 
 
-    <form action={{ route('oneclick-mall-deferred.refund') }} method="POST">
+    <form action={{ route('oneclick-mall-deferred.refund') }} method="GET">
         @csrf
         <div class="tbk-card">
             <div class="card-multi-field">

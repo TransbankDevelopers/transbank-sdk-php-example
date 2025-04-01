@@ -1,5 +1,5 @@
 @php
-$navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'operations' => 'Operaciones'];
+    $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'operations' => 'Operaciones'];
 @endphp
 
 <x-layout active-link="Webpay Plus Diferido" :navigation="$navigation">
@@ -35,7 +35,7 @@ $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'operations'
         realizada.
     </p>
 
-    <form action={{ route('webpay-deferred.refund') }} method="POST">
+    <form action={{ route('webpay-deferred.refund') }} method="GET">
         @csrf
         <div class="tbk-refund-card  mb-32">
             <div class="input-container">
