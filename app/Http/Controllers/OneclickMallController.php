@@ -53,7 +53,7 @@ class OneclickMallController extends Controller
             $userName = session('username', '');
 
             if ($request->exists("TBK_ORDEN_COMPRA")) {
-                return view('oneclick-mall.recoverTransaction', ["req" => $params]);
+                return view('error.oneclick.recover', ["req" => $params, "product" => self::PRODUCT]);
             }
 
             $resp = $this->mallInscription->finish($token);
