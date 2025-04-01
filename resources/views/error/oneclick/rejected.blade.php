@@ -1,12 +1,12 @@
 @php
-$navigation = ['data' => 'Datos recibidos', 'request' => 'Petición', 'response' => 'Respuesta'];
+$navigation = ['rejected' => 'Rechazo Bancario'];
 @endphp
 
-<x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
-    <h1>Oneclick Mall Diferido- Rechazo Bancario</h1>
+<x-layout active-link={{ $product }} :navigation="$navigation">
+    <h1>{{ $product }} - Rechazo Bancario</h1>
     <p class="mb-32">
         En esta fase, pueden surgir inconvenientes, ya sea con el titular de la tarjeta o a nivel bancario, lo que
-        resulta en el estado final de la transacción siendo marcado como "FAILED".
+        resulta en una inscripción fallida.
     </p>
 
     <h2 id="data">Paso 1: Datos recibidos</h2>

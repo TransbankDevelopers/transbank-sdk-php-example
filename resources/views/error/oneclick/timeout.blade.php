@@ -1,11 +1,11 @@
 @php
-$navigation = ['data' => 'Datos recibidos'];
+$navigation = ['timeout' => 'Time out'];
 @endphp
 
-<x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
-    <h1>Oneclick Mall Diferido- Time out</h1>
+<x-layout active-link={{ $product }} :navigation="$navigation">
+    <h1>{{ $product }} - Time out</h1>
     <p class="mb-32">
-        Cuando una transacción expira debido a un timeout, es crucial gestionar este escenario de manera adecuada para
+        Cuando una inscripción expira debido a un timeout, es crucial gestionar este escenario de manera adecuada para
         garantizar la transparencia y la experiencia del usuario, para la prueba en producción es de 10 minutos.
     </p>
 
