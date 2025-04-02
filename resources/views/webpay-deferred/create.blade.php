@@ -67,6 +67,7 @@
         a crear el formulario de pago. Para fines de este ejemplo, haremos visible el campo "token_ws", el cual es
         esencial para completar el proceso de pago de manera exitosa.
     </p>
+    <span>Antes de continuar al formulario de Webpay, asegúrate de contar con los datos de las tarjetas de prueba que están en la <a href="https://transbankdevelopers.cl/documentacion/como_empezar#tarjetas-de-prueba" class="tbk-link">documentación.</a></span>
 
     <form action={{ $respond->url }} method="POST">
         <div class="tbk-card">
