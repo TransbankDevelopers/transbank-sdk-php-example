@@ -10,8 +10,7 @@ use Transbank\Webpay\Oneclick\MallTransaction;
 class OneclickMallController extends Controller
 {
 
-    const TIMEOUT = -96;
-    const REJECTED = -1;
+    const AUTHORIZED = 0;
     private MallInscription $mallInscription;
     private MallTransaction $mallTransaction;
     const PRODUCT = 'Oneclick Mall';
@@ -58,7 +57,7 @@ class OneclickMallController extends Controller
 
             $resp = $this->mallInscription->finish($token);
 
-            if ($resp->responseCode == self::REJECTED || $resp->responseCode == self::TIMEOUT) {
+            if ($resp->responseCode != self::AUTHORIZED) {
                 $view = 'error.oneclick.rejected';
                 $data = ["resp" => $resp, "token" => $token, "product" => self::PRODUCT];
             } else {
