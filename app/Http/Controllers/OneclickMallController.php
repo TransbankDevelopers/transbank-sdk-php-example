@@ -58,10 +58,7 @@ class OneclickMallController extends Controller
 
             $resp = $this->mallInscription->finish($token);
 
-            if ($resp->responseCode == self::REJECTED) {
-                $view = 'error.oneclick.rejected';
-                $data = ["resp" => $resp, "token" => $token, "product" => self::PRODUCT];
-            } elseif ($resp->responseCode == self::TIMEOUT) {
+            if ($resp->responseCode == self::REJECTED || $resp->responseCode == self::TIMEOUT) {
                 $view = 'error.oneclick.rejected';
                 $data = ["resp" => $resp, "token" => $token, "product" => self::PRODUCT];
             } else {
