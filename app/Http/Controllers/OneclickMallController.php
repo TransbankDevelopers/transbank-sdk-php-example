@@ -62,7 +62,7 @@ class OneclickMallController extends Controller
                 $view = 'error.oneclick.rejected';
                 $data = ["resp" => $resp, "token" => $token, "product" => self::PRODUCT];
             } elseif ($resp->responseCode == self::TIMEOUT) {
-                $view = 'error.oneclick.timeout';
+                $view = 'error.oneclick.rejected';
                 $data = ["resp" => $resp, "product" => self::PRODUCT];
             } else {
                 $table = [
