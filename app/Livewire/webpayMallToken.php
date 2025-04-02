@@ -12,7 +12,7 @@ class WebpayMallToken extends Token
     public $returnUrl;
     public $details;
 
-    public function updateToken()
+    public function getToken()
     {
         $product = $this->getProduct();
         $transaction = $product->create(
@@ -21,7 +21,7 @@ class WebpayMallToken extends Token
             $this->returnUrl,
             $this->details
         );
-        $this->token = $transaction->getToken();
+        return $transaction->getToken();
     }
 
     protected function setTokenName()
