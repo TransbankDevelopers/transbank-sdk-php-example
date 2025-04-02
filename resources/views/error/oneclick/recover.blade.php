@@ -2,8 +2,8 @@
 $navigation = ['recovery' => 'Inscripción anulada'];
 @endphp
 
-<x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
-    <h1 id="recovery">Oneclick Mall Diferido - Inscripción anulada</h1>
+<x-layout active-link={{ $product }} :navigation="$navigation">
+    <h1 id="recovery">{{ $product }} - Inscripción anulada</h1>
     <p class="mb-32">
         La inscripción ha sido anulada por el usuario. En esta instancia, la inscripción fue abandonada al seleccionar la opción 'Abandonar y volver al comercio'.
     </p>

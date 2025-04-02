@@ -9,8 +9,8 @@ use Transbank\Webpay\Oneclick\MallTransaction;
 
 class OneclickMallDeferredController extends Controller
 {
-    const TIMEOUT = -96;
-    const REJECTED = -1;
+    const AUTHORIZED = 0;
+    const PRODUCT = 'Oneclick Mall Diferido';
     private MallInscription $mallInscription;
     private MallTransaction $mallTransaction;
 
@@ -51,17 +51,14 @@ class OneclickMallDeferredController extends Controller
             $userName = session('username', '');
 
             if ($request->exists("TBK_ORDEN_COMPRA")) {
-                return view('oneclick-mall-deferred.recoverTransaction', ["req" => $params]);
+                return view('error.oneclick.recover', ["req" => $params, "product" => self::PRODUCT]);
             }
 
             $resp = $this->mallInscription->finish($token);
 
-            if ($resp->responseCode == self::REJECTED) {
-                $view = 'oneclick-mall-deferred.rejected';
-                $data = ["resp" => $resp, "token" => $token];
-            } elseif ($resp->responseCode == self::TIMEOUT) {
-                $view = 'oneclick-mall-deferred.timeout';
-                $data = ["resp" => $resp];
+            if ($resp->responseCode != self::AUTHORIZED) {
+                $view = 'error.oneclick.rejected';
+                $data = ["resp" => $resp, "token" => $token, "product" => self::PRODUCT];
             } else {
                 $table = [
                     "username" => $userName,

@@ -10,10 +10,10 @@ use Transbank\Webpay\Oneclick\MallTransaction;
 class OneclickMallController extends Controller
 {
 
-    const TIMEOUT = -96;
-    const REJECTED = -1;
+    const AUTHORIZED = 0;
     private MallInscription $mallInscription;
     private MallTransaction $mallTransaction;
+    const PRODUCT = 'Oneclick Mall';
 
     public function __construct()
     {
@@ -52,17 +52,14 @@ class OneclickMallController extends Controller
             $userName = session('username', '');
 
             if ($request->exists("TBK_ORDEN_COMPRA")) {
-                return view('oneclick-mall.recoverTransaction', ["req" => $params]);
+                return view('error.oneclick.recover', ["req" => $params, "product" => self::PRODUCT]);
             }
 
             $resp = $this->mallInscription->finish($token);
 
-            if ($resp->responseCode == self::REJECTED) {
-                $view = 'oneclick-mall.rejected';
-                $data = ["resp" => $resp, "token" => $token];
-            } elseif ($resp->responseCode == self::TIMEOUT) {
-                $view = 'oneclick-mall.timeout';
-                $data = ["resp" => $resp];
+            if ($resp->responseCode != self::AUTHORIZED) {
+                $view = 'error.oneclick.rejected';
+                $data = ["resp" => $resp, "token" => $token, "product" => self::PRODUCT];
             } else {
                 $table = [
                     "username" => $userName,
