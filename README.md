@@ -9,25 +9,43 @@ Proyecto de ejemplo mostrando el paso a paso de como usar el SDK PHP de transban
 -   PHP 8.3+
 -   laravel 11
 
-## Iniciar aplicación
+## Instalación
 
-```shell
-npm start
+Una vez tengas clonado el repositorio, debes instalar las dependencias del proyecto. Corre los siguientes comandos en una terminal para instalar las dependencias:
+
+```bash
+composer install
+npm install
+php artisan key:generate
+php artisan migrate
 ```
 
-## Información para contribuir
+## Ejecución
 
-### **Estándares generales**
+Para poder correr el proyecto en modo desarrollo, debes utilizar el siguiente comando en una consola:
 
--   Para los commits, seguimos las normas detalladas en [este enlace](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits) 👀
--   Usamos inglés para los nombres de ramas y mensajes de commit 💬
--   Todas las fusiones a la rama principal se realizan a través de solicitudes de Pull Request(PR) ⬇️
--   Puedes emplear tokens como "WIP" en el encabezado de un commit, separados por dos puntos (:), por ejemplo: "WIP: este es un mensaje de commit útil ✅"
--   Las ramas de nuevas funcionalidades que no han sido fusionada, se asume que no está finalizada⚠️
--   Los nombres de las ramas deben estar en minúsculas y las palabras deben separarse con guiones (-) 🔤
--   Los nombres de las ramas deben comenzar con uno de los tokens abreviados definidos. Por ejemplo: feat/tokens-configurations 🌿
+```bash
+npm run dev
+php artisan serve
+```
 
-### **Short lead tokens**
+Al terminar, deberías ver la URL para poder acceder al proyecto. Un ejemplo de la URL puede ser **http://127.0.0.1:8000**
+
+## Información para contribuir a este proyecto
+
+### Forma de trabajo
+
+-   Para los mensajes de commits, nos basamos en las [Git Commit Guidelines de Angular](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits).
+-   Usamos inglés para los nombres de ramas y mensajes de commit.
+-   Los mensajes de commit no deben llevar punto final.
+-   Los mensajes de commit deben usar un lenguaje imperativo y estar en tiempo presente, por ejemplo, usar "change" en lugar de "changed" o "changes".
+-   Los nombres de las ramas deben estar en minúsculas y las palabras deben separarse con guiones (-).
+-   Todas las fusiones a la rama principal se deben realizar mediante solicitudes de Pull Request(PR). ⬇️
+-   Se debe emplear tokens como "WIP" en el encabezado de un commit, separados por dos puntos (:), por ejemplo, "WIP: this is a useful commit message".
+-   Una rama con nuevas funcionalidades que no tenga un PR, se considera que está en desarrollo.
+-   Los nombres de las ramas deben comenzar con uno de los tokens definidos. Por ejemplo: "feat/tokens-configurations".
+
+### Short lead tokens permitidos
 
 `WIP` = En progreso.
 
@@ -51,31 +69,37 @@ npm start
 
 `release` = Para liberar una nueva versión.
 
+### Creación de un Pull Request
+
+-   El PR debe estar enfocado en un cambio en concreto, por ejemplo, agregar una nueva funcionalidad o solucionar un error, pero un solo PR no puede agregar una nueva funcionalidad y arreglar un error.
+-   El título del los PR y mensajes de commit no debe comenzar con una letra mayúscula.
+-   No se debe usar punto final en los títulos.
+-   El título del PR debe comenzar con el short lead token definido para la rama, seguido de ":"" y una breve descripción del cambio.
+-   La descripción del PR debe detallar los cambios que se están incorporando.
+-   La descripción del PR debe incluir evidencias de que los test se ejecutan de forma correcta o incluir evidencias de que los cambios funcionan y no afectan la funcionalidad previa del proyecto.
+-   Se pueden agregar capturas, gif o videos para complementar la descripción o demostrar el funcionamiento del PR.
+
 #### Flujo de trabajo
 
 1. Crea tu rama desde develop.
 2. Haz un push de los commits y publica la nueva rama.
 3. Abre un Pull Request apuntando tus cambios a develop.
 4. Espera a la revisión de los demás integrantes del equipo.
-5. Mezcla los cambios sólo cuando esté aprobado por mínimo 2 revisores.
+5. Para poder mezclar los cambios se debe contar con 2 aprobaciones de los revisores y no tener alertas por parte de las herramientas de inspección.
 
-### Esquema de flujo
+### Esquema de flujo con git
 
 ![gitflow](https://wac-cdn.atlassian.com/dam/jcr:cc0b526e-adb7-4d45-874e-9bcea9898b4a/04%20Hotfix%20branches.svg?cdnVersion=1324)
 
-### **Reglas** 📖
+## Generar una nueva versión
 
-1. Todo PR debe incluir test.
-2. Todo PR debe cumplir con un mínimo de 80% de coverage para ser aprobado
-3. El PR debe tener 2 o más aprobaciones para poder mezclarse.
-4. Si un commit revierte un commit anterior deberá comenzar con "revert:" seguido del mensaje del commit anterior.
+Para generar una nueva versión, se debe crear un PR (con un título "release: prepare release X.Y.Z" con los valores que correspondan para `X`, `Y` y `Z`). Se debe seguir el estándar [SemVer](https://semver.org/lang/es/) para determinar si se incrementa el valor de `X` (si hay cambios no retrocompatibles), `Y` (para mejoras retrocompatibles) o `Z` (si sólo hubo correcciones a bugs). **El PR debe apuntar a la rama principal**.
 
-### **Pull Request**
+En ese PR deben incluirse los siguientes cambios:
 
--   Usar un lenguaje imperativo y en tiempo presente: "change" no "changed" ni "changes".
--   El titulo del los PR y mensajes de commit no pueden comenzar con una letra mayúscula.
--   No se debe usar punto final en los títulos o descripción de los commits.
--   El titulo del PR debe comenzar con el short lead token definido para la rama, seguido de : y una breve descripción del cambio.
--   La descripción del PR debe detallar los cambios.
--   La descripción del PR debe incluir evidencias de que los test se ejecutan de forma correcta.
--   Se pueden usar gif o videos para complementar la descripción o evidenciar el funcionamiento del PR.
+1. Modificar el archivo `CHANGELOG.md` agregando una nueva entrada al comienzo con los detalles de los cambios. Esta debe estar escrita en español. Esta entrada debe contener la versión que se esta liberando, la fecha de liberación y la descripción de los cambios realizados.
+2. Actualizar el archivo `README.md` si corresponde.
+
+Luego de obtener aprobación del PR y mezclarse, se debe generar de manera inmediata un release en GitHub con el tag `X.Y.Z`. En la descripción del release se debe agregar el mismo detalle que fue agregado al archivo `CHANGELOG.md`.
+
+Una vez realizada la liberación, se debe mezclar la rama release en la rama develop, finalmente realizar un rebase de la rama develop utilizando como base la rama main.
