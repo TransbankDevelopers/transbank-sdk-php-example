@@ -79,4 +79,5 @@
             </div>
         </div>
     </form>
+    @include('partials.token-update')
 </x-layout>

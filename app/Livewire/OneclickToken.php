@@ -11,7 +11,7 @@ class OneclickToken extends Token
     public $email;
     public $responseUrl;
 
-    public function updateToken()
+    public function getToken()
     {
         $product = $this->getProduct();
         $inscription = $product->start(
@@ -19,7 +19,7 @@ class OneclickToken extends Token
             $this->email,
             $this->responseUrl,
         );
-        $this->token = $inscription->getToken();
+        return $inscription->getToken();
     }
 
     protected function setTokenName()

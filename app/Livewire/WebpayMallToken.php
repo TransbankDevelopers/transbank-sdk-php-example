@@ -2,26 +2,26 @@
 
 namespace App\Livewire;
 
-use Transbank\Webpay\WebpayPlus\Transaction;
 use Transbank\Webpay\Options;
+use Transbank\Webpay\WebpayPlus\MallTransaction;
 
-class WebpayToken extends Token
+class WebpayMallToken extends Token
 {
     public $buyOrder;
     public $sessionId;
-    public $amount;
     public $returnUrl;
+    public $details;
 
-    public function updateToken()
+    public function getToken()
     {
         $product = $this->getProduct();
         $transaction = $product->create(
             $this->buyOrder,
             $this->sessionId,
-            $this->amount,
-            $this->returnUrl
+            $this->returnUrl,
+            $this->details
         );
-        $this->token = $transaction->getToken();
+        return $transaction->getToken();
     }
 
     protected function setTokenName()
@@ -33,9 +33,9 @@ class WebpayToken extends Token
     {
         $option = new Options(
             config('app.transbank.webpay_api_key'),
-            config('app.transbank.webpay_plus_cc'),
+            config('app.transbank.webpay_plus_mall_cc'),
             Options::ENVIRONMENT_INTEGRATION
         );
-        return new Transaction($option);
+        return new mallTransaction($option);
     }
 }
