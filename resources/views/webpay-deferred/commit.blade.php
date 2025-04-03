@@ -74,7 +74,7 @@
         </li>
     </ul>
 
-    <form action={{ route('webpay-deferred.capture') }} method="POST">
+    <form action={{ route('webpay-deferred.capture') }} method="GET">
         @csrf
         <div class="tbk-card">
             <p class="mb-32">Capturar la transacción para realmente capturar el dinero que habia sido previamente
@@ -83,8 +83,7 @@
                 <label for="amount" class="tbk-label">Monto a capturar:</label>
                 <input type="text" name="amount" class="tbk-input-text" value={{ $resp->amount }}>
                 <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $resp->buyOrder }}>
-                <input type="hidden" name="authorizationCode" class="tbk-input-text"
-                    value={{ $resp->authorizationCode }}>
+                <input type="hidden" name="authorizationCode" class="tbk-input-text" value={{ $resp->authorizationCode }}>
                 <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>
             </div>
             <div class="tbk-card-footer ">

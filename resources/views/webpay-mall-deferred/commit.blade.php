@@ -82,16 +82,14 @@
     </p>
 
     @foreach ($resp->details as $detail)
-        <form action={{ route('webpay-mall-deferred.capture') }} method="POST">
+        <form action={{ route('webpay-mall-deferred.capture') }} method="GET">
             @csrf
             <div class="tbk-card">
                 <div class="input-container">
                     <label for="amount" class="tbk-label">Monto a capturar:</label>
                     <input type="text" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
-                    <input type="hidden" name="childCommerceCode" class="tbk-input-text"
-                        value={{ $detail->commerceCode }}>
-                    <input type="hidden" name="authorizationCode" class="tbk-input-text"
-                        value={{ $detail->authorizationCode }}>
+                    <input type="hidden" name="childCommerceCode" class="tbk-input-text" value={{ $detail->commerceCode }}>
+                    <input type="hidden" name="authorizationCode" class="tbk-input-text" value={{ $detail->authorizationCode }}>
 
                     <input type="hidden" name="buyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
                     <input type="hidden" name="token" class="tbk-input-text" value={{ $token }}>

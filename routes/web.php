@@ -32,7 +32,7 @@ Route::prefix('webpay-mall')->name("webpay-mall.")->group(function () {
 Route::prefix('webpay-plus-diferido')->name("webpay-deferred.")->group(function () {
     Route::get('/create', [WebpayPlusDeferredController::class, 'create'])->name("create");
     Route::get('/commit', [WebpayPlusDeferredController::class, 'commit'])->name("commit");
-    Route::post('/capture', [WebpayPlusDeferredController::class, 'capture'])->name("capture");
+    Route::get('/capture', [WebpayPlusDeferredController::class, 'capture'])->name("capture");
     Route::get('/refund', [WebpayPlusDeferredController::class, 'refund'])->name("refund");
     Route::get('/status', [WebpayPlusDeferredController::class, 'status'])->name("status");
 });
@@ -40,7 +40,7 @@ Route::prefix('webpay-plus-diferido')->name("webpay-deferred.")->group(function 
 Route::prefix('webpay-mall-diferido')->name("webpay-mall-deferred.")->group(function () {
     Route::get('/create', [WebpayPlusMallDeferredController::class, 'create'])->name("create");
     Route::get('/commit', [WebpayPlusMallDeferredController::class, 'commit'])->name("commit");
-    Route::post('/capture', [WebpayPlusMallDeferredController::class, 'capture'])->name("capture");
+    Route::get('/capture', [WebpayPlusMallDeferredController::class, 'capture'])->name("capture");
     Route::get('/refund', [WebpayPlusMallDeferredController::class, 'refund'])->name("refund");
     Route::get('/status', [WebpayPlusMallDeferredController::class, 'status'])->name("status");
 });
@@ -60,5 +60,5 @@ Route::prefix('oneclick-mall-diferido')->name("oneclick-mall-deferred.")->group(
     Route::get('/delete', [OneclickMallDeferredController::class, 'deleteInscription'])->name("delete");
     Route::get('/status', [OneclickMallDeferredController::class, 'status'])->name("status");
     Route::get('/refund', [OneclickMallDeferredController::class, 'refund'])->name("refund");
-    Route::post('/capture', [OneclickMallDeferredController::class, 'capture'])->name("capture");
+    Route::get('/capture', [OneclickMallDeferredController::class, 'capture'])->name("capture");
 });
