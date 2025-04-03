@@ -1,8 +1,27 @@
 @php
-$navigation = ['data' => 'Datos recibidos', 'request' => 'Petición', 'response' => 'Respuesta', 'authorize' => 'Autorizar una transacción'];
+    $navigation = [
+        'data' => 'Datos recibidos',
+        'request' => 'Petición',
+        'response' => 'Respuesta',
+        'authorize' => 'Autorizar una transacción',
+    ];
 @endphp
 
 <x-layout active-link="Oneclick Mall" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a href="/oneclick-mall/start">Oneclick Mall</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="#">Finalizar inscripción</a>
+        </div>
+    </div>
+
     <h1>Oneclick Mall - Finalizar inscripción</h1>
     <p class="mb-32">
         En esta fase, completaremos el proceso de inscripción, permitiéndonos posteriormente realizar cargos a la
@@ -43,7 +62,8 @@ $navigation = ['data' => 'Datos recibidos', 'request' => 'Petición', 'response'
 
     <x-table :request="$table" />
 
-    <p class="mt-32">Después de una inscripción exitosa, tienen dos opciones: autorizar un pago o borrar al usuario que se
+    <p class="mt-32">Después de una inscripción exitosa, tienen dos opciones: autorizar un pago o borrar al usuario que
+        se
         acaba de inscribir.</p>
 
     <form action={{ route('oneclick-mall.authorize') }} method="POST">

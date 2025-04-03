@@ -1,8 +1,21 @@
 @php
-$navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'other' => 'Otras utilidades'];
+    $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'other' => 'Otras utilidades'];
 @endphp
 
 <x-layout active-link="Oneclick Mall Diferido" :navigation="$navigation">
+    <div class="breadcrumbs-container">
+        <div class="breadcrumbs-items">
+            <a href="/">Inicio</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a href="/oneclick-mall/start">Oneclick Mall</a>
+            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
+        </div>
+        <div class="breadcrumbs-items">
+            <a class="current-breadcrumb" href="#">Autorizar pago</a>
+        </div>
+    </div>
     <h1>Oneclick Mall Diferido - Autorizar pago</h1>
     <p class="mb-32">
         En este primer paso, procederemos a autorizar una transacción en la tarjeta que ha sido previamente inscrita.
@@ -64,34 +77,34 @@ $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'other' => '
     </ul>
 
     @foreach ($resp->details as $detail)
-    <form action={{ route('oneclick-mall-deferred.capture') }} method="POST">
-        @csrf
-        <div class="tbk-card">
-            <div class="card-multi-field">
-                <div class="input-container">
-                    <label for="childcommerceCode" class="tbk-label">Codigo de comercio (tienda hija):</label>
-                    <input type="number" name="childCommerceCode" class="tbk-input-text"
-                        value={{ $detail->commerceCode }}>
+        <form action={{ route('oneclick-mall-deferred.capture') }} method="GET">
+            @csrf
+            <div class="tbk-card">
+                <div class="card-multi-field">
+                    <div class="input-container">
+                        <label for="childcommerceCode" class="tbk-label">Codigo de comercio (tienda hija):</label>
+                        <input type="number" name="childCommerceCode" class="tbk-input-text"
+                            value={{ $detail->commerceCode }}>
+                    </div>
+                    <div class="input-container">
+                        <label for="childBuyOrder" class="tbk-label">Orden de compra (tienda hija):</label>
+                        <input type="text" name="childBuyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
+                    </div>
+                    <div class="input-container">
+                        <label for="authorizationCode" class="tbk-label">Código de autorización (tienda hija):</label>
+                        <input type="text" name="authorizationCode" class="tbk-input-text"
+                            value={{ $detail->authorizationCode }}>
+                    </div>
+                    <div class="input-container">
+                        <label for="amount" class="tbk-label">Monto a reembolsar:</label>
+                        <input type="number" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
+                    </div>
                 </div>
-                <div class="input-container">
-                    <label for="childBuyOrder" class="tbk-label">Orden de compra (tienda hija):</label>
-                    <input type="text" name="childBuyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
-                </div>
-                <div class="input-container">
-                    <label for="authorizationCode" class="tbk-label">Código de autorización (tienda hija):</label>
-                    <input type="text" name="authorizationCode" class="tbk-input-text"
-                        value={{ $detail->authorizationCode }}>
-                </div>
-                <div class="input-container">
-                    <label for="amount" class="tbk-label">Monto a reembolsar:</label>
-                    <input type="number" name="amount" class="tbk-input-text" value={{ $detail->amount }}>
+                <div class="tbk-card-footer ">
+                    <button class="tbk-button primary">Capturar</button>
                 </div>
             </div>
-            <div class="tbk-card-footer ">
-                <button class="tbk-button primary">Capturar</button>
-            </div>
-        </div>
-    </form>
+        </form>
     @endforeach
 
 </x-layout>
