@@ -16,6 +16,8 @@ Una vez tengas clonado el repositorio, debes instalar las dependencias del proye
 ```bash
 composer install
 npm install
+php artisan key:generate
+php artisan migrate
 ```
 
 ## Ejecución
