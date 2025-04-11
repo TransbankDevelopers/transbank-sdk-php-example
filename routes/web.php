@@ -23,12 +23,17 @@ Route::view('/oneclick-mall', 'home')->name('oneclick-mall');
 Route::view('/transaccion-completa', 'home')->name('transaccion-completa');
 Route::view('/patpass-comercio', 'home')->name('patpass');
 
+Route::get('/api-reference/webpay-plus', [WebpayController::class, 'showOperations'])->name("webpay.api-operations");
+
+
 Route::prefix('webpay-plus')->name("webpay.")->group(function () {
     Route::get(CREATE_ENDPOINT, [WebpayController::class, 'create'])->name("create");
     Route::match(['get', 'post'], COMMIT_ENDPOINT, [WebpayController::class, 'commit'])
         ->name("commit");
     Route::get(REFUND_ENDPOINT, [WebpayController::class, 'refund'])->name("refund");
     Route::get(STATUS_ENDPOINT, [WebpayController::class, 'status'])->name("status");
+    Route::post('/api/status', [WebpayController::class, 'statusApi'])->name("status-api");
+    Route::post('/api/refund', [WebpayController::class, 'refundApi'])->name("refund-api");
 });
 
 Route::prefix('webpay-mall')->name("webpay-mall.")->group(function () {
