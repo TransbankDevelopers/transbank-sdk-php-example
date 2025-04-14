@@ -21,11 +21,12 @@
                                 Flujo Completo
                             </a>
                         </li>
-                        {{-- <li class="collapsible-items">
-                            <a href="/api-reference/webpay-plus" class="tbk-sidebar-item">
+                        <li class="collapsible-items">
+                            <a href={{ route('webpay.api-operations', parameters: [], absolute: false) }}
+                                class="tbk-sidebar-item">
                                 Operaciones API
                             </a>
-                        </li> --}}
+                        </li>
                     </ul>
                 </li>
 
