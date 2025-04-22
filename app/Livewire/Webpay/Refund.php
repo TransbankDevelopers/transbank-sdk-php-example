@@ -11,12 +11,6 @@ class Refund extends Component
     public $token = '';
     public $amount = '';
     public $refundResponse = null;
-    public $webpayPlusRefund;
-
-    public function mount()
-    {
-        $this->webpayPlusRefund = config('services.webpay_plus.refund');
-    }
 
     public function refund()
     {

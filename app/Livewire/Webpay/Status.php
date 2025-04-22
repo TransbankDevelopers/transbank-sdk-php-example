@@ -10,7 +10,6 @@ class Status extends Component
 {
     public $token = '';
     public $statusResponse = null;
-    public $webpayPlusStatus;
 
 
     public function checkStatus()
