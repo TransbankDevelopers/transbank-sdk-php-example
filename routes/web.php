@@ -24,7 +24,9 @@ Route::view('/transaccion-completa', 'home')->name('transaccion-completa');
 Route::view('/patpass-comercio', 'home')->name('patpass');
 
 Route::get('/api-reference/webpay-plus', [WebpayController::class, 'showOperations'])->name("webpay.api-operations");
-
+Route::get('/api-reference/webpay-mall', [WebpayPlusMallController::class, 'showOperations'])->name("webpay-mall.api-operations");
+Route::get('/api-reference/webpay-plus-diferido', [WebpayPlusDeferredController::class, 'showOperations'])->name("webpay-deferred.api-operations");
+Route::get('/api-reference/webpay-mall-diferido', [WebpayPlusMallDeferredController::class, 'showOperations'])->name("webpay-mall-deferred  .api-operations");
 
 Route::prefix('webpay-plus')->name("webpay.")->group(function () {
     Route::get(CREATE_ENDPOINT, [WebpayController::class, 'create'])->name("create");
@@ -32,8 +34,6 @@ Route::prefix('webpay-plus')->name("webpay.")->group(function () {
         ->name("commit");
     Route::get(REFUND_ENDPOINT, [WebpayController::class, 'refund'])->name("refund");
     Route::get(STATUS_ENDPOINT, [WebpayController::class, 'status'])->name("status");
-    Route::post('/api/status', [WebpayController::class, 'statusApi'])->name("status-api");
-    Route::post('/api/refund', [WebpayController::class, 'refundApi'])->name("refund-api");
 });
 
 Route::prefix('webpay-mall')->name("webpay-mall.")->group(function () {
@@ -67,6 +67,7 @@ Route::prefix('oneclick-mall')->name("oneclick-mall.")->group(function () {
     Route::get(REFUND_ENDPOINT, [OneclickMallController::class, 'refund'])->name("refund");
     Route::get(STATUS_ENDPOINT, [OneclickMallController::class, 'status'])->name("status");
 });
+
 Route::prefix('oneclick-mall-diferido')->name("oneclick-mall-deferred.")->group(function () {
     Route::get(START_ENDPOINT, [OneclickMallDeferredController::class, 'startInscription'])->name("start");
     Route::get(FINISH_ENDPOINT, [OneclickMallDeferredController::class, 'finishInscription'])->name("finish");
