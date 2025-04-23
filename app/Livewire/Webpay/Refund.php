@@ -26,7 +26,10 @@ class Refund extends Component
 
             $this->dispatch('snippet-response-updated');
         } catch (\Exception $e) {
-            session()->flash('error', 'Error al realizar el reembolso: ' . $e->getMessage());
+            $this->refundResponse = [
+                'error' => $e->getMessage()
+            ];
+            $this->dispatch('snippet-response-updated');
         }
     }
 

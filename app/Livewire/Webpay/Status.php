@@ -26,7 +26,10 @@ class Status extends Component
 
             $this->dispatch('snippet-response-updated');
         } catch (\Exception $e) {
-            session()->flash('error', 'Error al obtener el estado: ' . $e->getMessage());
+            $this->statusResponse = [
+                'error' => $e->getMessage()
+            ];
+            $this->dispatch('snippet-response-updated');
         }
     }
 
