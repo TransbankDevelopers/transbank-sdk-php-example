@@ -1,7 +1,8 @@
 <?php
 
 return [
-  'webpay_plus_status' => [
+  'webpay_plus_status' =>
+  [
     [
       'field' => 'vci',
       'value' => [
@@ -74,7 +75,8 @@ return [
       'value' => 'Monto restante para un detalle anulado. Largo máximo: 17',
     ],
   ],
-  'webpay_plus_refund' => [
+  'webpay_plus_refund' =>
+  [
     [
       'field' => 'type',
       'value' => 'Tipo de reembolso (REVERSED o NULLIFIED). Si es REVERSED no se devolverán datos de la transacción (authorization code, etc). Largo máximo: 10',
@@ -100,7 +102,8 @@ return [
       'value' => '(Solo si es NULLIFIED) Código de resultado de la reversa/anulación. Si es exitoso es 0, de lo contrario la reversa/anulación no fue realizada Largo Máximo: 2',
     ],
   ],
-  'webpay_plus_mall_status' => [
+  'webpay_plus_mall_status' =>
+  [
     [
       'field' => 'buy_order',
       'value' => 'Orden de compra de la tienda indicado en Transaction.create(). Largo máximo: 26',
@@ -185,7 +188,8 @@ return [
       'value' => 'Monto restante para un detalle anulado. Largo máximo: 17',
     ],
   ],
-  'webpay_plus_mall_refund' => [
+  'webpay_plus_mall_refund' =>
+  [
     [
       'field' => 'type',
       'value' => 'Tipo de reembolso (REVERSED o NULLIFIED). Si es REVERSED no se devolverán datos de la transacción (authorization code, etc). Largo máximo: 10',
@@ -211,7 +215,8 @@ return [
       'value' => '(Solo si es NULLIFIED) Código de resultado de la reversa/anulación. Si es exitoso es 0, de lo contrario la reversa/anulación no fue realizada Largo Máximo: 2',
     ],
   ],
-  'webpay_plus_deferred' => [
+  'webpay_plus_deferred_captured' =>
+  [
     [
       'field' => 'token',
       'value' => 'Token de la transacción. Largo máximo: 64',
@@ -233,7 +238,8 @@ return [
       'value' => 'Código de resultado de la captura. Si es exitoso es 0,de lo contrario la captura no fue realizada. Largo máximo: 2',
     ],
   ],
-  'webpay_plus_mall_deferred' => [
+  'webpay_plus_mall_deferred_captured' =>
+  [
     [
       'field' => 'token',
       'value' => 'Token de la transacción. Largo máximo: 64',
