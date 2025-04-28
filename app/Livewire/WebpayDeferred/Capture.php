@@ -1,32 +1,39 @@
 <?php
 
-namespace App\Livewire\Webpay;
+namespace App\Livewire\WebpayDeferred;
 
 use Livewire\Component;
 use Transbank\Webpay\WebpayPlus\Transaction;
 use Transbank\Webpay\Options;
 
-class Refund extends Component
+class Capture extends Component
 {
     public $token = '';
+    public $buyOrder = '';
+    public $authorizationCode = '';
     public $amount = '';
-    public $refundResponse = null;
+    public $captureResponse = null;
 
-    public function refund()
+    public function capture()
     {
         try {
             $option = new Options(
                 config('app.transbank.webpay_api_key'),
-                config('app.transbank.webpay_plus_cc'),
+                config('app.transbank.webpay_plus_deferred_cc'),
                 Options::ENVIRONMENT_INTEGRATION
             );
             $transaction = new Transaction($option);
-            $response = $transaction->refund($this->token, $this->amount);
-            $this->refundResponse = json_decode(json_encode($response), true);
+            $response = $transaction->capture(
+                $this->token,
+                $this->buyOrder,
+                $this->authorizationCode,
+                $this->amount
+            );
 
+            $this->captureResponse = json_decode(json_encode($response), true);
             $this->dispatch('snippet-response-updated');
         } catch (\Exception $e) {
-            $this->refundResponse = [
+            $this->captureResponse = [
                 'error' => $e->getMessage()
             ];
             $this->dispatch('snippet-response-updated');
@@ -35,6 +42,6 @@ class Refund extends Component
 
     public function render()
     {
-        return view('livewire.webpay.refund');
+        return view('livewire.webpay-deferred.capture');
     }
 }

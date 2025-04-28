@@ -98,38 +98,4 @@ class WebpayController extends Controller
             'webpayPlusRefund'
         ));
     }
-    public function statusApi(Request $request)
-    {
-        $webpayPlusStatus = config('webpayParams.webpay_plus_status');
-        $webpayPlusRefund = config('webpayParams.webpay_plus_refund');
-        try {
-            $token = $request->input("token");
-            $statusResponse  = $this->transaction->status($token);
-
-            return view('webpay.api-operations', compact(
-                'webpayPlusStatus',
-                'webpayPlusRefund',
-                'statusResponse'
-            ));
-        } catch (\Exception $e) {
-            return view('error-page', ["error" => $e->getMessage()]);
-        }
-    }
-
-    public function refundApi(Request $request)
-    {
-        $webpayPlusStatus = config('webpayParams.webpay_plus_status');
-        $webpayPlusRefund = config('webpayParams.webpay_plus_refund');
-        try {
-            $req  = $request->all();
-            $refundResponse = $this->transaction->refund($req["token"], $req["amount"]);
-            return view('webpay.api-operations', compact(
-                'webpayPlusStatus',
-                'webpayPlusRefund',
-                'refundResponse'
-            ));
-        } catch (\Exception $e) {
-            return view('error-page', ["error" => $e->getMessage()]);
-        }
-    }
 }
