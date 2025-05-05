@@ -3,7 +3,7 @@
     <p class="mb-16">Para realizar cualquier operación en esta sección, es necesario contar con el token que obtienes al
         crear la transacción. Si aún no dispones del token puedes obtenerlo siguiendo las instrucciones detalladas en la
         sección
-        <a class="tbk-link" target="_blank" href="https://transbank-sdk-nodejs-example.continuumhq.dev/webpay-mall">Flujo
+        <a class="tbk-link" href={{ url('/webpay-mall/create') }}>Flujo
             Completo.</a>
     </p>
 
