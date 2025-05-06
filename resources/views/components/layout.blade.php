@@ -26,10 +26,9 @@
 <body>
     <div class="main-container">
         @include('partials.header')
-        <div class="body-container">
-
+        <div class="body-container @if (empty($navigation)) no-nav @endif">
             <x-menu :active-link="$activeLink" />
-            <div class="body-content">
+            <div class="body-content ">
                 {{ $slot }}
                 @include('partials.channels')
             </div>
