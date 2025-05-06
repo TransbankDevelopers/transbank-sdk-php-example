@@ -65,11 +65,11 @@ $details);
         Este formulario será la interfaz a través de la cual el usuario realizará su transacción.
     </p>
 
-    <x-snippet tabulate="true">
-        <form action="https://webpay3gint.transbank.cl/webpayserver/initTransaction" method="POST">
-            <input type="hidden" name="token_ws" value="{{ $resp->token }}" />
-            <input type="submit" value="Pagar" />
-        <form>
+    <x-snippet>
+        form action="https://webpay3gint.transbank.cl/webpayserver/initTransaction" method="POST">
+        input type="hidden" name="token_ws" value="{{ $resp->token }}" />
+        input type="submit" value="Pagar" />
+        form>
     </x-snippet>
 
     <h2 id="example">Ejemplo</h2>

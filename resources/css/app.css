@@ -112,7 +112,7 @@ h2 {
     margin-top: 0px;
     margin-bottom: 8px;
     line-height: 24px;
-    font-size: 1.125em;
+    font-size: 1em;
     font-weight: 700;
     letter-spacing: 0.25px;
     .dark & {
@@ -175,9 +175,6 @@ h1.title {
     letter-spacing: 0.25px;
 }
 
-pre {
-    margin: 0;
-}
 pre,
 code {
     overflow-x: auto;
@@ -244,18 +241,13 @@ code {
     margin-top: 32px;
 }
 
-.my-32 {
-    margin-top: 32px;
-    margin-bottom: 32px;
-}
-
 .mb-16 {
     margin-bottom: 16px;
 }
 
 .tbk-link {
     color: var(--tbk-red);
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 /* layout */
@@ -273,15 +265,8 @@ code {
     transition: all 0.5s;
 }
 
-.body-container.no-nav {
-    grid-template-columns: 330px 1fr;
-}
-
 .body-container.hide-sd {
     grid-template-columns: 20px 1fr 264px;
-}
-.body-container.hide-sd.no-nav {
-    grid-template-columns: 20px 1fr;
 }
 
 .body-content {
@@ -310,44 +295,17 @@ code {
     cursor: pointer;
 }
 
-/* copllapse */
-
-.cp-container {
-    overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
-}
-
-.cp-content {
-    padding: 10px;
-    transition: opacity 0.3s ease;
-}
-.cp-btn {
-    font-size: 1em;
-    display: block;
-    width: 100%;
-    text-align: left;
-}
-
-.cp-open {
-    opacity: 1;
-}
-
 /* table */
 
 .tbk-table {
     display: grid;
     grid-template-columns: 262px 295px;
 }
-.tbk-table.auto-width {
-    display: grid;
-    grid-template-columns: 1fr minmax(100px, 1fr);
-}
 
 .tbk-table .table-column {
     padding: 16px;
     border-bottom: 1px solid var(--tbk-border-blue);
     border-right: 1px solid var(--tbk-border-blue);
-    overflow-wrap: break-word;
 }
 
 .tbk-table .table-column.tbk-head {
@@ -1072,27 +1030,8 @@ code {
     line-height: 1.4;
 }
 
-/* spinner  */
-.spinner {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-left: 8px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: #fff;
-    animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 @media (max-width: 1439.98px) {
-    .body-container,
-    .body-container.no-nav {
+    .body-container {
         grid-template-columns: 280px 1fr;
     }
     .helper-content {
@@ -1116,8 +1055,7 @@ code {
     .tbk-sidebar-mobile.show {
         display: flex;
     }
-    .body-container,
-    .body-container.no-nav {
+    .body-container {
         padding: 2.5rem 1rem;
         grid-template-columns: 1fr;
     }

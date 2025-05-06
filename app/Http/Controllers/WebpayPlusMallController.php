@@ -99,15 +99,4 @@ class WebpayPlusMallController extends Controller
             return view('error-page', ["error" => $e->getMessage()]);
         }
     }
-
-    public function showOperations()
-    {
-        $webpayPlusMallStatus = config('webpayParams.webpay_plus_mall_status');
-        $webpayPlusMallRefund = config('webpayParams.webpay_plus_mall_refund');
-
-        return view('webpay-mall.api-operations', compact(
-            'webpayPlusMallStatus',
-            'webpayPlusMallRefund'
-        ));
-    }
 }
