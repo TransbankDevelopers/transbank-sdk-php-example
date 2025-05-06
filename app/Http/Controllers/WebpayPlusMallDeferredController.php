@@ -110,4 +110,17 @@ class WebpayPlusMallDeferredController extends Controller
             return view('error-page', ["error" => $e->getMessage()]);
         }
     }
+
+    public function showOperations()
+    {
+        $webpayPlusStatus = config('webpayParams.webpay_plus_status');
+        $webpayPlusRefund = config('webpayParams.webpay_plus_refund');
+        $webpayPlusCaptured = config('webpayParams.webpay_plus_mall_deferred_captured');
+
+        return view('webpay-mall-deferred.api-operations', compact(
+            'webpayPlusStatus',
+            'webpayPlusRefund',
+            'webpayPlusCaptured'
+        ));
+    }
 }
