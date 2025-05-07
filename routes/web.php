@@ -70,7 +70,6 @@ Route::prefix('oneclick-mall')->name("oneclick-mall.")->group(function () {
     Route::get(REFUND_ENDPOINT, [OneclickMallController::class, 'refund'])->name("refund");
     Route::get(STATUS_ENDPOINT, [OneclickMallController::class, 'status'])->name("status");
 });
-
 Route::prefix('oneclick-mall-diferido')->name("oneclick-mall-deferred.")->group(function () {
     Route::get(START_ENDPOINT, [OneclickMallDeferredController::class, 'startInscription'])->name("start");
     Route::get(FINISH_ENDPOINT, [OneclickMallDeferredController::class, 'finishInscription'])->name("finish");

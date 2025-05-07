@@ -87,15 +87,4 @@ class WebpayController extends Controller
             return view('error-page', ["error" => $e->getMessage()]);
         }
     }
-
-    public function showOperations()
-    {
-        $webpayPlusStatus = config('webpayParams.webpay_plus_status');
-        $webpayPlusRefund = config('webpayParams.webpay_plus_refund');
-
-        return view('webpay.api-operations', compact(
-            'webpayPlusStatus',
-            'webpayPlusRefund'
-        ));
-    }
 }

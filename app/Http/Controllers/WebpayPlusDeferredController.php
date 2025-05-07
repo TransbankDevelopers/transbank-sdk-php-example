@@ -73,6 +73,7 @@ class WebpayPlusDeferredController extends Controller
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
         }
+
     }
 
     public function refund(Request $request)
@@ -95,18 +96,5 @@ class WebpayPlusDeferredController extends Controller
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
         }
-    }
-
-    public function showOperations()
-    {
-        $webpayPlusStatus = config('webpayParams.webpay_plus_status');
-        $webpayPlusRefund = config('webpayParams.webpay_plus_refund');
-        $webpayPlusDeferredCaptured = config('webpayParams.webpay_plus_deferred_captured');
-
-        return view('webpay-deferred.api-operations', compact(
-            'webpayPlusStatus',
-            'webpayPlusRefund',
-            'webpayPlusDeferredCaptured'
-        ));
     }
 }
