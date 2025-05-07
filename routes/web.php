@@ -23,6 +23,14 @@ Route::view('/oneclick-mall', 'home')->name('oneclick-mall');
 Route::view('/transaccion-completa', 'home')->name('transaccion-completa');
 Route::view('/patpass-comercio', 'home')->name('patpass');
 
+Route::get('/api-reference/webpay-plus', [WebpayController::class, 'showOperations'])->name("webpay.api-operations");
+Route::get('/api-reference/webpay-mall', [WebpayPlusMallController::class, 'showOperations'])->name("webpay-mall.api-operations");
+Route::get('/api-reference/webpay-plus-diferido', [WebpayPlusDeferredController::class, 'showOperations'])->name("webpay-deferred.api-operations");
+Route::get('/api-reference/webpay-mall-diferido', [WebpayPlusMallDeferredController::class, 'showOperations'])->name("webpay-mall-deferred.api-operations");
+Route::get('/api-reference/webpay-oneclick-mall', [OneclickMallController::class, 'showOperations'])->name("oneclick-mall.api-operations");
+Route::get('/api-reference/oneclick-mall-diferido', [OneclickMallDeferredController::class, 'showOperations'])->name("oneclick-mall-deferred.api-operations");
+
+
 Route::prefix('webpay-plus')->name("webpay.")->group(function () {
     Route::get(CREATE_ENDPOINT, [WebpayController::class, 'create'])->name("create");
     Route::match(['get', 'post'], COMMIT_ENDPOINT, [WebpayController::class, 'commit'])
