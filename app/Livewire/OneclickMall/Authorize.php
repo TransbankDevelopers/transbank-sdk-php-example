@@ -5,7 +5,6 @@ namespace App\Livewire\OneclickMall;
 use Livewire\Component;
 use Transbank\Webpay\Oneclick\MallTransaction;
 use Transbank\Webpay\Options;
-use Illuminate\Support\Facades\Log;
 
 class Authorize extends Component
 {
@@ -49,11 +48,6 @@ class Authorize extends Component
                     "installments_number" => $this->installments2
                 ];
             }
-
-            Log::info('Detalles finales:', [
-                'details' => $details
-            ]);
-
             $response = $mallTransaction->authorize($this->userName, $this->tbkUser, $buyOrder, $details);
             $this->authorizeResponse = json_decode(json_encode($response), true);
 
