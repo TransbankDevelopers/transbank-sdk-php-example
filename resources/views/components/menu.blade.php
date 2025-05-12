@@ -83,11 +83,12 @@
                                 Flujo Completo
                             </a>
                         </li>
-                        {{-- <li class="collapsible-items">
-                            <a href="/api-reference/webpay-mall-deferred" class="tbk-sidebar-item">
+                        <li class="collapsible-items">
+                            <a href={{ route('webpay-mall-deferred.api-operations', [], false) }}
+                                class="tbk-sidebar-item">
                                 Operaciones API
                             </a>
-                        </li> --}}
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -285,19 +286,11 @@
 
         (function highlightActiveByUrl() {
             const currentPath = window.location.pathname;
-            const principalPath = currentPath.split("/")[1];
-
 
             document.querySelectorAll("li.collapsible-items > a").forEach((anchor) => {
                 const linkPath = anchor.getAttribute("href") || "";
-                const principalLinkPath = linkPath.split("/")[1];
 
-
-                const activeCurrentAnchor = currentPath === linkPath || principalLinkPath === principalPath
-
-
-
-                if (activeCurrentAnchor) {
+                if (currentPath === linkPath) {
                     const liItem = anchor.parentElement;
                     liItem.classList.add("active");
 
