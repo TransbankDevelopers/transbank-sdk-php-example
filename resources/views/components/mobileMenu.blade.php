@@ -109,11 +109,11 @@
                                 Flujo Completo
                             </a>
                         </li>
-                        {{-- <li class="collapsible-items">
-                            <a href="/api-reference/oneclick-mall" class="tbk-sidebar-item">
+                        <li class="collapsible-items">
+                            <a href={{ route('oneclick-mall.api-operations', [], false) }} class="tbk-sidebar-item">
                                 Operaciones API
                             </a>
-                        </li> --}}
+                        </li>
                     </ul>
                 </li>
 
