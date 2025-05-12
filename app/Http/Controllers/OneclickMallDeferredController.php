@@ -162,4 +162,19 @@ class OneclickMallDeferredController extends Controller
             return view('error-page', ["error" => $e->getMessage()]);
         }
     }
+
+    public function showOperations()
+    {
+        $oneclickMallDeferredStatus = config('webpayParams.oneclick_mall_status');
+        $oneclickMallDeferredAuthorize = config('webpayParams.oneclick_mall_authorize');
+        $oneclickMallDeferredRefund = config('webpayParams.oneclick_mall_refund');
+        $oneclickMallDeferredCaptured = config('webpayParams.oneclick_mall_capture');
+
+        return view('oneclick-mall-deferred.api-operations', compact(
+            'oneclickMallDeferredStatus',
+            'oneclickMallDeferredAuthorize',
+            'oneclickMallDeferredRefund',
+            'oneclickMallDeferredCaptured'
+        ));
+    }
 }
