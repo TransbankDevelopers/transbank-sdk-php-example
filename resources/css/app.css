@@ -256,6 +256,7 @@ code {
 .tbk-link {
     color: var(--tbk-red);
     text-decoration: none;
+    cursor: pointer;
 }
 
 /* layout */
@@ -445,6 +446,12 @@ code {
 }
 
 /* inputs */
+
+.tbk-input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
 
 .tbk-label {
     padding-left: 4px;
