@@ -132,11 +132,12 @@
                                 Flujo Completo
                             </a>
                         </li>
-                        {{-- <li class="collapsible-items">
-                            <a href="/api-reference/oneclick-mall-deferred" class="tbk-sidebar-item">
+                        <li class="collapsible-items">
+                            <a href={{ route('oneclick-mall-deferred.api-operations', [], false) }}
+                                class="tbk-sidebar-item">
                                 Operaciones API
                             </a>
-                        </li> --}}
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -308,7 +309,6 @@
         }
 
         function highlightPrincipalPath(principalPath) {
-            console.log("principalPath");
             document.querySelectorAll("li.collapsible-items > a").forEach((anchor) => {
                 const linkPath = anchor.getAttribute("href") || "";
                 const principalLinkPath = linkPath.split("/")[1];
@@ -336,7 +336,6 @@
             const currentPath = window.location.pathname;
             const principalPath = currentPath.split("/")[1];
 
-            console.log(currentPath);
             if (currentPath.startsWith('/api-reference')) {
                 highlightByCurrentPath(currentPath)
             } else {

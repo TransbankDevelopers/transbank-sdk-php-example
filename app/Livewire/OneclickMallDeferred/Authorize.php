@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\OneclickMall;
+namespace App\Livewire\OneclickMallDeferred;
 
 use Livewire\Component;
 use Transbank\Webpay\Oneclick\MallTransaction;
@@ -9,10 +9,9 @@ use Transbank\Webpay\Options;
 class Authorize extends Component
 {
     public $tbkUser = '';
-
-    public $buyOrder = '';
     public $userName = '';
     public $commerceCode1 = '';
+    public $buyOrder = '';
     public $buyOrder1 = '';
     public $amount1 = '';
     public $installments1 = '';
@@ -26,7 +25,7 @@ class Authorize extends Component
     {
         try {
             $apiKey = config('app.transbank.webpay_api_key');
-            $commerceCode = config('app.transbank.oneclick_cc');
+            $commerceCode = config('app.transbank.oneclick_deferred_cc');
             $option = new Options($apiKey, $commerceCode, Options::ENVIRONMENT_INTEGRATION);
             $mallTransaction = new MallTransaction($option);
 
@@ -48,6 +47,7 @@ class Authorize extends Component
                     "installments_number" => $this->installments2
                 ];
             }
+
             $response = $mallTransaction->authorize($this->userName, $this->tbkUser, $buyOrder, $details);
             $this->authorizeResponse = json_decode(json_encode($response), true);
 
@@ -62,6 +62,6 @@ class Authorize extends Component
 
     public function render()
     {
-        return view('livewire.oneclick-mall.authorize');
+        return view('livewire.oneclick-mall-deferred.authorize');
     }
 }
