@@ -145,4 +145,17 @@ class OneclickMallController extends Controller
             return view('error-page', ["error" => $e->getMessage()]);
         }
     }
+
+    public function showOperations()
+    {
+        $oneclickMallStatus = config('webpayParams.oneclick_mall_status');
+        $oneclickMallRefund = config('webpayParams.oneclick_mall_refund');
+        $oneclickMallAuthorize = config('webpayParams.oneclick_mall_authorize');
+
+        return view('oneclick-mall.api-operations', compact(
+            'oneclickMallStatus',
+            'oneclickMallRefund',
+            'oneclickMallAuthorize'
+        ));
+    }
 }

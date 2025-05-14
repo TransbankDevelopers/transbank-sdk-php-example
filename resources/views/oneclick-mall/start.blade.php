@@ -46,11 +46,11 @@
         Utiliza estos datos de respuesta para generar y presentar un formulario de Inscripción al Tarjetahabiente.
     </p>
 
-    <x-snippet>
-        form action="https://webpay3gint.transbank.cl/webpayserver/initTransaction" method="POST">
-        input type="hidden" name="TBK_TOKEN" value="{{ $resp->token }}" />
-        input type="submit" value="Inscribir" />
-        form>
+    <x-snippet tabulate="true">
+        <form action="https://webpay3gint.transbank.cl/webpayserver/initTransaction" method="POST">
+            <input type="hidden" name="TBK_TOKEN" value="{{ $resp->token }}" />
+            <input type="submit" value="Inscribir" />
+        <form>
     </x-snippet>
 
     <h2 id="example">Ejemplo</h2>
