@@ -21,7 +21,7 @@
     <livewire:webpay-mall-deferred.status />
 
     <x-collapse :label="'Respuesta Status'">
-        <x-tableObject :rows="$webpayPlusStatus"></x-tableObject>
+        <x-table-object :rows="$webpayPlusStatus"></x-table-object>
     </x-collapse>
 
     <h2>Capturar una transacción diferida</h2>
@@ -34,7 +34,7 @@
     <livewire:webpay-mall-deferred.capture />
 
     <x-collapse :label="'Respuesta captura diferida'">
-        <x-tableObject :rows="$webpayPlusCaptured"></x-tableObject>
+        <x-table-object :rows="$webpayPlusCaptured"></x-table-object>
     </x-collapse>
 
     <h2>Reversar o Anular un pago</h2>
@@ -47,6 +47,6 @@
     <livewire:webpay-mall-deferred.refund />
 
     <x-collapse :label="'Respuesta Refund'">
-        <x-tableObject :rows="$webpayPlusRefund"></x-tableObject>
+        <x-table-object :rows="$webpayPlusRefund"></x-table-object>
     </x-collapse>
 </x-layout>
