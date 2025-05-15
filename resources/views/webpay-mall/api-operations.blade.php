@@ -16,7 +16,7 @@
     <livewire:webpay-mall.status />
 
     <x-collapse :label="'Respuesta Status'">
-        <x-tableObject :rows="$webpayPlusMallStatus"></x-tableObject>
+        <x-table-object :rows="$webpayPlusMallStatus"></x-table-object>
     </x-collapse>
 
     <h2>Reversar o Anular un pago</h2>
@@ -29,6 +29,6 @@
     <livewire:webpay-mall.refund />
 
     <x-collapse :label="'Respuesta Refund'">
-        <x-tableObject :rows="$webpayPlusMallRefund"></x-tableObject>
+        <x-table-object :rows="$webpayPlusMallRefund"></x-table-object>
     </x-collapse>
 </x-layout>

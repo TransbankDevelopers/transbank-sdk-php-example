@@ -16,7 +16,7 @@
     <livewire:oneclick-mall-deferred.authorize />
 
     <x-collapse :label="'Respuesta Autorización'">
-        <x-tableObject :rows="$oneclickMallDeferredAuthorize"></x-tableObject>
+        <x-table-object :rows="$oneclickMallDeferredAuthorize"></x-table-object>
     </x-collapse>
 
     <h2>Obtener estado de una transacción</h2>
@@ -28,7 +28,7 @@
     <livewire:oneclick-mall-deferred.status />
 
     <x-collapse :label="'Respuesta Status'">
-        <x-tableObject :rows="$oneclickMallDeferredStatus"></x-tableObject>
+        <x-table-object :rows="$oneclickMallDeferredStatus"></x-table-object>
     </x-collapse>
 
     <h2>Capturar una transacción diferida</h2>
@@ -41,7 +41,7 @@
     <livewire:oneclick-mall-deferred.capture />
 
     <x-collapse :label="'Respuesta captura diferida'">
-        <x-tableObject :rows="$oneclickMallDeferredCaptured"></x-tableObject>
+        <x-table-object :rows="$oneclickMallDeferredCaptured"></x-table-object>
     </x-collapse>
 
     <h2>Reversar o Anular un pago</h2>
@@ -54,6 +54,6 @@
     <livewire:oneclick-mall-deferred.refund />
 
     <x-collapse :label="'Respuesta Reembolso'">
-        <x-tableObject :rows="$oneclickMallDeferredRefund"></x-tableObject>
+        <x-table-object :rows="$oneclickMallDeferredRefund"></x-table-object>
     </x-collapse>
 </x-layout>
