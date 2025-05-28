@@ -413,6 +413,10 @@ return [
       'field' => 'details [].buy_order',
       'value' => 'Orden de compra generada por el comercio hijo para la transacción de pago.',
     ],
+    [
+      'field' => 'details [].balance',
+      'value' => 'Monto restante de la sub-transacción de pago original: monto inicial - monto anulado. Largo máximo: 17'
+    ]
   ],
 
   "oneclick_mall_refund" =>
