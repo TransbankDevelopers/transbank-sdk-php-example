@@ -22,7 +22,7 @@
     <h2>Obtener estado de una transacción</h2>
     <p>Permite consultar el estado de pago realizado a través de Oneclick. Retorna el resultado de la autorización.
         Puedes revisar más detalles de esta operación en su <a target="_blank"
-            href="https://www.transbankdevelopers.cl/documentacion/oneclick#reversar-o-anular-una-transaccion"
+            href="https://www.transbankdevelopers.cl/documentacion/oneclick#obtener-estado-de-una-transaccion"
             class="tbk-link">documentación</a></p>
 
     <livewire:oneclick-mall-deferred.status />
