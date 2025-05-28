@@ -34,7 +34,7 @@
 
     <h2>Reversar o Anular un pago diferido</h2>
     <p>Las transacciones de Webpay se pueden anular o reversar dadas algunas condiciones. Para cualquiera de éstas
-        operaciones se utiliza el mismo servicio web que discernirá si se realizará una reversa o una anulación. para
+        operaciones se utiliza el mismo servicio web que discernirá si se realizará una reversa o una anulación. Para
         mas informacion sobre anulaciones a reversa visite <a target="_blank"
             href="https://www.transbankdevelopers.cl/producto/webpay#anulaciones-y-reversas" class="tbk-link">aqui</a>
     </p>
