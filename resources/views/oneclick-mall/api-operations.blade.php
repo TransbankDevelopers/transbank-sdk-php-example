@@ -22,7 +22,7 @@
     <h2>Obtener estado de una transacción</h2>
     <p>Permite consultar el estado de pago realizado a través de Oneclick. Retorna el resultado de la autorización.
         Puedes revisar más detalles de esta operación en su <a target="_blank"
-            href="https://www.transbankdevelopers.cl/documentacion/oneclick#reversar-o-anular-una-transaccion"
+            href="https://www.transbankdevelopers.cl/documentacion/oneclick#obtener-estado-de-una-transaccion"
             class="tbk-link">documentación</a></p>
 
     <livewire:oneclick-mall.status />
@@ -34,7 +34,7 @@
     <h2>Reversar o Anular un pago</h2>
     <p>Esta operación permite a todo comercio habilitado, reversar o anular una transacción que fue generada en
         Oneclick. Puedes revisar más detalles de esta operación en su <a target="_blank"
-            href="https://www.transbankdevelopers.cl/documentacion/oneclick#obtener-estado-de-una-transaccion"
+            href="https://www.transbankdevelopers.cl/documentacion/oneclick#reversar-o-anular-una-transaccion"
             class="tbk-link">documentación</a>
     </p>
 
