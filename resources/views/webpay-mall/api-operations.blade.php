@@ -23,7 +23,7 @@
     <p>Las transacciones de Webpay Mall se pueden anular o reversar dadas algunas condiciones. Para cualquiera de éstas
         operaciones se utiliza el mismo servicio web que discernirá si se realizará una reversa o una anulación. Para
         más información sobre anulaciones y reversas visite <a target="_blank"
-            href="https://www.transbankdevelopers.cl/producto/webpay#anulaciones-y-reversas" class="tbk-link">aquí</a>
+            href="https://www.transbankdevelopers.cl/producto/webpay#anulaciones-y-reversas" class="tbk-link">aquí.</a>
     </p>
 
     <livewire:webpay-mall.refund />
