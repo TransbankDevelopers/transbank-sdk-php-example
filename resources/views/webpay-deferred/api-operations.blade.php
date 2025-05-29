@@ -23,7 +23,7 @@
     <p>
         Permite solicitar a Webpay la captura diferida de una transacción con autorización y sin captura simultánea.
         Puedes revisar más detalles de esta operación en su <a target="_blank" class="tbk-link"
-            href="https://www.transbankdevelopers.cl/documentacion/webpay-plus#capturar-una-transaccion">documentación</a>
+            href="https://www.transbankdevelopers.cl/documentacion/webpay-plus#capturar-una-transaccion">documentación.</a>
     </p>
 
     <livewire:webpay-deferred.capture />
@@ -35,8 +35,8 @@
     <h2>Reversar o Anular un pago diferido</h2>
     <p>Las transacciones de Webpay se pueden anular o reversar dadas algunas condiciones. Para cualquiera de éstas
         operaciones se utiliza el mismo servicio web que discernirá si se realizará una reversa o una anulación. Para
-        mas informacion sobre anulaciones a reversa visite <a target="_blank"
-            href="https://www.transbankdevelopers.cl/producto/webpay#anulaciones-y-reversas" class="tbk-link">aqui</a>
+        mas información sobre anulaciones a reversa visite <a target="_blank"
+            href="https://www.transbankdevelopers.cl/producto/webpay#anulaciones-y-reversas" class="tbk-link">aquí.</a>
     </p>
 
     <livewire:webpay-deferred.refund />

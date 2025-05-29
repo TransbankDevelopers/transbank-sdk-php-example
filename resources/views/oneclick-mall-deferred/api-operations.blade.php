@@ -10,7 +10,7 @@
     <p>Una vez realizada la inscripción, el comercio puede usar el tbkUser recibido para realizar transacciones. Para
         eso debes usar el método transaction.authorize(). Puedes revisar más detalles de esta operación en su
         <a target="_blank" href="https://www.transbankdevelopers.cl/documentacion/oneclick#autorizar-una-transaccion"
-            class="tbk-link">documentación</a>
+            class="tbk-link">documentación.</a>
     </p>
 
     <livewire:oneclick-mall-deferred.authorize />
@@ -23,7 +23,7 @@
     <p>Permite consultar el estado de pago realizado a través de Oneclick. Retorna el resultado de la autorización.
         Puedes revisar más detalles de esta operación en su <a target="_blank"
             href="https://www.transbankdevelopers.cl/documentacion/oneclick#obtener-estado-de-una-transaccion"
-            class="tbk-link">documentación</a></p>
+            class="tbk-link">documentación.</a></p>
 
     <livewire:oneclick-mall-deferred.status />
 
@@ -35,7 +35,7 @@
     <p>En el caso de que tengas contratada la modalidad de Captura diferida, necesitas llamar al método capture después
         de llamar a authorize para finalizar la transacción. Revisa más detalles sobre esta modalidad en la <a
             target="_blank" class="tbk-link"
-            href="https://www.transbankdevelopers.cl/documentacion/oneclick#capturar-una-transaccion">documentación</a>
+            href="https://www.transbankdevelopers.cl/documentacion/oneclick#capturar-una-transaccion">documentación.</a>
     </p>
 
     <livewire:oneclick-mall-deferred.capture />
@@ -48,7 +48,7 @@
     <p>Esta operación permite a todo comercio habilitado, reversar o anular una transacción que fue generada en
         Oneclick. Puedes revisar más detalles de esta operación en su <a target="_blank"
             href="https://www.transbankdevelopers.cl/documentacion/oneclick#reversar-o-anular-una-transaccion"
-            class="tbk-link">documentación</a>
+            class="tbk-link">documentación.</a>
     </p>
 
     <livewire:oneclick-mall-deferred.refund />
