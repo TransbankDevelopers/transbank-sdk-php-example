@@ -15,7 +15,7 @@
     </p>
     <p>Puedes revisar más detalles de esta operación en su
         <a target="_blank" class="tbk-link"
-            href="https://www.transbankdevelopers.cl/documentacion/webpay-plus#obtener-estado-de-una-transaccion-mall">documentación</a>
+            href="https://www.transbankdevelopers.cl/documentacion/webpay-plus#obtener-estado-de-una-transaccion-mall">documentación.</a>
     </p>
 
     <livewire:webpay-mall-deferred.status />
@@ -28,7 +28,7 @@
     <p>
         Permite solicitar a Webpay la captura diferida de una transacción con autorización y sin captura simultánea.
         Puedes revisar más detalles de esta operación en su <a target="_blank" class="tbk-link"
-            href="https://www.transbankdevelopers.cl/documentacion/webpay-plus#capturar-una-transaccion-mall">documentación</a>
+            href="https://www.transbankdevelopers.cl/documentacion/webpay-plus#capturar-una-transaccion-mall">documentación.</a>
     </p>
 
     <livewire:webpay-mall-deferred.capture />
@@ -41,7 +41,7 @@
     <p>Las transacciones de Webpay Mall se pueden anular o reversar dadas algunas condiciones. Para cualquiera de éstas
         operaciones se utiliza el mismo servicio web que discernirá si se realizará una reversa o una anulación. Para
         más información sobre anulaciones y reversas visite <a target="_blank"
-            href="https://www.transbankdevelopers.cl/producto/webpay#anulaciones-y-reversas" class="tbk-link">aquí</a>
+            href="https://www.transbankdevelopers.cl/producto/webpay#anulaciones-y-reversas" class="tbk-link">aquí.</a>
     </p>
 
     <livewire:webpay-mall-deferred.refund />
