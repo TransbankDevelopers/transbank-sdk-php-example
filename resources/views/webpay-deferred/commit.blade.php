@@ -34,7 +34,7 @@
         Después de completar el flujo en el formulario de pago, recibirás un GET con la siguiente
         información:
     </p>
-    <x-snippet>(returnUrl)?token_ws={{ $token }} </x-snippet>
+    <x-snippet :content="$returnUrl . '?token_ws=' . $token" />
 
     <h2 id="request">Paso 2 - Petición:</h2>
     <p class="mb-32">
