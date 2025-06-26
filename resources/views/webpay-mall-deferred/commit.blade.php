@@ -36,7 +36,7 @@
             información:
         </p>
     </ul>
-    <x-snippet>(returnUrl)?token_ws={{ $token }} </x-snippet>
+    <x-snippet :content="$returnUrl . '?token_ws=' . $token" />
 
     <h2 id="request">Paso 2 - Petición:</h2>
     <p class="mb-32">
