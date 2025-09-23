@@ -5,7 +5,7 @@
             <div class="question-item">
                 <span class="title">Escríbenos por slack</span>
                 <div class="inner-container">
-                    <a href="https://transbank.continuumhq.dev/slack_community" target="_blank" rel="noopener">
+                    <a href="https://invitacion-slack.transbankdevelopers.cl/slack_community" target="_blank" rel="noopener">
                         <img src={{ asset('images/slack.png') }} alt="slack" width="124" height="32" />
                     </a>
                     <span class="container">Únete a nuestra comunidad de integradores. Nuestro equipo está ahí para
