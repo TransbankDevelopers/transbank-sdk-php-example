@@ -6,6 +6,7 @@ use App\Http\Controllers\WebpayPlusDeferredController;
 use App\Http\Controllers\WebpayPlusMallDeferredController;
 use App\Http\Controllers\OneclickMallController;
 use App\Http\Controllers\OneclickMallDeferredController;
+use App\Http\Controllers\TransaccionCompleta;
 use Illuminate\Support\Facades\Route;
 
 const CREATE_ENDPOINT = '/create';
@@ -17,6 +18,7 @@ const START_ENDPOINT = '/start';
 const FINISH_ENDPOINT = '/finish';
 const AUTHORIZE_ENDPOINT = '/authorize';
 const DELETE_ENDPOINT = '/delete';
+const INSTALLMENTS_ENDPOINT = '/installments';
 
 Route::view('/', 'home')->name('home');
 Route::view('/oneclick-mall', 'home')->name('oneclick-mall');
@@ -78,4 +80,13 @@ Route::prefix('oneclick-mall-diferido')->name("oneclick-mall-deferred.")->group(
     Route::get(STATUS_ENDPOINT, [OneclickMallDeferredController::class, 'status'])->name("status");
     Route::get(REFUND_ENDPOINT, [OneclickMallDeferredController::class, 'refund'])->name("refund");
     Route::get(CAPTURE_ENDPOINT, [OneclickMallDeferredController::class, 'capture'])->name("capture");
+});
+
+Route::prefix('transaccion-completa')->name("transaccion-completa.")->group(function () {
+    Route::get("/", [TransaccionCompleta::class, 'index'])->name("index");
+    Route::post(CREATE_ENDPOINT, [TransaccionCompleta::class, 'create'])->name("create");
+    Route::post(INSTALLMENTS_ENDPOINT, [TransaccionCompleta::class, 'installments'])->name("installments");
+    Route::match(['get', 'post'], COMMIT_ENDPOINT, [TransaccionCompleta::class, 'commit'])->name("commit");
+    Route::get(REFUND_ENDPOINT, [TransaccionCompleta::class, 'refund'])->name("refund");
+    Route::get(STATUS_ENDPOINT, [TransaccionCompleta::class, 'status'])->name("status");
 });
