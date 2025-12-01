@@ -31,7 +31,7 @@
               <div class="card-footer">
                   <img src={{ asset('images/credit.svg') }} class="arrow" alt="credit cards logos" width="230"
                       height="36" />
-                  <button type="submit" class="tbk-button primary mb-32">Pagar</button>
+                  <button type="submit" class="tbk-button primary">Pagar</button>
               </div>
           </div>
       </form>
