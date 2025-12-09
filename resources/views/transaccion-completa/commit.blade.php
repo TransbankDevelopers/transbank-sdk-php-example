@@ -65,12 +65,12 @@
             </div>
 
             <div class="tbk-card-footer">
-                <button type="submit" class="tbk-button primary">REFUND</button>
+                <button type="submit" class="tbk-button primary">REEMBOLSAR</button>
             </div>
         </div>
     </form>
 
     <a href="{{ route('transaccion-completa.status', ['token' => $request['token']]) }}"
-        class="tbk-button primary mb-32">STATUS</a>
+        class="tbk-button primary mb-32">CONSULTAR ESTADO</a>
 
 </x-layout>

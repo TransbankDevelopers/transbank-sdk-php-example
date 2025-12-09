@@ -49,6 +49,6 @@
 
     <x-snippet :content="$respond" />
     <a href="{{ route('transaccion-completa.status', ['token' => $request['token']]) }}"
-        class="tbk-button primary mb-32">STATUS</a>
+        class="tbk-button primary mb-32">CONSULTAR ESTADO</a>
 
 </x-layout>
