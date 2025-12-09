@@ -133,6 +133,7 @@ return [
         'oneclick_cc' => env('ONECLICK_CC'),
         'oneclick_deferred_cc' => env('ONECLICK_DEFERRED_CC'),
         'tx_commerce_code' => env('TX_COMMERCE_CODE'),
+        'tx_deferred_commerce_code' => env('TX_DEFERRED_COMMERCE_CODE'),
     ]
 
 ];
