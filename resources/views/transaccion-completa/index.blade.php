@@ -9,7 +9,7 @@
             <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
         </div>
         <div class="breadcrumbs-items">
-            <a class="current-breadcrumb" href="/transaccion-completa">Webpay Transaccion Completa</a>
+            <a class="current-breadcrumb" href="/transaccion-completa">Webpay Transacción Completa</a>
         </div>
     </div>
 
