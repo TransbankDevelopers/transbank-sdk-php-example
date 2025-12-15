@@ -144,7 +144,7 @@
             <hr class="sidebar-divider" />
         </div>
         <div>
-            <p class="tbk-sidebar-item-title">Webpay transaccion completa</p>
+            {{-- <p class="tbk-sidebar-item-title">Webpay transaccion completa</p>
             <ul>
 
                 <li style="margin-bottom:20px;">
@@ -161,11 +161,26 @@
                         </li>
                     </ul>
                 </li>
+                <li style="margin-bottom:20px;">
+                    <button class="sidebar-collapsible-title" data-collapsible="transaccion-completa">
+                        <span class="general-text">Transacción Completa diferido</span>
+                        <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
+                            height="24" />
+                    </button>
+                    <ul class="collapsible-content" id="collapse-transaccion-completa-diferido">
+                        <li class="collapsible-items">
+                            <a href={{ route('transaccion-completa-diferido.index', [], false) }}
+                                class="tbk-sidebar-item">
+                                Flujo Completo
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
 
 
-            </ul>
-            <hr class="sidebar-divider" />
+            </ul> --}}
+            {{-- <hr class="sidebar-divider" /> --}}
         </div>
 
 

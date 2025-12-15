@@ -9,16 +9,16 @@
             <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
         </div>
         <div class="breadcrumbs-items">
-            <a href="/transaccion-completa">Webpay Transacción Completa</a>
+            <a href="/transaccion-completa-diferido">Webpay Transacción Completa Diferido</a>
             <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
         </div>
         <div class="breadcrumbs-items">
-            <a class="current-breadcrumb" href="/transaccion-completa/refund">Reversa</a>
+            <a class="current-breadcrumb" href="/transaccion-completa-diferido/refund">Reversa</a>
         </div>
 
     </div>
 
-    <h1>Transacción Completa - Reembolsar</h1>
+    <h1>Transacción Completa Diferido - Reembolsar</h1>
     <p class="mb-32">En esta etapa, tendrás la posibilidad de solicitar el reembolso del dinero al tarjeta habiente. El
         tipo de reembolso (Reversa, Anulación o Anulación parcial) dependerá del monto y el tiempo transcurrido desde la
         transacción.</p>
@@ -40,7 +40,7 @@
         //configuración de la transacción
         $option = new Options(API_KEY, COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
         $transaction = new Transaction($option);
-        $resp = $transaction->refund($token, $amount);
+        $response = $transaction->refund($token, $amount);
     </x-snippet>
 
     <h2 id="response">Paso 2: Respuesta</h2>
@@ -48,7 +48,7 @@
         confirmar que el reembolso se haya procesado de manera efectiva.</p>
 
     <x-snippet :content="$respond" />
-    <a href="{{ route('transaccion-completa.status', ['token' => $request['token']]) }}"
+    <a href="{{ route('transaccion-completa-diferido.status', ['token' => $request['token']]) }}"
         class="tbk-button primary mb-32">CONSULTAR ESTADO</a>
 
 </x-layout>
