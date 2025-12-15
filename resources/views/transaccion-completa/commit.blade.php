@@ -9,7 +9,7 @@
             <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
         </div>
         <div class="breadcrumbs-items">
-            <a href="/transaccion-completa">Webpay Transaccion Completa</a>
+            <a href="/transaccion-completa">Webpay Transacción Completa</a>
             <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
         </div>
         <div class="breadcrumbs-items">
@@ -34,7 +34,7 @@
         //configuración de la transacción
         $option = new Options(API_KEY, COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
         $transaction = new Transaction($option);
-        $response = $resp = $transaction->commit($token, $idQueryInstallments, $deferredPeriodIndex, $gracePeriod);
+        resp = $transaction->commit($token, $idQueryInstallments, $deferredPeriodIndex, $gracePeriod);
     </x-snippet>
 
     <h2 id="response">Paso 2: Petición</h2>
@@ -65,12 +65,12 @@
             </div>
 
             <div class="tbk-card-footer">
-                <button type="submit" class="tbk-button primary">REFUND</button>
+                <button type="submit" class="tbk-button primary">REEMBOLSAR</button>
             </div>
         </div>
     </form>
 
     <a href="{{ route('transaccion-completa.status', ['token' => $request['token']]) }}"
-        class="tbk-button primary mb-32">STATUS</a>
+        class="tbk-button primary mb-32">CONSULTAR ESTADO</a>
 
 </x-layout>
