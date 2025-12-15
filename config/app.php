@@ -132,6 +132,7 @@ return [
         'webpay_plus_mall_deferred_cc' => env('WP_PLUS_MALL_DEFERRED_CC'),
         'oneclick_cc' => env('ONECLICK_CC'),
         'oneclick_deferred_cc' => env('ONECLICK_DEFERRED_CC'),
+        'tx_commerce_code' => env('TX_COMMERCE_CODE'),
     ]
 
 ];
