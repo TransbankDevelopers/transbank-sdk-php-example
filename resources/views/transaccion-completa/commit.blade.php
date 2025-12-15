@@ -34,7 +34,7 @@
         //configuración de la transacción
         $option = new Options(API_KEY, COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
         $transaction = new Transaction($option);
-        $response = $resp = $transaction->commit($token, $idQueryInstallments, $deferredPeriodIndex, $gracePeriod);
+        resp = $transaction->commit($token, $idQueryInstallments, $deferredPeriodIndex, $gracePeriod);
     </x-snippet>
 
     <h2 id="response">Paso 2: Petición</h2>

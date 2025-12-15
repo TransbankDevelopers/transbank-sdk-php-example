@@ -32,7 +32,7 @@
         //configuración de la transacción
         $option = new Options(API_KEY, COMMERCE_CODE, Options::ENVIRONMENT_INTEGRATION);
         $transaction = new Transaction($option);
-        $response = $resp = $transaction->create($buyOrder, $sessionId, $amount, $cardNumber, $cardExpiry, $cvv);
+        $resp = $transaction->create($buyOrder, $sessionId, $amount, $cardNumber, $cardExpiry, $cvv);
     </x-snippet>
     <h2 id="response">Paso 2: Respuesta</h2>
     <p> Una vez creada la transacción, recibirás los siguientes datos de respuesta:</p>
