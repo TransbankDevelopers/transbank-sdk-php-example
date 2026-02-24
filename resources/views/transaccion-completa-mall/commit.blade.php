@@ -85,17 +85,19 @@
 
                 <div class="refund-card-inputs mb-32">
                     <div class="flex-col">
-                        <label class="tbk-label">Orden de Compra Tienda</label>
-                        <input type="text" class="tbk-input-text" value="{{ $detailBuyOrder }}" readonly>
+                        <label class="tbk-label" for="buy_order_{{ $loop->index }}">Orden de Compra Tienda</label>
+                        <input type="text" id="buy_order_{{ $loop->index }}" class="tbk-input-text"
+                            value="{{ $detailBuyOrder }}" readonly>
                     </div>
 
                     <div class="flex-col">
-                        <label class="tbk-label">Código de Comercio</label>
-                        <input type="text" class="tbk-input-text" value="{{ $detailCommerceCode }}" readonly>
+                        <label class="tbk-label" for="commerce_code_{{ $loop->index }}">Código de Comercio</label>
+                        <input type="text" id="commerce_code_{{ $loop->index }}" class="tbk-input-text"
+                            value="{{ $detailCommerceCode }}" readonly>
                     </div>
                     <div class="flex-col">
-                        <label for="amount" class="tbk-label">Monto a reembolsar</label>
-                        <input type="text" id="amount" name="amount" class="tbk-input-text"
+                        <label for="amount_{{ $loop->index }}" class="tbk-label">Monto a reembolsar</label>
+                        <input type="text" id="amount_{{ $loop->index }}" name="amount" class="tbk-input-text"
                             value="{{ $detailAmount }}">
                     </div>
                     <input type="hidden" name="token" value="{{ $request['token'] }}">
