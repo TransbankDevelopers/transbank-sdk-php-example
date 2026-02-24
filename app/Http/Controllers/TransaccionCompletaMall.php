@@ -129,7 +129,12 @@ class TransaccionCompletaMall extends Controller
 
             $resp = $this->transaction->commit($req['token'], $commitDetails);
             $respondPayload = $this->normalizeResponseForSnippet($resp);
-            $responseDetails = $resp->getDetails() ?? $details ?? [];
+
+            $responseDetails = [];
+            $rawDetails = $resp->getDetails() ?? [];
+            foreach ($rawDetails as $detail) {
+                $responseDetails[] = $this->normalizeDetail($detail);
+            }
 
             return view('transaccion-completa-mall.commit', [
                 "request" => $req,
@@ -251,20 +256,15 @@ class TransaccionCompletaMall extends Controller
 
         $payload = [];
         foreach ($map as $key => $method) {
-            if (!method_exists($detail, $method)) {
-                continue;
-            }
-            try {
-                $payload[$key] = $detail->$method();
-            } catch (\Error $e) {
-                continue;
+            if (method_exists($detail, $method)) {
+                try {
+                    $payload[$key] = $detail->$method();
+                } catch (\Error $e) {
+                    continue;
+                }
             }
         }
 
-        if (!empty($payload)) {
-            return $payload;
-        }
-
-        return get_object_vars($detail);
+        return !empty($payload) ? $payload : get_object_vars($detail);
     }
 }
