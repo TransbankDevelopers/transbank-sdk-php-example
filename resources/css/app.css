@@ -41,9 +41,9 @@
     --tbk-red: #f6f7f9;
     --tbk-table-header: rgb(35 39 47/0.95);
     --shadow-elevation: inset 0 0 0 1px hsla(0, 0%, 100%, 0.08);
-    --white-elevation: 0 0 0 1px hsla(0, 0%, 100%, 0.15),
-        0px 0.8px 2px rgba(0, 0, 0, 0.032), 0px 2.7px 6.7px rgba(0, 0, 0, 0.048),
-        0px 12px 30px rgba(0, 0, 0, 0.08);
+    --white-elevation:
+        0 0 0 1px hsla(0, 0%, 100%, 0.15), 0px 0.8px 2px rgba(0, 0, 0, 0.032),
+        0px 2.7px 6.7px rgba(0, 0, 0, 0.048), 0px 12px 30px rgba(0, 0, 0, 0.08);
     --tbk-white-red: #ffb9b93b;
 }
 
@@ -651,7 +651,8 @@ code {
     display: flex;
     flex-direction: column;
     border-radius: 4px;
-    box-shadow: 0px 1px 2px 0px rgba(14, 21, 32, 0.18),
+    box-shadow:
+        0px 1px 2px 0px rgba(14, 21, 32, 0.18),
         0px 0px 2px 0px rgba(14, 21, 32, 0.12),
         0px 0px 2px 0px rgba(0, 0, 0, 0.04);
     color: var(--tbk-black);
@@ -808,7 +809,9 @@ code {
     line-height: 1.75rem;
     font-weight: 700;
     color: var(--tbk-grey);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
     padding-left: 24px;
 }
 
@@ -1106,6 +1109,12 @@ code {
     animation: spin 1s ease-in-out infinite;
 }
 
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* tx completa */
 
 .card-inputs-container {
@@ -1149,10 +1158,11 @@ code {
     z-index: 0;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+.refund-card-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 20px;
 }
 
 @media (max-width: 1439.98px) {
