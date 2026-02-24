@@ -1,6 +1,5 @@
 @php
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario'];
-    $responseDetails = $respond->details ?? ($details ?? []);
 @endphp
 
 <x-layout active-link="Transacción Completa Mall" :navigation="$navigation">
@@ -74,7 +73,7 @@
             consultar el estado de la transacción.</li>
     </ul>
 
-    @foreach ($responseDetails as $detail)
+    @foreach ($response_details as $detail)
         @php
             $detailAmount = $detail->amount ?? ($detail['amount'] ?? '');
             $detailBuyOrder = $detail->buy_order ?? ($detail['buy_order'] ?? '');

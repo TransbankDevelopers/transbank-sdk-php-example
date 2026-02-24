@@ -129,12 +129,13 @@ class TransaccionCompletaMall extends Controller
 
             $resp = $this->transaction->commit($req['token'], $commitDetails);
             $respondPayload = $this->normalizeResponseForSnippet($resp);
+            $responseDetails = $resp->getDetails() ?? $details ?? [];
 
             return view('transaccion-completa-mall.commit', [
                 "request" => $req,
                 "respond" => $resp,
                 "respond_payload" => $respondPayload,
-                "details" => $details
+                "response_details" => $responseDetails
             ]);
         } catch (\Exception $e) {
             return view('error-page', ["error" => $e->getMessage()]);
