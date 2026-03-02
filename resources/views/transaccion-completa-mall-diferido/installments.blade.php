@@ -31,16 +31,16 @@
         $transaction = new MallTransaction($option);
 
         $details = [
-            [
-                "commerce_code" => "597055555577",
-                "buy_order" => "O-123",
-                "installments_number" => 3
-            ],
-            [
-                "commerce_code" => "597055555578",
-                "buy_order" => "O-456",
-                "installments_number" => 3
-            ]
+        [
+        "commerce_code" => "597055555577",
+        "buy_order" => "O-123",
+        "installments_number" => 3
+        ],
+        [
+        "commerce_code" => "597055555578",
+        "buy_order" => "O-456",
+        "installments_number" => 3
+        ]
         ];
 
         $resp = $transaction->installments($token, $details);
@@ -56,20 +56,21 @@
         siguiente paso sería confirmar la transacción.</p>
 
     <div class="tbk-card">
-        <div class="input-container mb-32">
+        <div class="input-container mb-16">
             <label for="token" class="tbk-label">Token</label>
             <input type="text" id="token" name="token" class="tbk-input-text" value="{{ $request['token'] }}">
         </div>
-        <div class="input-container">
+        <div class="input-container mb-16">
             <label for="idQueryInstallments" class="tbk-label">ID de consulta de cuotas (Opcional)</label>
             <input type="text" id="idQueryInstallments" name="idQueryInstallments" class="tbk-input-text"
                 value="{{ $respond[0]->idQueryInstallments ?? '' }}">
         </div>
-        <div class="input-container">
+        <div class="input-container mb-16">
             <label for="deferredPeriodIndex" class="tbk-label">Indice de periodo diferido (opcional)</label>
-            <input type="text" id="deferredPeriodIndex" name="deferredPeriodIndex" class="tbk-input-text" value="">
+            <input type="text" id="deferredPeriodIndex" name="deferredPeriodIndex" class="tbk-input-text"
+                value="">
         </div>
-        <div class="input-container">
+        <div class="input-container mb-16">
             <label for="gracePeriod" class="tbk-label">Periodo de gracia (opcional)</label>
             <input type="text" id="gracePeriod" name="gracePeriod" class="tbk-input-text" value="">
         </div>
