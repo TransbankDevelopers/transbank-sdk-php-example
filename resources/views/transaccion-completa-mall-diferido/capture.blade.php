@@ -43,8 +43,8 @@
     <form action="{{ route('transaccion-completa-mall-diferido.refund') }}" method="GET" class="mb-16">
         <div class="tbk-card">
             <div class="input-container mb-32">
-                <label class="tbk-label">Monto a reembolsar</label>
-                <input type="text" name="amount" class="tbk-input-text" value="{{ $request['amount'] ?? '' }}">
+                <label for="amount" class="tbk-label">Monto a reembolsar</label>
+                <input type="text" id="amount" name="amount" class="tbk-input-text" value="{{ $request['amount'] ?? '' }}">
                 <input type="hidden" name="token" value="{{ $request['token'] }}">
                 <input type="hidden" name="buyOrder" value="{{ $request['childBuyOrder'] }}">
                 <input type="hidden" name="childCommerceCode" value="{{ $request['childCommerceCode'] }}">

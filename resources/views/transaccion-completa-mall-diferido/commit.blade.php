@@ -36,20 +36,20 @@
         $transaction = new MallTransaction($option);
 
         $details = [
-            [
-                "commerce_code" => "597055555577",
-                "buy_order" => "O-123",
-                "id_query_installments" => 1,
-                "deferred_period_index" => 0,
-                "grace_period" => false
-            ],
-            [
-                "commerce_code" => "597055555578",
-                "buy_order" => "O-456",
-                "id_query_installments" => 1,
-                "deferred_period_index" => 0,
-                "grace_period" => false
-            ]
+        [
+        "commerce_code" => "597055555577",
+        "buy_order" => "O-123",
+        "id_query_installments" => 1,
+        "deferred_period_index" => 0,
+        "grace_period" => false
+        ],
+        [
+        "commerce_code" => "597055555578",
+        "buy_order" => "O-456",
+        "id_query_installments" => 1,
+        "deferred_period_index" => 0,
+        "grace_period" => false
+        ]
         ];
 
         $resp = $transaction->commit($token, $details);
@@ -71,20 +71,26 @@
                 <div class="tbk-card">
                     <span class="tbk-card-title">Capturar</span>
                     <div class="input-container mb-32">
-                        <label class="tbk-label">Orden de compra hijo</label>
-                        <input type="text" class="tbk-input-text" value="{{ $detail['buy_order'] ?? '' }}" readonly>
-                        <label class="tbk-label">Commerce Code hijo</label>
-                        <input type="text" class="tbk-input-text" value="{{ $detail['commerce_code'] ?? '' }}" readonly>
-                        <label class="tbk-label">Código de autorización</label>
-                        <input type="text" class="tbk-input-text" value="{{ $detail['authorization_code'] ?? '' }}"
-                            readonly>
-                        <label class="tbk-label">Monto a capturar</label>
-                        <input type="text" name="amount" class="tbk-input-text" value="{{ $detail['amount'] ?? '' }}">
+                        <label for="child_buy_order_{{ $loop->index }}" class="tbk-label">Orden de compra hijo</label>
+                        <input type="text" id="child_buy_order_{{ $loop->index }}" class="tbk-input-text mb-16"
+                            value="{{ $detail['buy_order'] ?? '' }}" readonly>
+                        <label for="child_commerce_code_{{ $loop->index }}" class="tbk-label">Commerce Code
+                            hijo</label>
+                        <input type="text" id="child_commerce_code_{{ $loop->index }}" class="tbk-input-text mb-16"
+                            value="{{ $detail['commerce_code'] ?? '' }}" readonly>
+                        <label for="authorization_code_{{ $loop->index }}" class="tbk-label">Código de
+                            autorización</label>
+                        <input type="text" id="authorization_code_{{ $loop->index }}" class="tbk-input-text mb-16"
+                            value="{{ $detail['authorization_code'] ?? '' }}" readonly>
+                        <label for="amount_{{ $loop->index }}" class="tbk-label">Monto a capturar</label>
+                        <input type="text" id="amount_{{ $loop->index }}" name="amount"
+                            class="tbk-input-text mb-16" value="{{ $detail['amount'] ?? '' }}">
 
                         <input type="hidden" name="token" value="{{ $request['token'] }}">
                         <input type="hidden" name="childBuyOrder" value="{{ $detail['buy_order'] ?? '' }}">
                         <input type="hidden" name="childCommerceCode" value="{{ $detail['commerce_code'] ?? '' }}">
-                        <input type="hidden" name="authorizationCode" value="{{ $detail['authorization_code'] ?? '' }}">
+                        <input type="hidden" name="authorizationCode"
+                            value="{{ $detail['authorization_code'] ?? '' }}">
                         <input type="hidden" name="parentBuyOrder" value="{{ $respond_payload['buy_order'] ?? '' }}">
                     </div>
                     <div class="tbk-card-footer">
