@@ -9,6 +9,7 @@ use App\Http\Controllers\OneclickMallDeferredController;
 use App\Http\Controllers\TransaccionCompleta;
 use App\Http\Controllers\TransaccionCompletaDiferido;
 use App\Http\Controllers\TransaccionCompletaMall;
+use App\Http\Controllers\TransaccionCompletaMallDiferido;
 use Illuminate\Support\Facades\Route;
 
 const CREATE_ENDPOINT = '/create';
@@ -100,6 +101,16 @@ Route::prefix('transaccion-completa-mall')->name("transaccion-completa-mall.")->
     Route::match(['get', 'post'], COMMIT_ENDPOINT, [TransaccionCompletaMall::class, 'commit'])->name("commit");
     Route::get(REFUND_ENDPOINT, [TransaccionCompletaMall::class, 'refund'])->name("refund");
     Route::get(STATUS_ENDPOINT, [TransaccionCompletaMall::class, 'status'])->name("status");
+});
+
+Route::prefix('transaccion-completa-mall-diferido')->name("transaccion-completa-mall-diferido.")->group(function () {
+    Route::get("/", [TransaccionCompletaMallDiferido::class, 'index'])->name("index");
+    Route::post(CREATE_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'create'])->name("create");
+    Route::post(INSTALLMENTS_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'installments'])->name("installments");
+    Route::match(['get', 'post'], COMMIT_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'commit'])->name("commit");
+    Route::get(CAPTURE_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'capture'])->name("capture");
+    Route::get(REFUND_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'refund'])->name("refund");
+    Route::get(STATUS_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'status'])->name("status");
 });
 
 Route::prefix('transaccion-completa-diferido')->name("transaccion-completa-diferido.")->group(function () {
