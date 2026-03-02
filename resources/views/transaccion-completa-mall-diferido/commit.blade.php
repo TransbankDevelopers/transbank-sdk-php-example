@@ -1,6 +1,5 @@
 @php
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario'];
-    $responseDetails = $response_details ?? [];
 @endphp
 
 <x-layout active-link="Transacción Completa Mall Diferido" :navigation="$navigation">
@@ -66,7 +65,7 @@
     <p class="mb-16">Ahora que se ha confirmado la transacción, puedes capturar el monto previamente autorizado.</p>
 
     <div class="mt-4">
-        @foreach ($responseDetails as $detail)
+        @foreach ($response_details as $detail)
             <form action="{{ route('transaccion-completa-mall-diferido.capture') }}" method="GET" class="mb-16">
                 <div class="tbk-card">
                     <span class="tbk-card-title">Capturar</span>
