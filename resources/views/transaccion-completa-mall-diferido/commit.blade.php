@@ -70,11 +70,13 @@
                 <div class="tbk-card">
                     <span class="tbk-card-title">Capturar</span>
                     <div class="input-container mb-32">
-                        <label for="child_buy_order_{{ $loop->index }}" class="tbk-label">Orden de compra hijo</label>
+                        <label for="child_buy_order_{{ $loop->index }}" class="tbk-label">Orden de compra
+                            (tienda)
+                        </label>
                         <input type="text" id="child_buy_order_{{ $loop->index }}" class="tbk-input-text mb-16"
                             value="{{ $detail['buy_order'] ?? '' }}" readonly>
                         <label for="child_commerce_code_{{ $loop->index }}" class="tbk-label">Commerce Code
-                            hijo</label>
+                            (tienda)</label>
                         <input type="text" id="child_commerce_code_{{ $loop->index }}" class="tbk-input-text mb-16"
                             value="{{ $detail['commerce_code'] ?? '' }}" readonly>
                         <label for="authorization_code_{{ $loop->index }}" class="tbk-label">Código de

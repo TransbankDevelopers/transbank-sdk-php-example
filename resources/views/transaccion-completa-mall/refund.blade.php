@@ -23,7 +23,8 @@
         transacción.</p>
 
     <h2 id="request">Paso 1: Petición</h2>
-    <p class="mb-32">Necesitas el token de la transacción, el buy_order del hijo, el commerce_code hijo y el monto que
+    <p class="mb-32">Necesitas el token de la transacción, el buy_order (tienda), el commerce_code (tienda) y el monto
+        que
         deseas reversar. Si decides anular el monto total, puede resultar en una Reversa o Anulación según ciertas
         condiciones. En caso de un monto menor al total, se realizará una Anulación parcial. Las anulaciones parciales
         para tarjetas débito y prepago no están soportadas.
