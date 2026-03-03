@@ -30,7 +30,7 @@
     <h2 id="request">Paso 1 - Petición:</h2>
     <p class="mb-32">
         Para llevar a cabo el reembolso, necesitas proporcionar el token de la transacción, el monto que
-        quieres reversar, el código de comercio de la tienda hijo y el orden de compra del detalle de la transacción.
+        quieres reversar, el código de comercio (tienda) y el orden de compra del detalle de la transacción (tienda).
     </p>
 
     <p class="mb-32">

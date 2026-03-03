@@ -3,13 +3,13 @@
         <h3 class="tbk-card-title">transaction.captured()</h3>
         <form wire:submit.prevent="captureTransaction">
             <div class="input-container mb-32">
-                <label for="childCommerceCode" class="tbk-label">Código de comercio hijo</label>
+                <label for="childCommerceCode" class="tbk-label">Código de comercio (tienda)</label>
                 <input type="text" wire:model="childCommerceCode" name="childCommerceCode" class="tbk-input-text"
                     required>
             </div>
 
             <div class="input-container mb-32">
-                <label for="childBuyOrder" class="tbk-label">Orden de compra hijo</label>
+                <label for="childBuyOrder" class="tbk-label">Orden de compra (tienda)</label>
                 <input type="text" wire:model="childBuyOrder" name="childBuyOrder" class="tbk-input-text" required>
             </div>
 

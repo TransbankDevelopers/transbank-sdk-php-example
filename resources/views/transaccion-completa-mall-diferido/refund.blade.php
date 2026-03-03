@@ -2,22 +2,22 @@
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
 @endphp
 
-<x-layout active-link="Transacción Completa Mall" :navigation="$navigation">
+<x-layout active-link="Transacción Completa Mall Diferido" :navigation="$navigation">
     <div class="breadcrumbs-container">
         <div class="breadcrumbs-items">
             <a href="/">Inicio</a>
             <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
         </div>
         <div class="breadcrumbs-items">
-            <a href="/transaccion-completa-mall">Webpay Transacción Completa Mall</a>
+            <a href="/transaccion-completa-mall-diferido">Webpay Transacción Completa Mall Diferido</a>
             <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
         </div>
         <div class="breadcrumbs-items">
-            <a class="current-breadcrumb" href="/transaccion-completa-mall/refund">Reembolsar</a>
+            <a class="current-breadcrumb" href="/transaccion-completa-mall-diferido/refund">Reembolsar</a>
         </div>
     </div>
 
-    <h1>Transacción Completa Mall - Reembolsar</h1>
+    <h1>Transacción Completa Mall Diferido - Reembolsar</h1>
     <p class="mb-32">En esta etapa, tendrás la posibilidad de solicitar el reembolso del dinero al tarjeta habiente. El
         tipo de reembolso (Reversa, Anulación o Anulación parcial) dependerá del monto y el tiempo transcurrido desde la
         transacción.</p>
@@ -48,7 +48,7 @@
         confirmar que el reembolso se haya procesado de manera efectiva.</p>
 
     <x-snippet :content="$respond" />
-    <a href="{{ route('transaccion-completa-mall.status', ['token' => $request['token']]) }}"
+    <a href="{{ route('transaccion-completa-mall-diferido.status', ['token' => $request['token']]) }}"
         class="tbk-button primary mb-32">CONSULTAR ESTADO</a>
 
 </x-layout>

@@ -8,24 +8,25 @@ use Transbank\Webpay\Options;
 use Transbank\Webpay\TransaccionCompleta;
 use Transbank\Webpay\TransaccionCompleta\MallTransaction;
 
-class TransaccionCompletaMall extends Controller
+class TransaccionCompletaMallDiferido extends Controller
 {
     use TransbankResponseNormalizer;
+
     private MallTransaction $transaction;
-    private const SESSION_DETAILS = 'transaccion_completa_mall_details';
-    const PRODUCT = 'Transaccion Completa Mall';
+    private const SESSION_DETAILS = 'transaccion_completa_mall_deferred_details';
+    const PRODUCT = 'Transaccion Completa Mall Diferido';
 
     public function __construct()
     {
         $apiKey = config('app.transbank.webpay_api_key');
-        $commerceCode = TransaccionCompleta::INTEGRATION_MALL_COMMERCE_CODE;
+        $commerceCode = TransaccionCompleta::INTEGRATION_MALL_DEFERRED_COMMERCE_CODE;
         $option = new Options($apiKey, $commerceCode, Options::ENVIRONMENT_INTEGRATION);
         $this->transaction = new MallTransaction($option);
     }
 
     public function index()
     {
-        return view('transaccion-completa-mall.index');
+        return view('transaccion-completa-mall-diferido.index');
     }
 
     public function create(Request $request)
@@ -57,7 +58,7 @@ class TransaccionCompletaMall extends Controller
 
             session([self::SESSION_DETAILS => $details]);
 
-            return view('transaccion-completa-mall.create', [
+            return view('transaccion-completa-mall-diferido.create', [
                 "request" => $createTx,
                 "respond" => $resp
             ]);
@@ -86,7 +87,7 @@ class TransaccionCompletaMall extends Controller
 
             $resp = $this->transaction->installments($req['token'], $installmentDetails);
 
-            return view('transaccion-completa-mall.installments', [
+            return view('transaccion-completa-mall-diferido.installments', [
                 "request" => $req,
                 "respond" => $resp
             ]);
@@ -138,7 +139,7 @@ class TransaccionCompletaMall extends Controller
                 $responseDetails[] = $this->normalizeDetail($detail);
             }
 
-            return view('transaccion-completa-mall.commit', [
+            return view('transaccion-completa-mall-diferido.commit', [
                 "request" => $req,
                 "respond" => $resp,
                 "respond_payload" => $respondPayload,
@@ -149,16 +150,35 @@ class TransaccionCompletaMall extends Controller
         }
     }
 
+    public function capture(Request $request)
+    {
+        try {
+            $req = $request->except('_token');
+            $resp = $this->transaction->capture(
+                $req['token'],
+                $req['childCommerceCode'],
+                $req['childBuyOrder'],
+                $req['authorizationCode'],
+                $req['amount']
+            );
+
+            return view('transaccion-completa-mall-diferido.capture', [
+                "request" => $req,
+                "respond" => $resp
+            ]);
+        } catch (\Exception $e) {
+            return view('error-page', ["error" => $e->getMessage()]);
+        }
+    }
+
     public function status(Request $request)
     {
         try {
-
             $req = $request->except('_token');
             $resp = $this->transaction->status($req['token']);
-            logger()->info('TCM status response', ['response' => $resp]);
             $respondPayload = $this->normalizeResponseForSnippet($resp);
 
-            return view('transaccion-completa-mall.status', [
+            return view('transaccion-completa-mall-diferido.status', [
                 "request" => $req,
                 "respond" => $resp,
                 "respond_payload" => $respondPayload
@@ -179,7 +199,7 @@ class TransaccionCompletaMall extends Controller
                 $req['amount']
             );
 
-            return view('transaccion-completa-mall.refund', [
+            return view('transaccion-completa-mall-diferido.refund', [
                 "request" => $req,
                 "respond" => $resp
             ]);
@@ -191,8 +211,8 @@ class TransaccionCompletaMall extends Controller
     private function buildMallDetails(): array
     {
         $childCommerceCodes = [
-            TransaccionCompleta::INTEGRATION_MALL_CHILD_COMMERCE_CODE_1,
-            TransaccionCompleta::INTEGRATION_MALL_CHILD_COMMERCE_CODE_2
+            TransaccionCompleta::INTEGRATION_MALL_DEFERRED_CHILD_COMMERCE_CODE_1,
+            TransaccionCompleta::INTEGRATION_MALL_DEFERRED_CHILD_COMMERCE_CODE_2
         ];
 
         $details = [];
@@ -206,5 +226,4 @@ class TransaccionCompletaMall extends Controller
 
         return $details;
     }
-
 }
