@@ -15,7 +15,7 @@
     </div>
 
     <h1>Transacción Completa Mall Diferido - Formulario</h1>
-    <p>En esta primera etapa necesitas obtener los datos esenciales de la tarjeta de crédito, débito o prepago del
+    <p>En esta primera etapa necesitas obtener los datos esenciales de la tarjeta de crédito del
         titular. Utiliza el formulario para recolectar esta información de manera segura.</p>
     <x-credit-card :action="route('transaccion-completa-mall-diferido.create')" />
 </x-layout>
