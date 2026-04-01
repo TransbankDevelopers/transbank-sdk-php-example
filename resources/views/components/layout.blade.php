@@ -8,9 +8,12 @@
     <title>{{ $title ?? 'Transbank SDK' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.min.css"
+        integrity="sha512-vE6F7yF7rYlZ3Zq9VHtV6nRvWmvMRGsiE9zraFMvx6bMpiKFFitvolG/GpNZgbf+168Q5e0siJmq9hw3rroWJw==">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/card/2.5.4/card.min.js"
+        integrity="sha512-bap2DVGWmQ620Jpimq4jr/z96eYAryS1h7FrrBY2ndRkLAD465BDAGr5k5OIxkd92J5Nt1hRJlhXSra6ECbZdg==">
+    </script>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J1463PLZ6E"></script>
     <script>
