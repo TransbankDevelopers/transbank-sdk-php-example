@@ -10,6 +10,7 @@ use App\Http\Controllers\TransaccionCompleta;
 use App\Http\Controllers\TransaccionCompletaDiferido;
 use App\Http\Controllers\TransaccionCompletaMall;
 use App\Http\Controllers\TransaccionCompletaMallDiferido;
+use App\Http\Controllers\PatpassComercioController;
 use Illuminate\Support\Facades\Route;
 
 const CREATE_ENDPOINT = '/create';
@@ -26,7 +27,6 @@ const INSTALLMENTS_ENDPOINT = '/installments';
 Route::view('/', 'home')->name('home');
 Route::view('/oneclick-mall', 'home')->name('oneclick-mall');
 Route::view('/transaccion-completa', 'home')->name('transaccion-completa');
-Route::view('/patpass-comercio', 'home')->name('patpass');
 
 Route::get('/api-reference/webpay-plus', [WebpayController::class, 'showOperations'])->name("webpay.api-operations");
 Route::get('/api-reference/webpay-mall', [WebpayPlusMallController::class, 'showOperations'])->name("webpay-mall.api-operations");
@@ -121,4 +121,10 @@ Route::prefix('transaccion-completa-diferido')->name("transaccion-completa-difer
     Route::get(CAPTURE_ENDPOINT, [TransaccionCompletaDiferido::class, 'capture'])->name("capture");
     Route::get(REFUND_ENDPOINT, [TransaccionCompletaDiferido::class, 'refund'])->name("refund");
     Route::get(STATUS_ENDPOINT, [TransaccionCompletaDiferido::class, 'status'])->name("status");
+});
+
+Route::prefix('patpass-comercio')->name("patpass.")->group(function () {
+    Route::get("/", [PatpassComercioController::class, 'start'])->name("start");
+    Route::match(['get', 'post'], COMMIT_ENDPOINT, [PatpassComercioController::class, 'commit'])->name("commit");
+    Route::match(['get', 'post'], '/voucher', [PatpassComercioController::class, 'voucher'])->name("voucher");
 });
