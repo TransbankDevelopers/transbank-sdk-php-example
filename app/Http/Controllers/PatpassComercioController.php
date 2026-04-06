@@ -77,9 +77,12 @@ class PatpassComercioController extends Controller
     public function commit(Request $request)
     {
         try {
-            if ($request->isMethod('post')) {
-                $jToken = $request->input('j_token') ?? $request->input('J_TOKEN') ?? $request->input('token');
+            $jToken = $request->input('j_token')
+                ?? $request->input('J_TOKEN')
+                ?? $request->input('token')
+                ?? session('patpass_j_token');
 
+            if ($request->isMethod('post')) {
                 if (!$jToken) {
                     return view('error-page', ['error' => 'No se recibió el token de inscripción (J_TOKEN).']);
                 }
@@ -88,10 +91,6 @@ class PatpassComercioController extends Controller
 
                 return redirect()->route('patpass.commit');
             }
-
-            $jToken = $request->input('j_token')
-                ?? $request->input('J_TOKEN')
-                ?? session('patpass_j_token');
 
             if (!$jToken) {
                 return view('error-page', ['error' => 'No se encontró el token de inscripción (J_TOKEN).']);
@@ -117,23 +116,21 @@ class PatpassComercioController extends Controller
     public function voucher(Request $request)
     {
         try {
-            if ($request->isMethod('post')) {
-                $jToken = $request->input('j_token')
-                    ?? $request->input('J_TOKEN')
-                    ?? $request->input('tokenComercio')
-                    ?? $request->input('token');
-
-                if ($jToken) {
-                    session(['patpass_j_token' => $jToken]);
-                }
-
-                return redirect()->route('patpass.voucher');
-            }
-
             $jToken = $request->input('j_token')
                 ?? $request->input('J_TOKEN')
                 ?? $request->input('tokenComercio')
+                ?? $request->input('token')
                 ?? session('patpass_j_token');
+
+            if ($request->isMethod('post')) {
+                if (!$jToken) {
+                    return view('error-page', ['error' => 'No se recibió el token de inscripción (J_TOKEN).']);
+                }
+
+                session(['patpass_j_token' => $jToken]);
+
+                return redirect()->route('patpass.voucher');
+            }
 
             if (!$jToken) {
                 return view('error-page', ['error' => 'No se encontró el token de inscripción (J_TOKEN).']);
