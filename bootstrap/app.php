@@ -12,7 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except: [
-            'webpay-plus/commit'
+            'webpay-plus/commit',
+            'patpass-comercio/commit',
+            'patpass-comercio/voucher',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
