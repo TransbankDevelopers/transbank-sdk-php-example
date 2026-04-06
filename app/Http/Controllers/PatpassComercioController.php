@@ -76,6 +76,7 @@ class PatpassComercioController extends Controller
 
     public function commit(Request $request)
     {
+        $response = null;
         try {
             $jToken = $request->input('j_token')
                 ?? $request->input('J_TOKEN')
@@ -83,38 +84,40 @@ class PatpassComercioController extends Controller
                 ?? session('patpass_j_token');
 
             if ($request->isMethod('post')) {
-                if (!$jToken) {
-                    return view('error-page', ['error' => 'No se recibió el token de inscripción (J_TOKEN).']);
+                if ($jToken) {
+                    session(['patpass_j_token' => $jToken]);
+                    $response = redirect()->route('patpass.commit');
+                } else {
+                    $response = $this->renderPatpassError('No se recibió el token de inscripción (J_TOKEN).');
                 }
+            } else {
+                if (!$jToken) {
+                    $response = $this->renderPatpassError('No se encontró el token de inscripción (J_TOKEN).');
+                } else {
+                    $resp = $this->inscription->status($jToken);
 
-                session(['patpass_j_token' => $jToken]);
+                    $responsePayload = [
+                        'authorized' => $resp->status,
+                        'voucherUrl' => $resp->urlVoucher,
+                    ];
 
-                return redirect()->route('patpass.commit');
+                    $response = view('patpass-comercio.commit', [
+                        'j_token' => $jToken,
+                        'resp' => $resp,
+                        'responsePayload' => $responsePayload,
+                    ]);
+                }
             }
-
-            if (!$jToken) {
-                return view('error-page', ['error' => 'No se encontró el token de inscripción (J_TOKEN).']);
-            }
-
-            $resp = $this->inscription->status($jToken);
-
-            $responsePayload = [
-                'authorized' => $resp->status,
-                'voucherUrl' => $resp->urlVoucher,
-            ];
-
-            return view('patpass-comercio.commit', [
-                'j_token' => $jToken,
-                'resp' => $resp,
-                'responsePayload' => $responsePayload,
-            ]);
         } catch (\Exception $e) {
             return view('error-page', ['error' => $e->getMessage()]);
         }
+
+        return $response;
     }
 
     public function voucher(Request $request)
     {
+        $response = null;
         try {
             $jToken = $request->input('j_token')
                 ?? $request->input('J_TOKEN')
@@ -123,24 +126,30 @@ class PatpassComercioController extends Controller
                 ?? session('patpass_j_token');
 
             if ($request->isMethod('post')) {
-                if (!$jToken) {
-                    return view('error-page', ['error' => 'No se recibió el token de inscripción (J_TOKEN).']);
+                if ($jToken) {
+                    session(['patpass_j_token' => $jToken]);
+                    $response = redirect()->route('patpass.voucher');
+                } else {
+                    $response = $this->renderPatpassError('No se recibió el token de inscripción (J_TOKEN).');
                 }
-
-                session(['patpass_j_token' => $jToken]);
-
-                return redirect()->route('patpass.voucher');
+            } else {
+                if (!$jToken) {
+                    $response = $this->renderPatpassError('No se encontró el token de inscripción (J_TOKEN).');
+                } else {
+                    $response = view('patpass-comercio.voucher', [
+                        'j_token' => $jToken,
+                    ]);
+                }
             }
-
-            if (!$jToken) {
-                return view('error-page', ['error' => 'No se encontró el token de inscripción (J_TOKEN).']);
-            }
-
-            return view('patpass-comercio.voucher', [
-                'j_token' => $jToken,
-            ]);
         } catch (\Exception $e) {
             return view('error-page', ['error' => $e->getMessage()]);
         }
+
+        return $response;
+    }
+
+    private function renderPatpassError(string $message)
+    {
+        return view('error-page', ['error' => $message]);
     }
 }
