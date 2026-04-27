@@ -140,6 +140,21 @@
                         </li>
                     </ul>
                 </li>
+
+                <li style="margin-bottom:20px;">
+                    <button class="sidebar-collapsible-title" data-collapsible="promotions-oneclick-mall">
+                        <span class="general-text">Oneclick Mall Promociones</span>
+                        <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
+                            height="24" />
+                    </button>
+                    <ul class="collapsible-content" id="collapse-promotions-oneclick-mall">
+                        <li class="collapsible-items">
+                            <a href={{ route('promotions-oneclick-mall.start', [], false) }} class="tbk-sidebar-item">
+                                Flujo Completo
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             <hr class="sidebar-divider" />
         </div>
