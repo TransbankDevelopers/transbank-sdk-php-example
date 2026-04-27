@@ -5,6 +5,7 @@ use App\Http\Controllers\WebpayPlusMallController;
 use App\Http\Controllers\WebpayPlusDeferredController;
 use App\Http\Controllers\WebpayPlusMallDeferredController;
 use App\Http\Controllers\OneclickMallController;
+use App\Http\Controllers\PromotionsOneclickMallController;
 use App\Http\Controllers\OneclickMallDeferredController;
 use App\Http\Controllers\TransaccionCompleta;
 use App\Http\Controllers\TransaccionCompletaDiferido;
@@ -23,6 +24,7 @@ const FINISH_ENDPOINT = '/finish';
 const AUTHORIZE_ENDPOINT = '/authorize';
 const DELETE_ENDPOINT = '/delete';
 const INSTALLMENTS_ENDPOINT = '/installments';
+const INFO_BIN_ENDPOINT = '/info-bin';
 
 Route::view('/', 'home')->name('home');
 Route::view('/oneclick-mall', 'home')->name('oneclick-mall');
@@ -73,6 +75,16 @@ Route::prefix('oneclick-mall')->name("oneclick-mall.")->group(function () {
     Route::get(DELETE_ENDPOINT, [OneclickMallController::class, 'deleteInscription'])->name("delete");
     Route::get(REFUND_ENDPOINT, [OneclickMallController::class, 'refund'])->name("refund");
     Route::get(STATUS_ENDPOINT, [OneclickMallController::class, 'status'])->name("status");
+});
+
+Route::prefix('promotions-oneclick-mall')->name("promotions-oneclick-mall.")->group(function () {
+    Route::get("/", [PromotionsOneclickMallController::class, 'startInscription'])->name("start");
+    Route::get(FINISH_ENDPOINT, [PromotionsOneclickMallController::class, 'finishInscription'])->name("finish");
+    Route::post(AUTHORIZE_ENDPOINT, [PromotionsOneclickMallController::class, 'authorizeMall'])->name("authorize");
+    Route::get(DELETE_ENDPOINT, [PromotionsOneclickMallController::class, 'deleteInscription'])->name("delete");
+    Route::get(INFO_BIN_ENDPOINT, [PromotionsOneclickMallController::class, 'infoBin'])->name("info-bin");
+    Route::get(REFUND_ENDPOINT, [PromotionsOneclickMallController::class, 'refund'])->name("refund");
+    Route::get(STATUS_ENDPOINT, [PromotionsOneclickMallController::class, 'status'])->name("status");
 });
 
 Route::prefix('oneclick-mall-diferido')->name("oneclick-mall-deferred.")->group(function () {
