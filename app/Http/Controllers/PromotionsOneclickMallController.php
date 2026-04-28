@@ -41,7 +41,7 @@ class PromotionsOneclickMallController extends Controller
             $resp = $this->mallInscription->start($startTx["username"], $startTx["email"], $startTx["response_url"]);
             return view('promotions-oneclick-mall.start', ["request" => $startTx, "resp" => $resp]);
         } catch (\Exception $e) {
-            return view('error-page', ["error" => $e->getMessage()]);
+            return $this->renderErrorPage($e);
         }
     }
 
@@ -74,7 +74,7 @@ class PromotionsOneclickMallController extends Controller
 
             return view($view, $data);
         } catch (\Exception $e) {
-            return view('error-page', ["error" => $e->getMessage()]);
+            return $this->renderErrorPage($e);
         }
     }
     public function deleteInscription(Request $request)
@@ -85,7 +85,7 @@ class PromotionsOneclickMallController extends Controller
             $resp = $this->mallInscription->delete($tbkUser, $userName);
             return view('promotions-oneclick-mall.delete', ["resp" => $resp]);
         } catch (\Exception $e) {
-            return view('error-page', ["error" => $e->getMessage()]);
+            return $this->renderErrorPage($e);
         }
     }
 
@@ -117,7 +117,7 @@ class PromotionsOneclickMallController extends Controller
             $resp = $this->mallTransaction->authorize($userName, $tbkUser, $buyOrder, $details);
             return view('promotions-oneclick-mall.authorize', ["resp" => $resp]);
         } catch (\Exception $e) {
-            return view('error-page', ["error" => $e->getMessage()]);
+            return $this->renderErrorPage($e);
         }
     }
 
@@ -128,7 +128,7 @@ class PromotionsOneclickMallController extends Controller
             $resp = $this->mallTransaction->status($buyOrder);
             return view('promotions-oneclick-mall.status', ["resp" => $resp, "buyOrder" => $buyOrder]);
         } catch (\Exception $e) {
-            return view('error-page', ["error" => $e->getMessage()]);
+            return $this->renderErrorPage($e);
         }
     }
 
@@ -143,7 +143,7 @@ class PromotionsOneclickMallController extends Controller
                 "tbkUser" => $tbkUser,
             ]);
         } catch (\Exception $e) {
-            return view('error-page', ["error" => $e->getMessage()]);
+            return $this->renderErrorPage($e);
         }
     }
 
@@ -160,7 +160,7 @@ class PromotionsOneclickMallController extends Controller
 
             return view('promotions-oneclick-mall.refund', ["resp" => $resp, "buyOrder" => $buyOrder]);
         } catch (\Exception $e) {
-            return view('error-page', ["error" => $e->getMessage()]);
+            return $this->renderErrorPage($e);
         }
     }
 }
