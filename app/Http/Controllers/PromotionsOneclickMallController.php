@@ -19,8 +19,8 @@ class PromotionsOneclickMallController extends Controller
 
     public function __construct()
     {
-        $apiKey = 'd8f06df8-39c7-4f01-8e74-b383c19ae836';
-        $commerceCode = '597060000001';
+        $apiKey = config('app.transbank.oneclick_promotions_api_key');
+        $commerceCode = config('app.transbank.oneclick_promotions_cc');
         $option = new Options($apiKey, $commerceCode, Options::ENVIRONMENT_INTEGRATION);
         $this->mallBinInfo = new MallBinInfo($option);
         $this->mallInscription = new MallInscription($option);
@@ -101,13 +101,13 @@ class PromotionsOneclickMallController extends Controller
             $installmentsCommerce2 = $request->post('installmentsCommerce2', 1);
             $details = [
                 [
-                    "commerce_code" => "597060000002",
+                    "commerce_code" => config('app.transbank.oneclick_promotions_child1_cc'),
                     "buy_order" => "O1-" . random_int(1000, 9999),
                     "amount" => $amountCommerce1,
                     "installments_number" => $installmentsCommerce1
                 ],
                 [
-                    "commerce_code" => "597060000003",
+                    "commerce_code" => config('app.transbank.oneclick_promotions_child2_cc'),
                     "buy_order" => "O2-" . random_int(1000, 9999),
                     "amount" => $amountCommerce2,
                     "installments_number" => $installmentsCommerce2
