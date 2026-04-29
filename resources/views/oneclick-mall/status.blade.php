@@ -1,22 +1,14 @@
 @php
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
+    $breadcrumbs = [
+        ['label' => 'Inicio', 'href' => '/'],
+        ['label' => 'Oneclick Mall', 'href' => '/oneclick-mall/start'],
+        ['label' => 'Consultar estado de transacción', 'href' => "/oneclick-mall/status?buyOrder={$buyOrder}", 'current' => true],
+    ];
 @endphp
 
 <x-layout active-link="Oneclick Mall" :navigation="$navigation">
-    <div class="breadcrumbs-container">
-        <div class="breadcrumbs-items">
-            <a href="/">Inicio</a>
-            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
-        </div>
-        <div class="breadcrumbs-items">
-            <a href="/oneclick-mall/start">Oneclick Mall</a>
-            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
-        </div>
-        <div class="breadcrumbs-items">
-            <a class="current-breadcrumb" href="/oneclick-mall/status?buyOrder={{ $buyOrder }}">Consultar estado de
-                transacción</a>
-        </div>
-    </div>
+    <x-breadcrumbs :items="$breadcrumbs" />
     <h1>Oneclick Mall - Consultar estado de transacción</h1>
     <p class="mb-32">Puedes solicitar el estado de una transacción hasta 7 días después de su realización. No hay
         límite

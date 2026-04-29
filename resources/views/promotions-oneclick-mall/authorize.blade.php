@@ -1,21 +1,14 @@
 @php
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'other' => 'Otras operaciones'];
+    $breadcrumbs = [
+        ['label' => 'Inicio', 'href' => '/'],
+        ['label' => 'Oneclick Mall Promociones', 'href' => '/promotions-oneclick-mall'],
+        ['label' => 'Autorizar pago', 'current' => true],
+    ];
 @endphp
 
 <x-layout active-link="Oneclick Mall Promociones" :navigation="$navigation">
-    <div class="breadcrumbs-container">
-        <div class="breadcrumbs-items">
-            <a href="/">Inicio</a>
-            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
-        </div>
-        <div class="breadcrumbs-items">
-            <a href="/promotions-oneclick-mall">Oneclick Mall Promociones</a>
-            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
-        </div>
-        <div class="breadcrumbs-items">
-            <a class="current-breadcrumb" href="#">Autorizar pago</a>
-        </div>
-    </div>
+    <x-breadcrumbs :items="$breadcrumbs" />
     <h1>Oneclick Mall Promociones - Autorizar pago</h1>
     <p class="mb-32">
         En este primer paso, procederemos a autorizar una transacción en la tarjeta que ha sido previamente inscrita.
@@ -91,7 +84,7 @@
                             value={{ $detail->commerceCode }}>
                     </div>
                     <div class="input-container">
-                        <label for="childBuyOrder" class="tbk-label">Orden de compra (tienda hija):</label>
+                        <label for="childBuyOrder" class="tbk-label">Orden de compra (tienda):</label>
                         <input type="text" name="childBuyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
                     </div>
                     <div class="input-container">

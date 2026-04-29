@@ -1,21 +1,14 @@
 @php
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
+    $breadcrumbs = [
+        ['label' => 'Inicio', 'href' => '/'],
+        ['label' => 'Oneclick Mall', 'href' => '/oneclick-mall/start'],
+        ['label' => 'Reembolsar', 'current' => true],
+    ];
 @endphp
 
 <x-layout active-link="Oneclick Mall" :navigation="$navigation">
-    <div class="breadcrumbs-container">
-        <div class="breadcrumbs-items">
-            <a href="/">Inicio</a>
-            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
-        </div>
-        <div class="breadcrumbs-items">
-            <a href="/oneclick-mall/start">Oneclick Mall</a>
-            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
-        </div>
-        <div class="breadcrumbs-items">
-            <a class="current-breadcrumb" href="#">Reembolsar</a>
-        </div>
-    </div>
+    <x-breadcrumbs :items="$breadcrumbs" />
 
     <h1>Oneclick Mall - Reembolsar</h1>
     <p class="mb-32">
