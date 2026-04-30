@@ -7,18 +7,12 @@
         "framework"
     ],
     "license": "MIT",
-    "repositories": [
-        {
-            "url": "https://github.com/TransbankDevelopers/transbank-sdk-php",
-            "type": "git"
-        }
-    ],
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.6",
-        "transbank/transbank-sdk": "dev-develop"
+        "transbank/transbank-sdk": "5.1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

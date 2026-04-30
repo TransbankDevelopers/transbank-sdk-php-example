@@ -7,15 +7,15 @@
     ];
     $breadcrumbs = [
         ['label' => 'Inicio', 'href' => '/'],
-        ['label' => 'Oneclick Mall', 'href' => '/oneclick-mall/start'],
+        ['label' => 'Oneclick Mall Promociones', 'href' => '/promotions-oneclick-mall'],
         ['label' => 'Finalizar inscripción', 'current' => true],
     ];
 @endphp
 
-<x-layout active-link="Oneclick Mall" :navigation="$navigation">
+<x-layout active-link="Oneclick Mall Promociones" :navigation="$navigation">
     <x-breadcrumbs :items="$breadcrumbs" />
 
-    <h1>Oneclick Mall - Finalizar inscripción</h1>
+    <h1>Oneclick Mall Promociones - Finalizar inscripción</h1>
     <p class="mb-32">
         En esta fase, completaremos el proceso de inscripción, permitiéndonos posteriormente realizar cargos a la
         tarjeta que el tarjetahabiente haya inscrito.
@@ -59,7 +59,7 @@
         se
         acaba de inscribir.</p>
 
-    <form action={{ route('oneclick-mall.authorize') }} method="POST">
+    <form action={{ route('promotions-oneclick-mall.authorize') }} method="POST">
         @csrf
         <input type="hidden" name="userName" value="{{ $table['username'] }}">
         <input type="hidden" name="tbkUser" value="{{ $table['tbk_user'] }}">
@@ -91,7 +91,11 @@
             </div>
         </div>
     </form>
-    <a href={{ route('oneclick-mall.delete', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
+    <a href={{ route('promotions-oneclick-mall.info-bin', ['tbk_user' => $table['tbk_user']]) }}
+        class="tbk-button primary mb-32">
+        CONSULTA BINES
+    </a>
+    <a href={{ route('promotions-oneclick-mall.delete', ['userName' => $table['username'], 'tbkUser' => $table['tbk_user']]) }}
         class="tbk-button primary mb-32">
         BORRAR USUARIO
     </a>

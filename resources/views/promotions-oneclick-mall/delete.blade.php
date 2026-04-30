@@ -2,14 +2,14 @@
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
     $breadcrumbs = [
         ['label' => 'Inicio', 'href' => '/'],
-        ['label' => 'Oneclick Mall', 'href' => '/oneclick-mall/start'],
+        ['label' => 'Oneclick Mall Promociones', 'href' => '/promotions-oneclick-mall'],
         ['label' => 'Borrar usuario', 'current' => true],
     ];
 @endphp
 
-<x-layout active-link="Oneclick Mall" :navigation="$navigation">
+<x-layout active-link="Oneclick Mall Promociones" :navigation="$navigation">
     <x-breadcrumbs :items="$breadcrumbs" />
-    <h1>Oneclick Mall - Borrar usuario</h1>
+    <h1>Oneclick Mall Promociones - Borrar usuario</h1>
     <p class="mb-32">
         En este paso fundamental, procederemos a eliminar la inscripción del usuario y su medio de pago.
     </p>

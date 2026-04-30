@@ -2,13 +2,13 @@
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario', 'example' => 'Ejemplo'];
     $breadcrumbs = [
         ['label' => 'Inicio', 'href' => '/'],
-        ['label' => 'Oneclick Mall', 'href' => '/oneclick-mall/start', 'current' => true],
+        ['label' => 'Oneclick Mall Promociones', 'href' => '/promotions-oneclick-mall', 'current' => true],
     ];
 @endphp
 
-<x-layout active-link="Oneclick Mall" :navigation="$navigation">
+<x-layout active-link="Oneclick Mall Promociones" :navigation="$navigation">
     <x-breadcrumbs :items="$breadcrumbs" />
-    <h1>Oneclick Mall - Creación de transacción</h1>
+    <h1>Oneclick Mall Promociones - Creación de inscripción</h1>
     <p class="mb-32">
         En esta etapa comienza el proceso de inscripción del medio de pago. Este paso inicial es fundamental, para
         dirigir al tarjetahabiente al formulario de inscripción.
@@ -71,7 +71,7 @@
     <form action={{ $resp->urlWebpay }} method="POST">
         <div class="tbk-card">
             <span class="tbk-card-title">Formulario de redirección</span>
-            <livewire:oneclick-token :token="$resp->token" :userName="$request['username']" :email="$request['email']" :responseUrl="$request['response_url']" />
+            <livewire:promotions-oneclick-token :token="$resp->token" :userName="$request['username']" :email="$request['email']" :responseUrl="$request['response_url']" />
             <div class=" tbk-card-footer">
                 <button class="tbk-button primary">INSCRIBIR</button>
             </div>

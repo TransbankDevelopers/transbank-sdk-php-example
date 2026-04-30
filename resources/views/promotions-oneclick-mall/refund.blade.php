@@ -2,15 +2,15 @@
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
     $breadcrumbs = [
         ['label' => 'Inicio', 'href' => '/'],
-        ['label' => 'Oneclick Mall', 'href' => '/oneclick-mall/start'],
+        ['label' => 'Oneclick Mall Promociones', 'href' => '/promotions-oneclick-mall'],
         ['label' => 'Reembolsar', 'current' => true],
     ];
 @endphp
 
-<x-layout active-link="Oneclick Mall" :navigation="$navigation">
+<x-layout active-link="Oneclick Mall Promociones" :navigation="$navigation">
     <x-breadcrumbs :items="$breadcrumbs" />
 
-    <h1>Oneclick Mall - Reembolsar</h1>
+    <h1>Oneclick Mall Promociones - Reembolsar</h1>
     <p class="mb-32">
         En esta etapa, tienes la opción de solicitar el reembolso del monto al titular de la tarjeta.
         Dependiendo del monto y el tiempo transcurrido desde la transacción, este proceso podría resultar en una Reversa
@@ -71,7 +71,7 @@
 
     <x-snippet :content="$resp" />
 
-    <a href={{ route('oneclick-mall.status', ['buyOrder' => $buyOrder]) }} class="tbk-button primary mb-32">CONSULTAR
+    <a href={{ route('promotions-oneclick-mall.status', ['buyOrder' => $buyOrder]) }} class="tbk-button primary mb-32">CONSULTAR
         ESTADO</a>
 
 </x-layout>

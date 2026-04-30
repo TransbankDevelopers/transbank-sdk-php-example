@@ -2,14 +2,14 @@
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'other' => 'Otras operaciones'];
     $breadcrumbs = [
         ['label' => 'Inicio', 'href' => '/'],
-        ['label' => 'Oneclick Mall', 'href' => '/oneclick-mall/start'],
+        ['label' => 'Oneclick Mall Promociones', 'href' => '/promotions-oneclick-mall'],
         ['label' => 'Autorizar pago', 'current' => true],
     ];
 @endphp
 
-<x-layout active-link="Oneclick Mall" :navigation="$navigation">
+<x-layout active-link="Oneclick Mall Promociones" :navigation="$navigation">
     <x-breadcrumbs :items="$breadcrumbs" />
-    <h1>Oneclick Mall - Autorizar pago</h1>
+    <h1>Oneclick Mall Promociones - Autorizar pago</h1>
     <p class="mb-32">
         En este primer paso, procederemos a autorizar una transacción en la tarjeta que ha sido previamente inscrita.
     </p>
@@ -70,7 +70,7 @@
     </ul>
 
     @foreach ($resp->details as $detail)
-        <form action={{ route('oneclick-mall.refund') }} method="GET">
+        <form action={{ route('promotions-oneclick-mall.refund') }} method="GET">
             @csrf
             <div class="tbk-card">
                 <div class="card-multi-field">
@@ -84,7 +84,7 @@
                             value={{ $detail->commerceCode }}>
                     </div>
                     <div class="input-container">
-                        <label for="childBuyOrder" class="tbk-label">Orden de compra (tienda hija):</label>
+                        <label for="childBuyOrder" class="tbk-label">Orden de compra (tienda):</label>
                         <input type="text" name="childBuyOrder" class="tbk-input-text" value={{ $detail->buyOrder }}>
                     </div>
                     <div class="input-container">
@@ -98,7 +98,7 @@
             </div>
         </form>
     @endforeach
-    <a href={{ route('oneclick-mall.status', ['buyOrder' => $resp->buyOrder]) }}
+    <a href={{ route('promotions-oneclick-mall.status', ['buyOrder' => $resp->buyOrder]) }}
         class="tbk-button primary mb-32">CONSULTAR ESTADO</a>
 
 </x-layout>

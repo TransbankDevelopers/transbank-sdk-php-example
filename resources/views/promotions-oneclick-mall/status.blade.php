@@ -2,14 +2,14 @@
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta'];
     $breadcrumbs = [
         ['label' => 'Inicio', 'href' => '/'],
-        ['label' => 'Oneclick Mall', 'href' => '/oneclick-mall/start'],
-        ['label' => 'Consultar estado de transacción', 'href' => "/oneclick-mall/status?buyOrder={$buyOrder}", 'current' => true],
+        ['label' => 'Oneclick Mall Promociones', 'href' => '/promotions-oneclick-mall'],
+        ['label' => 'Consultar estado de transacción', 'href' => "/promotions-oneclick-mall/status?buyOrder={$buyOrder}", 'current' => true],
     ];
 @endphp
 
-<x-layout active-link="Oneclick Mall" :navigation="$navigation">
+<x-layout active-link="Oneclick Mall Promociones" :navigation="$navigation">
     <x-breadcrumbs :items="$breadcrumbs" />
-    <h1>Oneclick Mall - Consultar estado de transacción</h1>
+    <h1>Oneclick Mall Promociones - Consultar estado de transacción</h1>
     <p class="mb-32">Puedes solicitar el estado de una transacción hasta 7 días después de su realización. No hay
         límite
         de solicitudes de este tipo durante ese período. Sin embargo, una vez pasados los 7 días, ya no podrás revisar

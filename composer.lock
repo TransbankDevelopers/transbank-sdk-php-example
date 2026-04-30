@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7892e9cf4ac996e61c50d2864419acb2",
+    "content-hash": "c4ddd9c0109bd9a7c1076a8833295a03",
     "packages": [
         {
             "name": "brick/math",
@@ -5647,11 +5647,17 @@
         },
         {
             "name": "transbank/transbank-sdk",
-            "version": "dev-develop",
+            "version": "5.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/TransbankDevelopers/transbank-sdk-php",
-                "reference": "5a9d212cd821be1ed58e6cef37b499e9936aaca7"
+                "url": "https://github.com/TransbankDevelopers/transbank-sdk-php.git",
+                "reference": "4e17ccb419c69311731028f9fb7f7d42575e9745"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TransbankDevelopers/transbank-sdk-php/zipball/4e17ccb419c69311731028f9fb7f7d42575e9745",
+                "reference": "4e17ccb419c69311731028f9fb7f7d42575e9745",
+                "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
@@ -5672,18 +5678,7 @@
                     ]
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Tests\\": [
-                        "tests/"
-                    ]
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit || true"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -5694,7 +5689,11 @@
                 "sdk",
                 "transbank"
             ],
-            "time": "2025-02-07T16:08:48+00:00"
+            "support": {
+                "issues": "https://github.com/TransbankDevelopers/transbank-sdk-php/issues",
+                "source": "https://github.com/TransbankDevelopers/transbank-sdk-php/tree/5.1.0"
+            },
+            "time": "2025-06-17T21:11:50+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -8911,14 +8910,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "transbank/transbank-sdk": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
