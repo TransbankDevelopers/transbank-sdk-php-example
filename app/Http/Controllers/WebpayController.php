@@ -58,7 +58,11 @@ class WebpayController extends Controller
             elseif ($request->exists("token_ws")) {
                 $resp = $this->transaction->commit($request["token_ws"]);
                 $view = 'webpay.commit';
-                $data = ["resp" => $resp, "token" => $request["token_ws"]];
+                $data = [
+                    "resp" => $resp,
+                    "token" => $request["token_ws"],
+                    "returnUrl" => url('/') . '/webpay-plus/commit'
+                ];
             }
             return view($view, $data);
         } catch (\Exception $e) {

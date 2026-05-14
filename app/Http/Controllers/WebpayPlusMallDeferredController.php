@@ -69,7 +69,11 @@ class WebpayPlusMallDeferredController extends Controller
             elseif ($request->exists("token_ws")) {
                 $resp = $this->mallTransaction->commit($request["token_ws"]);
                 $view = 'webpay-mall-deferred.commit';
-                $data = ["resp" => $resp, "token" => $request["token_ws"]];
+                $data = [
+                    "resp" => $resp,
+                    "token" => $request["token_ws"],
+                    "returnUrl" => url('/') . '/webpay-mall-diferido/commit'
+                ];
             }
             return view($view, $data);
         } catch (\Exception $e) {
@@ -112,8 +116,8 @@ class WebpayPlusMallDeferredController extends Controller
     }
     public function showOperations()
     {
-        $webpayPlusStatus = config('webpayParams.webpay_plus_status');
-        $webpayPlusRefund = config('webpayParams.webpay_plus_refund');
+        $webpayPlusStatus = config('webpayParams.webpay_plus_mall_status');
+        $webpayPlusRefund = config('webpayParams.webpay_plus_mall_refund');
         $webpayPlusCaptured = config('webpayParams.webpay_plus_mall_deferred_captured');
 
         return view('webpay-mall-deferred.api-operations', compact(

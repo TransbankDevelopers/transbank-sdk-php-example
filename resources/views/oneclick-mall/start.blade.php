@@ -1,17 +1,13 @@
 @php
     $navigation = ['request' => 'Petición', 'response' => 'Respuesta', 'form' => 'Formulario', 'example' => 'Ejemplo'];
+    $breadcrumbs = [
+        ['label' => 'Inicio', 'href' => '/'],
+        ['label' => 'Oneclick Mall', 'href' => '/oneclick-mall/start', 'current' => true],
+    ];
 @endphp
 
 <x-layout active-link="Oneclick Mall" :navigation="$navigation">
-    <div class="breadcrumbs-container">
-        <div class="breadcrumbs-items">
-            <a href="/">Inicio</a>
-            <img src={{ asset('images/t-arrow.svg') }} alt="t-arrow" width="24" height="24" />
-        </div>
-        <div class="breadcrumbs-items">
-            <a class="current-breadcrumb" href="/oneclick-mall/start">Oneclick Mall</a>
-        </div>
-    </div>
+    <x-breadcrumbs :items="$breadcrumbs" />
     <h1>Oneclick Mall - Creación de transacción</h1>
     <p class="mb-32">
         En esta etapa comienza el proceso de inscripción del medio de pago. Este paso inicial es fundamental, para

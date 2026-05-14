@@ -5,7 +5,13 @@ use App\Http\Controllers\WebpayPlusMallController;
 use App\Http\Controllers\WebpayPlusDeferredController;
 use App\Http\Controllers\WebpayPlusMallDeferredController;
 use App\Http\Controllers\OneclickMallController;
+use App\Http\Controllers\PromotionsOneclickMallController;
 use App\Http\Controllers\OneclickMallDeferredController;
+use App\Http\Controllers\TransaccionCompleta;
+use App\Http\Controllers\TransaccionCompletaDiferido;
+use App\Http\Controllers\TransaccionCompletaMall;
+use App\Http\Controllers\TransaccionCompletaMallDiferido;
+use App\Http\Controllers\PatpassComercioController;
 use Illuminate\Support\Facades\Route;
 
 const CREATE_ENDPOINT = '/create';
@@ -17,11 +23,12 @@ const START_ENDPOINT = '/start';
 const FINISH_ENDPOINT = '/finish';
 const AUTHORIZE_ENDPOINT = '/authorize';
 const DELETE_ENDPOINT = '/delete';
+const INSTALLMENTS_ENDPOINT = '/installments';
+const INFO_BIN_ENDPOINT = '/info-bin';
 
 Route::view('/', 'home')->name('home');
 Route::view('/oneclick-mall', 'home')->name('oneclick-mall');
 Route::view('/transaccion-completa', 'home')->name('transaccion-completa');
-Route::view('/patpass-comercio', 'home')->name('patpass');
 
 Route::get('/api-reference/webpay-plus', [WebpayController::class, 'showOperations'])->name("webpay.api-operations");
 Route::get('/api-reference/webpay-mall', [WebpayPlusMallController::class, 'showOperations'])->name("webpay-mall.api-operations");
@@ -70,6 +77,16 @@ Route::prefix('oneclick-mall')->name("oneclick-mall.")->group(function () {
     Route::get(STATUS_ENDPOINT, [OneclickMallController::class, 'status'])->name("status");
 });
 
+Route::prefix('promotions-oneclick-mall')->name("promotions-oneclick-mall.")->group(function () {
+    Route::get("/", [PromotionsOneclickMallController::class, 'startInscription'])->name("start");
+    Route::get(FINISH_ENDPOINT, [PromotionsOneclickMallController::class, 'finishInscription'])->name("finish");
+    Route::post(AUTHORIZE_ENDPOINT, [PromotionsOneclickMallController::class, 'authorizeMall'])->name("authorize");
+    Route::get(DELETE_ENDPOINT, [PromotionsOneclickMallController::class, 'deleteInscription'])->name("delete");
+    Route::get(INFO_BIN_ENDPOINT, [PromotionsOneclickMallController::class, 'infoBin'])->name("info-bin");
+    Route::get(REFUND_ENDPOINT, [PromotionsOneclickMallController::class, 'refund'])->name("refund");
+    Route::get(STATUS_ENDPOINT, [PromotionsOneclickMallController::class, 'status'])->name("status");
+});
+
 Route::prefix('oneclick-mall-diferido')->name("oneclick-mall-deferred.")->group(function () {
     Route::get(START_ENDPOINT, [OneclickMallDeferredController::class, 'startInscription'])->name("start");
     Route::get(FINISH_ENDPOINT, [OneclickMallDeferredController::class, 'finishInscription'])->name("finish");
@@ -78,4 +95,48 @@ Route::prefix('oneclick-mall-diferido')->name("oneclick-mall-deferred.")->group(
     Route::get(STATUS_ENDPOINT, [OneclickMallDeferredController::class, 'status'])->name("status");
     Route::get(REFUND_ENDPOINT, [OneclickMallDeferredController::class, 'refund'])->name("refund");
     Route::get(CAPTURE_ENDPOINT, [OneclickMallDeferredController::class, 'capture'])->name("capture");
+});
+
+Route::prefix('transaccion-completa')->name("transaccion-completa.")->group(function () {
+    Route::get("/", [TransaccionCompleta::class, 'index'])->name("index");
+    Route::post(CREATE_ENDPOINT, [TransaccionCompleta::class, 'create'])->name("create");
+    Route::post(INSTALLMENTS_ENDPOINT, [TransaccionCompleta::class, 'installments'])->name("installments");
+    Route::match(['get', 'post'], COMMIT_ENDPOINT, [TransaccionCompleta::class, 'commit'])->name("commit");
+    Route::get(REFUND_ENDPOINT, [TransaccionCompleta::class, 'refund'])->name("refund");
+    Route::get(STATUS_ENDPOINT, [TransaccionCompleta::class, 'status'])->name("status");
+});
+
+Route::prefix('transaccion-completa-mall')->name("transaccion-completa-mall.")->group(function () {
+    Route::get("/", [TransaccionCompletaMall::class, 'index'])->name("index");
+    Route::post(CREATE_ENDPOINT, [TransaccionCompletaMall::class, 'create'])->name("create");
+    Route::post(INSTALLMENTS_ENDPOINT, [TransaccionCompletaMall::class, 'installments'])->name("installments");
+    Route::match(['get', 'post'], COMMIT_ENDPOINT, [TransaccionCompletaMall::class, 'commit'])->name("commit");
+    Route::get(REFUND_ENDPOINT, [TransaccionCompletaMall::class, 'refund'])->name("refund");
+    Route::get(STATUS_ENDPOINT, [TransaccionCompletaMall::class, 'status'])->name("status");
+});
+
+Route::prefix('transaccion-completa-mall-diferido')->name("transaccion-completa-mall-diferido.")->group(function () {
+    Route::get("/", [TransaccionCompletaMallDiferido::class, 'index'])->name("index");
+    Route::post(CREATE_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'create'])->name("create");
+    Route::post(INSTALLMENTS_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'installments'])->name("installments");
+    Route::match(['get', 'post'], COMMIT_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'commit'])->name("commit");
+    Route::get(CAPTURE_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'capture'])->name("capture");
+    Route::get(REFUND_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'refund'])->name("refund");
+    Route::get(STATUS_ENDPOINT, [TransaccionCompletaMallDiferido::class, 'status'])->name("status");
+});
+
+Route::prefix('transaccion-completa-diferido')->name("transaccion-completa-diferido.")->group(function () {
+    Route::get("/", [TransaccionCompletaDiferido::class, 'index'])->name("index");
+    Route::post(CREATE_ENDPOINT, [TransaccionCompletaDiferido::class, 'create'])->name("create");
+    Route::post(INSTALLMENTS_ENDPOINT, [TransaccionCompletaDiferido::class, 'installments'])->name("installments");
+    Route::match(['get', 'post'], COMMIT_ENDPOINT, [TransaccionCompletaDiferido::class, 'commit'])->name("commit");
+    Route::get(CAPTURE_ENDPOINT, [TransaccionCompletaDiferido::class, 'capture'])->name("capture");
+    Route::get(REFUND_ENDPOINT, [TransaccionCompletaDiferido::class, 'refund'])->name("refund");
+    Route::get(STATUS_ENDPOINT, [TransaccionCompletaDiferido::class, 'status'])->name("status");
+});
+
+Route::prefix('patpass-comercio')->name("patpass.")->group(function () {
+    Route::get("/", [PatpassComercioController::class, 'start'])->name("start");
+    Route::match(['get', 'post'], COMMIT_ENDPOINT, [PatpassComercioController::class, 'commit'])->name("commit");
+    Route::match(['get', 'post'], '/voucher', [PatpassComercioController::class, 'voucher'])->name("voucher");
 });

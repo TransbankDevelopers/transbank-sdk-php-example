@@ -9,7 +9,7 @@
         </a>
     </div>
     <div class="tbk-header-options">
-        <a href="https://transbank.continuumhq.dev/slack_community" target="_blank" rel="noopener"
+        <a href="https://invitacion-slack.transbankdevelopers.cl/slack_community" target="_blank" rel="noopener"
             class="tbk-button secondary"><span class="underline text-tbk-red">Comunidad Slack</span></a>
         <x-darkMode />
     </div>

@@ -132,6 +132,12 @@ return [
         'webpay_plus_mall_deferred_cc' => env('WP_PLUS_MALL_DEFERRED_CC'),
         'oneclick_cc' => env('ONECLICK_CC'),
         'oneclick_deferred_cc' => env('ONECLICK_DEFERRED_CC'),
+        'oneclick_promotions_api_key' => env('ONECLICK_MALL_PROMOTIONS_API_KEY'),
+        'oneclick_promotions_cc' => env('ONECLICK_MALL_PROMOTIONS_COMMERCE_CODE'),
+        'oneclick_promotions_child1_cc' => env('ONECLICK_MALL_PROMOTIONS_CHILD1_COMMERCE_CODE'),
+        'oneclick_promotions_child2_cc' => env('ONECLICK_MALL_PROMOTIONS_CHILD2_COMMERCE_CODE'),
+        'tx_commerce_code' => env('TX_COMMERCE_CODE'),
+        'tx_deferred_commerce_code' => env('TX_DEFERRED_COMMERCE_CODE'),
     ]
 
 ];

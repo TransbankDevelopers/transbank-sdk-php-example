@@ -330,11 +330,11 @@ return [
     ],
     [
       'field' => 'details [].commerce_code',
-      'value' => 'Código de comercio del comercio hijo (tienda).',
+      'value' => 'Código de comercio del comercio (tienda).',
     ],
     [
       'field' => 'details [].buy_order',
-      'value' => 'Orden de compra generada por el comercio hijo para la transacción de pago.',
+      'value' => 'Orden de compra generada por el comercio (tienda) para la transacción de pago.',
     ],
   ],
 
@@ -407,12 +407,16 @@ return [
     ],
     [
       'field' => 'details [].commerce_code',
-      'value' => 'Código de comercio del comercio hijo (tienda).',
+      'value' => 'Código de comercio del comercio (tienda).',
     ],
     [
       'field' => 'details [].buy_order',
-      'value' => 'Orden de compra generada por el comercio hijo para la transacción de pago.',
+      'value' => 'Orden de compra generada por el comercio (tienda) para la transacción de pago.',
     ],
+    [
+      'field' => 'details [].balance',
+      'value' => 'Monto restante de la sub-transacción de pago original: monto inicial - monto anulado. Largo máximo: 17'
+    ]
   ],
 
   "oneclick_mall_refund" =>
@@ -443,7 +447,7 @@ return [
     ],
     [
       'field' => 'buy_order',
-      'value' => '(Solo si es NULLIFIED) Orden de compra generada por el comercio hijo para la transacción de pago. Largo máximo: 26.',
+      'value' => '(Solo si es NULLIFIED) Orden de compra generada por el comercio (tienda) para la transacción de pago. Largo máximo: 26.',
     ],
   ],
 
