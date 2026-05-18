@@ -8,6 +8,9 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    define: {
+        global: "globalThis",
+    },
     server: {
         host: "0.0.0.0",
         hmr: {
