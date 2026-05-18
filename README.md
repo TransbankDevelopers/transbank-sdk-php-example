@@ -9,27 +9,93 @@ Proyecto de ejemplo mostrando el paso a paso de como usar el SDK PHP de transban
 -   PHP 8.3+
 -   laravel 11
 
+## Desarrollo con Dev Container (recomendado)
+
+La forma más rápida y consistente de empezar. Un contenedor preconfigurado con PHP 8.2, Composer, Node 20 y pnpm, sin necesidad de instalar nada en la máquina local más allá de Docker y VS Code.
+
+### Requisitos del Dev Container
+
+-   **Docker**
+    -   **macOS:** [Docker Desktop](https://www.docker.com/products/docker-desktop/) o [OrbStack](https://orbstack.dev) (alternativa más liviana y con mejor rendimiento de I/O)
+    -   **Linux / WSL2:** Docker Engine
+-   **Visual Studio Code** con la extensión [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+### Levantar el contenedor
+
+1. Clonar el repositorio y abrirlo en VS Code.
+2. VS Code detectará el directorio `.devcontainer/` y ofrecerá la opción **"Reopen in Container"** en la esquina inferior derecha. Si no aparece, abrir la paleta de comandos:
+    - **macOS:** `Cmd + Shift + P`
+    - **Linux / Windows:** `Ctrl + Shift + P`
+    
+    y buscar **"Dev Containers: Reopen in Container"**.
+3. **La primera vez tarda entre 3 y 5 minutos** (descarga la imagen base y ejecuta el setup inicial). Las siguientes aperturas son inmediatas: VS Code reutiliza el contenedor existente.
+
+Durante la creación inicial, el contenedor ejecuta automáticamente:
+-   `composer install` (dependencias de PHP)
+-   Copia de `.env.example` a `.env` y generación de la `APP_KEY` de Laravel
+-   `php artisan migrate` (crea y migra la base SQLite)
+-   `corepack` + `pnpm install` (dependencias de JavaScript)
+
+### Ejecutar la aplicación
+
+Se requieren **dos procesos en paralelo** dentro del contenedor. Abrir una terminal en VS Code (`` Ctrl + ` `` o `` Cmd + ` ``) y dividirla en dos paneles (`Ctrl + Shift + 5` o `Cmd + Shift + 5`).
+
+**Terminal 1 — Servidor de Laravel:**
+
+```bash
+php artisan serve --host=0.0.0.0
+```
+
+**Terminal 2 — Bundler de Vite:**
+
+```bash
+pnpm run dev
+```
+
+Acceder desde el navegador a **http://localhost:8000**.
+
+> El flag `--host=0.0.0.0` es necesario para que el port forwarding del Dev Container exponga el servidor al host. Sin él, Laravel solo escucha en el loopback interno del contenedor y la conexión no llega desde la máquina local.
+
+### Notas para usuarios de macOS
+
+-   **Arquitectura:** la imagen base soporta tanto Intel (x86_64) como Apple Silicon (arm64 — M1/M2/M3/M4). No requiere configuración adicional.
+-   **Rendimiento del filesystem:** los bind mounts en Docker Desktop para Mac son más lentos que en Linux. Para este proyecto el impacto es mínimo, pero si se observa lentitud trabajando con `vendor/` o `node_modules/`, [OrbStack](https://orbstack.dev) ofrece mejor rendimiento de I/O sin cambios en el flujo de trabajo.
+-   **Atajos de teclado:** en este README los `Ctrl` mostrados equivalen a `Cmd` en macOS.
+
+### Solución de problemas frecuentes
+
+**El build falla con error de firma GPG (Yarn / NO_PUBKEY)**  
+Es un problema conocido de la imagen base de Microsoft, que incluye un repositorio de Yarn obsoleto. El `Dockerfile` ya lo mitiga eliminando ese archivo antes de `apt-get update`. Si el error persiste, ejecutar un rebuild sin caché desde la paleta de comandos: **"Dev Containers: Rebuild Container Without Cache"**.
+
+**`pnpm install` falla indicando que requiere Node v22+**  
+La versión de pnpm está fijada en `.devcontainer/post-create.sh` a `pnpm@10.15.0`, compatible con Node 20. Si alguien la modificó a una versión más reciente, restaurarla.
+
+**No es posible acceder a `http://localhost:8000` desde el navegador**  
+Verificar que Laravel se haya iniciado con `--host=0.0.0.0` (no `127.0.0.1`). Si el problema continúa, revisar la pestaña **"Ports"** en VS Code para confirmar que el puerto 8000 está reenviado correctamente.
+
 ## Instalación
 
-Una vez tengas clonado el repositorio, debes instalar las dependencias del proyecto. Corre los siguientes comandos en una terminal para instalar las dependencias:
+Una vez clonado el repositorio, instalar las dependencias del proyecto ejecutando los siguientes comandos en una terminal:
 
 ```bash
 composer install
-npm install
+pnpm install
 php artisan key:generate
 php artisan migrate
 ```
 
+> Este proyecto utiliza **pnpm** como gestor de paquetes de JavaScript. Si no está disponible localmente, puede habilitarse con `corepack enable pnpm` (incluido en Node.js 16 y superior).
+
 ## Ejecución
 
-Para poder correr el proyecto en modo desarrollo, debes utilizar el siguiente comando en una consola:
+Para ejecutar el proyecto en modo desarrollo, utilizar los siguientes comandos en consolas separadas:
 
 ```bash
-npm run dev
+pnpm run dev
 php artisan serve
 ```
 
-Al terminar, deberías ver la URL para poder acceder al proyecto. Un ejemplo de la URL puede ser **http://127.0.0.1:8000**
+Al iniciar, se mostrará la URL para acceder al proyecto. Un ejemplo de la URL puede ser **http://127.0.0.1:8000**.
 
 ## Información para contribuir a este proyecto
 

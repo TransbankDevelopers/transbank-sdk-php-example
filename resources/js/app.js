@@ -1,6 +1,10 @@
 import hljs from "highlight.js";
 import ClipboardJS from "clipboard";
+import Card from "card";
 import "highlight.js/styles/tokyo-night-dark.css";
+import "card/lib/css/card.css";
+
+window.Card = Card;
 
 function initializeHighlight() {
     hljs.configure({
