@@ -776,6 +776,7 @@ code {
     display: flex;
     flex-direction: column;
     row-gap: 3.5rem;
+    max-height: calc(100vh - 105px - 24px);
     max-height: calc(100dvh - 105px - 24px);
     position: sticky;
     top: 105px;
