@@ -77,7 +77,7 @@
           }
 
 
-          document.addEventListener('DOMContentLoaded', () => {
+          document.addEventListener('card-loaded', () => {
               initializeCard();
 
               const inputs = document.querySelectorAll(

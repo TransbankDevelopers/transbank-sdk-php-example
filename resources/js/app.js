@@ -1,10 +1,6 @@
 import hljs from "highlight.js";
 import ClipboardJS from "clipboard";
-import Card from "card";
 import "highlight.js/styles/tokyo-night-dark.css";
-import "card/lib/card.css";
-
-window.Card = Card;
 
 function initializeHighlight() {
     hljs.configure({
@@ -16,9 +12,20 @@ function initializeHighlight() {
     });
 }
 
+async function loadCardAnimation() {
+    const { default: Card } = await import("card");
+    await import("card/lib/card.css");
+    window.Card = Card;
+    document.dispatchEvent(new Event("card-loaded"));
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     new ClipboardJS(".clipboard");
     initializeHighlight();
+
+    if (document.querySelector(".card-wrapper")) {
+        loadCardAnimation();
+    }
 });
 
 document.addEventListener("livewire:init", () => {

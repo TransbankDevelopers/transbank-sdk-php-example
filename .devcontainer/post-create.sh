@@ -12,12 +12,11 @@ if [ ! -f .env ]; then
     php artisan key:generate
 fi
 
-mkdir -p database
-touch database/database.sqlite
+if [ ! -f database/database.sqlite ]; then
+    mkdir -p database
+    touch database/database.sqlite
+fi
 
 php artisan migrate --graceful --force
 
-export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
-corepack enable
-corepack prepare pnpm@10.15.0 --activate
-pnpm install --ignore-scripts
+pnpm install

@@ -6,12 +6,12 @@ Proyecto de ejemplo mostrando el paso a paso de como usar el SDK PHP de transban
 
 ## Requisitos
 
--   PHP 8.3+
--   laravel 11
+-   PHP 8.2+
+-   Laravel 11
 
 ## Desarrollo con Dev Container (recomendado)
 
-La forma más rápida y consistente de empezar. Un contenedor preconfigurado con PHP 8.2, Composer, Node 20 y pnpm, sin necesidad de instalar nada en la máquina local más allá de Docker y VS Code.
+La forma más rápida y consistente de empezar. Un contenedor preconfigurado con PHP 8.2, Composer, Node 22.22.3 y pnpm 11.1.1, sin necesidad de instalar nada en la máquina local más allá de Docker y VS Code.
 
 ### Requisitos del Dev Container
 
@@ -34,7 +34,7 @@ Durante la creación inicial, el contenedor ejecuta automáticamente:
 -   `composer install` (dependencias de PHP)
 -   Copia de `.env.example` a `.env` y generación de la `APP_KEY` de Laravel
 -   `php artisan migrate` (crea y migra la base SQLite)
--   `corepack` + `pnpm install` (dependencias de JavaScript)
+-   `pnpm install` (dependencias de JavaScript)
 
 ### Ejecutar la aplicación
 
@@ -66,9 +66,6 @@ Acceder desde el navegador a **http://localhost:8000**.
 
 **El build falla con error de firma GPG (Yarn / NO_PUBKEY)**  
 Es un problema conocido de la imagen base de Microsoft, que incluye un repositorio de Yarn obsoleto. El `Dockerfile` ya lo mitiga eliminando ese archivo antes de `apt-get update`. Si el error persiste, ejecutar un rebuild sin caché desde la paleta de comandos: **"Dev Containers: Rebuild Container Without Cache"**.
-
-**`pnpm install` falla indicando que requiere Node v22+**  
-La versión de pnpm está fijada en `.devcontainer/post-create.sh` a `pnpm@10.15.0`, compatible con Node 20. Si alguien la modificó a una versión más reciente, restaurarla.
 
 **No es posible acceder a `http://localhost:8000` desde el navegador**  
 Verificar que Laravel se haya iniciado con `--host=0.0.0.0` (no `127.0.0.1`). Si el problema continúa, revisar la pestaña **"Ports"** en VS Code para confirmar que el puerto 8000 está reenviado correctamente.
