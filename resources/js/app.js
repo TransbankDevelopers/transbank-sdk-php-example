@@ -12,9 +12,19 @@ function initializeHighlight() {
     });
 }
 
+async function loadCardAnimation() {
+    const { default: Card } = await import("card");
+    await import("card/lib/card.css");
+    document.dispatchEvent(new CustomEvent("card-loaded", { detail: { Card } }));
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     new ClipboardJS(".clipboard");
     initializeHighlight();
+
+    if (document.querySelector(".card-wrapper")) {
+        loadCardAnimation();
+    }
 });
 
 document.addEventListener("livewire:init", () => {

@@ -56,23 +56,14 @@
         siguiente paso sería confirmar la transacción.</p>
 
     <div class="tbk-card">
-        <div class="input-container mb-16">
+        <div class="input-container mb-32">
             <label for="token" class="tbk-label">Token</label>
             <input type="text" id="token" name="token" class="tbk-input-text" value="{{ $request['token'] }}">
         </div>
-        <div class="input-container mb-16">
+        <div class="input-container ">
             <label for="idQueryInstallments" class="tbk-label">ID de consulta de cuotas (Opcional)</label>
             <input type="text" id="idQueryInstallments" name="idQueryInstallments" class="tbk-input-text"
                 value="{{ $respond[0]->idQueryInstallments ?? '' }}">
-        </div>
-        <div class="input-container mb-16">
-            <label for="deferredPeriodIndex" class="tbk-label">Indice de periodo diferido (opcional)</label>
-            <input type="text" id="deferredPeriodIndex" name="deferredPeriodIndex" class="tbk-input-text"
-                value="">
-        </div>
-        <div class="input-container mb-16">
-            <label for="gracePeriod" class="tbk-label">Periodo de gracia (opcional)</label>
-            <input type="text" id="gracePeriod" name="gracePeriod" class="tbk-input-text" value="">
         </div>
 
         <div class="tbk-card-footer">
@@ -84,29 +75,21 @@
         <script>
             const tokenInput = document.getElementById('token');
             const idQueryInstallmentsInput = document.getElementById('idQueryInstallments');
-            const deferredPeriodIndexInput = document.getElementById('deferredPeriodIndex');
-            const gracePeriodInput = document.getElementById('gracePeriod');
             const confirmLink = document.getElementById('confirmLink');
 
             function updateLink() {
                 const token = tokenInput.value;
                 const idQueryInstallments = idQueryInstallmentsInput.value;
-                const deferredPeriodIndex = deferredPeriodIndexInput.value;
-                const gracePeriod = gracePeriodInput.value;
 
                 const params = new URLSearchParams();
                 if (token) params.append('token', token);
                 if (idQueryInstallments) params.append('idQueryInstallments', idQueryInstallments);
-                if (deferredPeriodIndex) params.append('deferredPeriodIndex', deferredPeriodIndex);
-                if (gracePeriod) params.append('gracePeriod', gracePeriod);
 
                 confirmLink.href = "{{ route('transaccion-completa-mall.commit') }}?" + params.toString();
             }
 
             tokenInput.addEventListener('input', updateLink);
             idQueryInstallmentsInput.addEventListener('input', updateLink);
-            deferredPeriodIndexInput.addEventListener('input', updateLink);
-            gracePeriodInput.addEventListener('input', updateLink);
 
             updateLink();
         </script>

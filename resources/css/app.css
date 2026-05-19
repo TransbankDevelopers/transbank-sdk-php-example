@@ -776,13 +776,41 @@ code {
     display: flex;
     flex-direction: column;
     row-gap: 3.5rem;
-    height: fit-content;
+    max-height: calc(100vh - 105px - 24px);
+    max-height: calc(100dvh - 105px - 24px);
     position: sticky;
     top: 105px;
+    min-width: 0;
+    transition: max-height 0.5s ease;
+}
+
+.sidebar-content {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-bottom: 24px;
+    scrollbar-color: var(--tbk-border) transparent;
+    scrollbar-width: thin;
+}
+
+.sidebar-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+    background-color: var(--tbk-border);
+    border-radius: 999px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .sidebar-divider {
     border: 1px solid var(--tbk-border);
+    width: calc(100% - 20px);
     margin: 16px 0px 8px 20px;
 }
 
@@ -834,6 +862,12 @@ code {
 .tbk-sidebar-hide .tbk-sidebar-item-text {
     opacity: 0;
     transform: translateX(-20px);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.tbk-sidebar-hide {
+    max-height: 30px;
 }
 
 .collapsible-items:hover {
@@ -882,7 +916,8 @@ code {
     background-color: var(--background);
     height: calc(100vh - 80px);
     padding: 20px 0px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
 .toogle-btn-container {
@@ -890,6 +925,9 @@ code {
     top: 0px;
     right: -15px;
     height: 100%;
+    width: 30px;
+    pointer-events: none;
+    z-index: 2;
 }
 
 .toggle-close-btn {
@@ -914,6 +952,7 @@ code {
     cursor: pointer;
     z-index: 1;
     transition: transform 0.5s ease;
+    pointer-events: auto;
     display: flex;
     align-items: center;
     justify-content: center;

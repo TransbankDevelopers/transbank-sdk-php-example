@@ -8,6 +8,15 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    define: {
+        global: "globalThis",
+    },
+    server: {
+        host: "0.0.0.0",
+        hmr: {
+            host: "localhost",
+        },
+    },
     build: {
         cssCodeSplit: true,
         target: ["chrome89", "edge89", "firefox89", "safari15"],
