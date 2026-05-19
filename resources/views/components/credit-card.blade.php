@@ -39,10 +39,8 @@
 
   @push('scripts')
       <script>
-          function initializeCard() {
-
-
-              if (typeof Card !== 'undefined' && document.querySelector('.card-wrapper')) {
+          function initializeCard(Card) {
+              if (document.querySelector('.card-wrapper')) {
                   new Card({
                       form: '#card-form',
                       container: '.card-wrapper',
@@ -77,8 +75,8 @@
           }
 
 
-          document.addEventListener('card-loaded', () => {
-              initializeCard();
+          document.addEventListener('card-loaded', (event) => {
+              initializeCard(event.detail.Card);
 
               const inputs = document.querySelectorAll(
                   'input[name="cardNumber"], input[name="cardExpirationDate"], input[name="cvv"]'

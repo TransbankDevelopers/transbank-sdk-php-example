@@ -15,8 +15,7 @@ function initializeHighlight() {
 async function loadCardAnimation() {
     const { default: Card } = await import("card");
     await import("card/lib/card.css");
-    window.Card = Card;
-    document.dispatchEvent(new Event("card-loaded"));
+    document.dispatchEvent(new CustomEvent("card-loaded", { detail: { Card } }));
 }
 
 document.addEventListener("DOMContentLoaded", function () {
