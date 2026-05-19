@@ -8,6 +8,8 @@ Proyecto de ejemplo mostrando el paso a paso de como usar el SDK PHP de transban
 
 -   PHP 8.2+
 -   Laravel 11
+-   NODE 22.22.3
+-   pnpm 11.1.1
 
 ## Desarrollo con Dev Container (recomendado)
 
