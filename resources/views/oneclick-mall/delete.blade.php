@@ -30,6 +30,8 @@
         realizado de manera exitosa.
     </p>
 
+    <x-snippet :content="$resp" />
+
     <p class="mb-32">
         En el caso de que no se encuentre el "userName" o el "tbkUser", Transbank responderá con un status code 404 (Not
         Found), y el SDK lanzará una excepción del tipo InscriptionDeleteException.
@@ -40,7 +42,5 @@
         asociado. ¡Gracias por confiar en Transbank para tus operaciones seguras! Si tienes alguna pregunta, estamos
         aquí para ayudarte
     </p>
-
-    <x-snippet :content="$resp" />
 
 </x-layout>
