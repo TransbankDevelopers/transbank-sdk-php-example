@@ -1,11 +1,13 @@
 {
     "name": "Transbank SDK PHP Example",
-    "dockerComposeFile": "docker-compose.yml",
-    "service": "dev",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
     "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-    "remoteUser": "root",
+    "remoteUser": "vscode",
     "postCreateCommand": "bash /workspaces/${localWorkspaceFolderBasename}/.devcontainer/post-create.sh",
-    "shutdownAction": "stopCompose",
+    "shutdownAction": "stopContainer",
     "forwardPorts": [
         8000,
         5173
@@ -58,6 +60,7 @@
                 "extensions.autoUpdate": false,
                 "extensions.autoCheckUpdates": false,
                 "extensions.ignoreRecommendations": true,
+                "todo-tree.ripgrep.ripgrep": "/usr/bin/rg",
                 "remote.containers.installRecommendedExtensions": false,
                 "settingsSync.enabled": false,
                 "files.watcherExclude": {
