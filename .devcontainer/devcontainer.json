@@ -23,7 +23,7 @@
         }
     },
     "mounts": [
-        "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
+        "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
     ],
     "features": {
         "ghcr.io/devcontainers/features/node:1": {
