@@ -1,5 +1,15 @@
 # Historial de cambios
 
+## [1.2.0] 24-11-2026
+
+### Agrega
+
+-   Se agrega el producto Transacción Completa en su modalidad simultánea al menú lateral y al home del proyecto.
+
+### Actualiza
+
+-   Se actualiza el SDK de Transbank a la versión 5.1.0.
+
 ## [1.1.1] 15-05-2025
 
 ### Actualiza

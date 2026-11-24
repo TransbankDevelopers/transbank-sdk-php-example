@@ -145,95 +145,26 @@
         <!-- ======================================================
            SECCIÓN 3: WEBPAY TRANSACCION COMPLETA
            ====================================================== -->
-        {{-- <div>
-            <p class="tbk-sidebar-item-title">Webpay transaccion completa</p>
+        <div>
+            <p class="tbk-sidebar-item-title">Transacción Completa</p>
             <ul>
-                <!-- COLLAPSIBLE 1 -->
                 <li style="margin-bottom:20px;">
                     <button class="sidebar-collapsible-title" data-collapsible="transaccion-completa">
-                        <span class="general-text">Transaccion Completa</span>
+                        <span class="general-text">Transacción Completa</span>
                         <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24"   />
+                            height="24" />
                     </button>
                     <ul class="collapsible-content" id="collapse-transaccion-completa">
                         <li class="collapsible-items">
-                            <a href="/transaccion-completa" class="tbk-sidebar-item">
+                            <a href={{ route('transaccion-completa.index', [], false) }} class="tbk-sidebar-item">
                                 Flujo Completo
-                            </a>
-                        </li>
-                        <li class="collapsible-items">
-                            <a href="/api-reference/transaccion-completa" class="tbk-sidebar-item">
-                                Operaciones API
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <!-- COLLAPSIBLE 2 -->
-                <li style="margin-bottom:20px;">
-                    <button class="sidebar-collapsible-title" data-collapsible="transaccion-completa-mall">
-                        <span class="general-text">Transaccion Completa Mall</span>
-                        <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24"   />
-                    </button>
-                    <ul class="collapsible-content" id="collapse-transaccion-completa-mall">
-                        <li class="collapsible-items">
-                            <a href="/transaccion-completa-mall" class="tbk-sidebar-item">
-                                Flujo Completo
-                            </a>
-                        </li>
-                        <li class="collapsible-items">
-                            <a href="/api-reference/transaccion-completa-mall" class="tbk-sidebar-item">
-                                Operaciones API
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <!-- COLLAPSIBLE 3 -->
-                <li style="margin-bottom:20px;">
-                    <button class="sidebar-collapsible-title" data-collapsible="transaccion-completa-diferido">
-                        <span class="general-text">Transaccion Completa Diferido</span>
-                        <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24"   />
-                    </button>
-                    <ul class="collapsible-content" id="collapse-transaccion-completa-diferido">
-                        <li class="collapsible-items">
-                            <a href="/transaccion-completa-diferido" class="tbk-sidebar-item">
-                                Flujo Completo
-                            </a>
-                        </li>
-                        <li class="collapsible-items">
-                            <a href="/api-reference/transaccion-completa-diferido" class="tbk-sidebar-item">
-                                Operaciones API
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <!-- COLLAPSIBLE 4 -->
-                <li style="margin-bottom:20px;">
-                    <button class="sidebar-collapsible-title" data-collapsible="transaccion-completa-mall-diferido">
-                        <span class="general-text">Transaccion Completa Mall Diferido</span>
-                        <img src={{ asset('images/t-arrow.svg') }} class="arrow" alt="t-arrow" width="24"
-                            height="24"   />
-                    </button>
-                    <ul class="collapsible-content" id="collapse-transaccion-completa-mall-diferido">
-                        <li class="collapsible-items">
-                            <a href="/transaccion-completa-mall-diferido" class="tbk-sidebar-item">
-                                Flujo Completo
-                            </a>
-                        </li>
-                        <li class="collapsible-items">
-                            <a href="/api-reference/transaccion-completa-mall-diferido" class="tbk-sidebar-item">
-                                Operaciones API
                             </a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <hr class="sidebar-divider" />
-        </div> --}}
+        </div>
 
         <!-- ======================================================
            SECCIÓN 4: PATPASS

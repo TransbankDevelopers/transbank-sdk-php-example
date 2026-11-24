@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    command: sleep infinity
+    volumes:
+      - ..:/workspaces/transbank-sdk-php-example:cached
+      - node_modules:/workspaces/transbank-sdk-php-example/node_modules
+
+volumes:
+  node_modules:

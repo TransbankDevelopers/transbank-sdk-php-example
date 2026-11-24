@@ -14,21 +14,20 @@ use App\Http\Controllers\TransaccionCompletaMallDiferido;
 use App\Http\Controllers\PatpassComercioController;
 use Illuminate\Support\Facades\Route;
 
-const CREATE_ENDPOINT = '/create';
-const COMMIT_ENDPOINT = '/commit';
-const CAPTURE_ENDPOINT = '/capture';
-const REFUND_ENDPOINT = '/refund';
-const STATUS_ENDPOINT = '/status';
-const START_ENDPOINT = '/start';
-const FINISH_ENDPOINT = '/finish';
-const AUTHORIZE_ENDPOINT = '/authorize';
-const DELETE_ENDPOINT = '/delete';
-const INSTALLMENTS_ENDPOINT = '/installments';
-const INFO_BIN_ENDPOINT = '/info-bin';
+defined('CREATE_ENDPOINT') || define('CREATE_ENDPOINT', '/create');
+defined('COMMIT_ENDPOINT') || define('COMMIT_ENDPOINT', '/commit');
+defined('CAPTURE_ENDPOINT') || define('CAPTURE_ENDPOINT', '/capture');
+defined('REFUND_ENDPOINT') || define('REFUND_ENDPOINT', '/refund');
+defined('STATUS_ENDPOINT') || define('STATUS_ENDPOINT', '/status');
+defined('START_ENDPOINT') || define('START_ENDPOINT', '/start');
+defined('FINISH_ENDPOINT') || define('FINISH_ENDPOINT', '/finish');
+defined('AUTHORIZE_ENDPOINT') || define('AUTHORIZE_ENDPOINT', '/authorize');
+defined('DELETE_ENDPOINT') || define('DELETE_ENDPOINT', '/delete');
+defined('INSTALLMENTS_ENDPOINT') || define('INSTALLMENTS_ENDPOINT', '/installments');
+defined('INFO_BIN_ENDPOINT') || define('INFO_BIN_ENDPOINT', '/info-bin');
 
 Route::view('/', 'home')->name('home');
 Route::view('/oneclick-mall', 'home')->name('oneclick-mall');
-Route::view('/transaccion-completa', 'home')->name('transaccion-completa');
 
 Route::get('/api-reference/webpay-plus', [WebpayController::class, 'showOperations'])->name("webpay.api-operations");
 Route::get('/api-reference/webpay-mall', [WebpayPlusMallController::class, 'showOperations'])->name("webpay-mall.api-operations");

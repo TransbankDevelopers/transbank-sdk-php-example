@@ -71,6 +71,20 @@
                             Ver ejemplos y modalidades
                         </a>
                     </div>
+
+                    <div class="card-info ">
+                        <div class="card-info-body ">
+                            <img src={{ asset('images/fulltx.svg') }} alt="Transacción Completa" width="300"
+                                height="74" class="card-info-image" />
+                            <p class="card-info-text">Transacción Completa permite al comercio presentar al
+                                tarjetahabiente un formulario propio para almacenar los datos de la tarjeta, fecha de
+                                vencimiento y cvv.
+                            </p>
+                        </div>
+                        <a href={{ route('transaccion-completa.index') }} class="card-info-link">
+                            Ver ejemplos y modalidades
+                        </a>
+                    </div>
                 </div>
 
                 <hr class="separed-home" />
