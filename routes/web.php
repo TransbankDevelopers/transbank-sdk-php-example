@@ -28,7 +28,6 @@ defined('INFO_BIN_ENDPOINT') || define('INFO_BIN_ENDPOINT', '/info-bin');
 
 Route::view('/', 'home')->name('home');
 Route::view('/oneclick-mall', 'home')->name('oneclick-mall');
-Route::view('/transaccion-completa', 'home')->name('transaccion-completa');
 
 Route::get('/api-reference/webpay-plus', [WebpayController::class, 'showOperations'])->name("webpay.api-operations");
 Route::get('/api-reference/webpay-mall', [WebpayPlusMallController::class, 'showOperations'])->name("webpay-mall.api-operations");
