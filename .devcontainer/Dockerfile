@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/php:dev-8.2-trixie
+FROM mcr.microsoft.com/devcontainers/php:3-8.2-trixie
 
 USER root
 
