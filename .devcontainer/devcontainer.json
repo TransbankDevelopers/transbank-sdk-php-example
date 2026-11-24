@@ -2,9 +2,9 @@
     "name": "Transbank SDK PHP Example",
     "dockerComposeFile": "docker-compose.yml",
     "service": "app",
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "workspaceFolder": "/workspaces/transbank-sdk-php-example",
     "remoteUser": "vscode",
-    "postCreateCommand": "bash /workspaces/${localWorkspaceFolderBasename}/.devcontainer/post-create.sh",
+    "postCreateCommand": "bash /workspaces/transbank-sdk-php-example/.devcontainer/post-create.sh",
     "shutdownAction": "stopCompose",
     "forwardPorts": [
         8000,
