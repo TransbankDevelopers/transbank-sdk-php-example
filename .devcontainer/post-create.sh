@@ -7,12 +7,12 @@ echo "📂 current dir: $(pwd)"
 
 composer install --no-interaction --prefer-dist
 
-if [ ! -f .env ]; then
+if [[ ! -f .env ]]; then
     cp .env.example .env
     php artisan key:generate
 fi
 
-if [ ! -f database/database.sqlite ]; then
+if [[ ! -f database/database.sqlite ]]; then
     mkdir -p database
     touch database/database.sqlite
 fi
