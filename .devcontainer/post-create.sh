@@ -19,4 +19,6 @@ fi
 
 php artisan migrate --graceful --force
 
+# node_modules is a Docker named volume, created with root as owner
+sudo chown "$(id -u):$(id -g)" node_modules
 pnpm install
