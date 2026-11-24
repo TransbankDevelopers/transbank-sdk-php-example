@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/php:1-8.2-bookworm
+FROM mcr.microsoft.com/devcontainers/php:dev-8.2-trixie
 
 USER root
 
